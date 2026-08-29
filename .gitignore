@@ -1,0 +1,47 @@
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# Python Bytecode & Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Environment & Credentials
+.env
+.env.local
+.env.*.local
+
+# Databases & Vector Stores
+*.db
+*.sqlite3
+vector_db/
+chroma.sqlite3
+
+# Runtime Data, Uploads & Outputs
+uploads/
+outputs/
+reports/
+runs/
+datasets/
+
+# AI Model Weights & Checkpoints
+*.pt
+*.onnx
+*.bin
+models/
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.code-workspace
+
+# OS Generated Files
+Thumbs.db
+Desktop.ini
+.DS_Store

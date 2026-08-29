@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vision Desk AI — Sign Up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<style>
+  :root{
+    --bg: #0A0E14;
+    --panel: #12171F;
+    --panel-2: #171D27;
+    --border: #232B38;
+    --border-soft: #1A2029;
+    --text: #E8ECF1;
+    --muted: #8791A1;
+    --muted-dim: #57616F;
+    --cyan: #8B5CF6;
+    --cyan-dim: rgba(139,92,246,0.14);
+    --brass: #C4B5FD;
+    --radius: 10px;
+    --danger: #F87171;
+    --good: #34D399;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html,body{
+    height:100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+  }
+
+  body{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    background-image:
+      radial-gradient(circle at 15% 0%, rgba(139,92,246,0.09), transparent 45%),
+      radial-gradient(circle at 100% 30%, rgba(196,181,253,0.05), transparent 40%);
+  }
+
+  .topbar{
+    display:flex;
+    align-items:center;
+    padding: 26px 48px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .wordmark{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    text-decoration:none;
+    color:inherit;
+  }
+
+  .aperture{ width:30px; height:30px; flex-shrink:0; }
+  .aperture svg{ width:100%; height:100%; display:block; }
+  .aperture circle{ fill:none; stroke: var(--cyan); stroke-width: 1.4; opacity:0.9; }
+  .aperture .ring-outer{ stroke: var(--border); }
+  .aperture .tick{ stroke: var(--cyan); stroke-width: 1.6; stroke-linecap: round; }
+  .aperture .core{ fill: var(--cyan); }
+
+  .wordmark-text{
+    font-family:'Space Grotesk', sans-serif;
+    font-size: 19px;
+    font-weight:600;
+    letter-spacing: 0.01em;
+    line-height:1;
+  }
+  .wordmark-text .sub{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    font-weight:400;
+    letter-spacing: 0.22em;
+    color: var(--muted-dim);
+    margin-top:5px;
+    text-transform:uppercase;
+  }
+
+  .auth-wrap{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 40px 24px;
+  }
+
+  .auth-card{
+    width:100%;
+    max-width:400px;
+    background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 32px 32px;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .auth-card::before{
+    content:'';
+    position:absolute;
+    left:0; top:0;
+    height:2px;
+    width:100%;
+    background: linear-gradient(90deg, var(--cyan), var(--brass));
+    opacity:0.8;
+  }
+
+  .auth-eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.24em;
+    text-transform:uppercase;
+    color: var(--cyan);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .auth-eyebrow::before{
+    content:'';
+    width:20px; height:1px;
+    background: var(--cyan);
+  }
+
+  .auth-card h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:26px;
+    letter-spacing:-0.01em;
+    margin-bottom:8px;
+  }
+
+  .auth-card p.sub{
+    color: var(--muted);
+    font-size:13.5px;
+    line-height:1.55;
+    margin-bottom:26px;
+  }
+
+  .field{
+    margin-bottom:16px;
+  }
+
+  .field label{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color: var(--muted);
+    margin-bottom:8px;
+  }
+
+  .field-input{
+    position:relative;
+  }
+
+  .field-input input{
+    width:100%;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-family:'Inter', sans-serif;
+    font-size:14px;
+    outline:none;
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+
+  .field-input input::placeholder{ color: var(--muted-dim); }
+
+  .field-input input:focus{
+    border-color: rgba(139,92,246,0.55);
+    background: rgba(139,92,246,0.06);
+  }
+
+  .field-input input.invalid{
+    border-color: rgba(248,113,113,0.55);
+  }
+
+  .field-hint{
+    margin-top:6px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color: var(--muted-dim);
+  }
+  .field-hint.error{
+    color: var(--danger);
+    display:none;
+  }
+  .field-hint.error.show{ display:block; }
+
+  .toggle-pw{
+    position:absolute;
+    right:12px;
+    top:50%;
+    transform:translateY(-50%);
+    background:none;
+    border:none;
+    color: var(--muted);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.05em;
+    cursor:pointer;
+    padding:2px 4px;
+  }
+  .toggle-pw:hover{ color: var(--cyan); }
+
+  /* password strength meter */
+  .strength{
+    display:flex;
+    gap:5px;
+    margin-top:9px;
+  }
+  .strength .bar{
+    flex:1;
+    height:3px;
+    border-radius:999px;
+    background: var(--border-soft);
+    transition: background 0.25s ease;
+  }
+  .strength-label{
+    margin-top:7px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    color: var(--muted-dim);
+    letter-spacing:0.05em;
+  }
+
+  .terms{
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+    margin: 20px 0 22px;
+    font-size:12.5px;
+    color: var(--muted);
+    line-height:1.5;
+  }
+  .terms input{
+    margin-top:2px;
+    width:14px; height:14px;
+    accent-color: var(--cyan);
+    flex-shrink:0;
+  }
+  .terms a{ color: var(--cyan); text-decoration:none; }
+  .terms a:hover{ color: var(--brass); }
+
+  .btn-primary{
+    width:100%;
+    padding:13px 14px;
+    border-radius:8px;
+    border:1px solid transparent;
+    background: var(--cyan);
+    color:#0A0E14;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    cursor:pointer;
+    transition: background 0.25s ease, transform 0.15s ease;
+    letter-spacing:0.01em;
+  }
+  .btn-primary:hover{ background: #7C4DFF; }
+  .btn-primary:active{ transform: scale(0.98); }
+
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin: 24px 0;
+    color: var(--muted-dim);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+  }
+  .divider::before, .divider::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background: var(--border);
+  }
+
+  .btn-ghost{
+    width:100%;
+    padding:12px 14px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    background: rgba(255,255,255,0.02);
+    color: var(--text);
+    font-family:'Inter', sans-serif;
+    font-size:13.5px;
+    font-weight:500;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+  .btn-ghost:hover{
+    border-color: rgba(139,92,246,0.4);
+    background: var(--cyan-dim);
+  }
+  .btn-ghost svg{ width:16px; height:16px; }
+
+  .switch-line{
+    text-align:center;
+    margin-top:24px;
+    font-size:13px;
+    color: var(--muted);
+  }
+  .switch-line a{
+    color: var(--cyan);
+    text-decoration:none;
+    font-weight:500;
+  }
+  .switch-line a:hover{ color: var(--brass); }
+
+  footer{
+    text-align:center;
+    padding: 0 24px 28px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color: var(--muted-dim);
+    letter-spacing:0.08em;
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a class="wordmark" href="index.html">
+      <div class="aperture">
+        <svg viewBox="0 0 30 30">
+          <circle class="ring-outer" cx="15" cy="15" r="13"></circle>
+          <circle cx="15" cy="15" r="8.5" stroke-dasharray="2 4"></circle>
+          <line class="tick" x1="15" y1="3" x2="15" y2="7"></line>
+          <line class="tick" x1="15" y1="23" x2="15" y2="27"></line>
+          <line class="tick" x1="3" y1="15" x2="7" y2="15"></line>
+          <line class="tick" x1="23" y1="15" x2="27" y2="15"></line>
+          <circle class="core" cx="15" cy="15" r="2.2"></circle>
+        </svg>
+      </div>
+      <div class="wordmark-text">
+        VISION DESK AI
+        <span class="sub">Analysis Console</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-eyebrow">Create account</div>
+      <h1>Get started</h1>
+      <p class="sub">Set up your console access in under a minute.</p>
+
+      <form id="signup-form" novalidate>
+        <div class="field">
+          <label for="name">Full name</label>
+          <div class="field-input">
+            <input type="text" id="name" placeholder="Jane Doe" autocomplete="name">
+          </div>
+          <div class="field-hint error" id="name-error">Enter your name.</div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <div class="field-input">
+            <input type="email" id="email" placeholder="you@example.com" autocomplete="email">
+          </div>
+          <div class="field-hint error" id="email-error">Enter a valid email address.</div>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="field-input">
+            <input type="password" id="password" placeholder="••••••••" autocomplete="new-password">
+            <button type="button" class="toggle-pw" id="toggle-pw">SHOW</button>
+          </div>
+          <div class="strength">
+            <div class="bar" id="bar-1"></div>
+            <div class="bar" id="bar-2"></div>
+            <div class="bar" id="bar-3"></div>
+            <div class="bar" id="bar-4"></div>
+          </div>
+          <div class="strength-label" id="strength-label">Use 8+ characters with a mix of letters &amp; numbers</div>
+        </div>
+
+        <label class="terms">
+          <input type="checkbox" id="agree">
+          <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</span>
+        </label>
+        <div class="field-hint error" id="agree-error" style="margin-top:-14px; margin-bottom:16px;">You must accept the terms to continue.</div>
+
+        <button type="submit" class="btn-primary">Create Account</button>
+      </form>
+
+      <div class="divider">or continue with</div>
+
+      <div id="google-btn-container" style="display:flex; justify-content:center;"></div>
+
+      <p class="switch-line">Already have an account? <a href="login.html">Log in</a></p>
+    </div>
+  </div>
+
+  <footer>VISION DESK AI &mdash; CONSOLE V1</footer>
+
+<script>
+  const form = document.getElementById('signup-form');
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const agreeInput = document.getElementById('agree');
+
+  const nameError = document.getElementById('name-error');
+  const emailError = document.getElementById('email-error');
+  const agreeError = document.getElementById('agree-error');
+
+  const togglePw = document.getElementById('toggle-pw');
+  const bars = [1,2,3,4].map(n => document.getElementById('bar-' + n));
+  const strengthLabel = document.getElementById('strength-label');
+
+  togglePw.addEventListener('click', function(){
+    const isPw = passwordInput.type === 'password';
+    passwordInput.type = isPw ? 'text' : 'password';
+    togglePw.textContent = isPw ? 'HIDE' : 'SHOW';
+  });
+
+  function validEmail(value){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  }
+
+  function scorePassword(value){
+    let score = 0;
+    if(value.length >= 8) score++;
+    if(/[A-Z]/.test(value) && /[a-z]/.test(value)) score++;
+    if(/\d/.test(value)) score++;
+    if(/[^A-Za-z0-9]/.test(value)) score++;
+    return score;
+  }
+
+  const colors = ['var(--danger)', '#F59E0B', '#FBBF24', 'var(--good)'];
+  const labels = ['Weak', 'Fair', 'Good', 'Strong'];
+
+  passwordInput.addEventListener('input', function(){
+    const score = scorePassword(passwordInput.value);
+    bars.forEach(function(bar, i){
+      bar.style.background = i < score ? colors[Math.max(score - 1, 0)] : 'var(--border-soft)';
+    });
+    strengthLabel.textContent = passwordInput.value
+      ? labels[Math.max(score - 1, 0)] + ' password'
+      : 'Use 8+ characters with a mix of letters & numbers';
+  });
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    let valid = true;
+
+    if(!nameInput.value.trim()){
+      nameInput.classList.add('invalid');
+      nameError.classList.add('show');
+      valid = false;
+    } else {
+      nameInput.classList.remove('invalid');
+      nameError.classList.remove('show');
+    }
+
+    if(!validEmail(emailInput.value.trim())){
+      emailInput.classList.add('invalid');
+      emailError.classList.add('show');
+      valid = false;
+    } else {
+      emailInput.classList.remove('invalid');
+      emailError.classList.remove('show');
+    }
+
+    if(!agreeInput.checked){
+      agreeError.classList.add('show');
+      valid = false;
+    } else {
+      agreeError.classList.remove('show');
+    }
+
+    if(valid){
+      const submitBtn = form.querySelector('.btn-primary');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Creating account…';
+
+      try{
+        const res = await fetch('/api/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: nameInput.value.trim(),
+            email: emailInput.value.trim(),
+            password: passwordInput.value
+          })
+        });
+
+        const data = await res.json();
+
+        if(!res.ok){
+          emailInput.classList.add('invalid');
+          emailError.textContent = data.detail || 'Could not create account.';
+          emailError.classList.add('show');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Create Account';
+          return;
+        }
+
+        localStorage.setItem('vd_token', data.access_token);
+        localStorage.setItem('vd_user', JSON.stringify(data.user));
+        window.location.href = 'index.html';
+      } catch(err){
+        emailError.textContent = 'Could not reach the server. Try again.';
+        emailError.classList.add('show');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Create Account';
+      }
+    }
+  });
+  async function handleGoogleCredential(response){
+    try{
+      const res = await fetch('/api/google', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ credential: response.credential })
+      });
+      const data = await res.json();
+      if(!res.ok){
+        alert(data.detail || 'Google sign-in failed.');
+        return;
+      }
+      localStorage.setItem('vd_token', data.access_token);
+      localStorage.setItem('vd_user', JSON.stringify(data.user));
+      window.location.href = 'index.html';
+    } catch(err){
+      alert('Could not reach the server.');
+    }
+  }
+
+  window.onload = function(){
+    google.accounts.id.initialize({
+      client_id: '975199681043-ari1stn891vhktfti4cclrbtmg87b77q.apps.googleusercontent.com',
+      callback: handleGoogleCredential
+    });
+    google.accounts.id.renderButton(
+      document.getElementById('google-btn-container'),
+      { theme: 'filled_black', size: 'large', shape: 'rectangular', width: 336 }
+    );
+  };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vision Desk AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0A0E14;
+    --panel: #12171F;
+    --panel-2: #171D27;
+    --border: #232B38;
+    --border-soft: #1A2029;
+    --text: #E8ECF1;
+    --muted: #8791A1;
+    --muted-dim: #57616F;
+    --cyan: #8B5CF6;
+    --cyan-dim: rgba(139,92,246,0.14);
+    --brass: #C4B5FD;
+    --radius: 10px;
+    --good: #34D399;
+    --warn: #FBBF24;
+    --bad: #F87171;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html,body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body{
+    background-image:
+      radial-gradient(circle at 15% 0%, rgba(139,92,246,0.09), transparent 45%),
+      radial-gradient(circle at 100% 30%, rgba(196,181,253,0.05), transparent 40%);
+  }
+
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 26px 48px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .wordmark{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+
+  .aperture{ width:30px; height:30px; position:relative; flex-shrink:0; }
+  .aperture svg{ width:100%; height:100%; display:block; }
+  .aperture circle{ fill:none; stroke: var(--cyan); stroke-width: 1.4; opacity:0.9; }
+  .aperture .ring-outer{ stroke: var(--border); }
+  .aperture .tick{ stroke: var(--cyan); stroke-width: 1.6; stroke-linecap: round; }
+  .aperture .core{ fill: var(--cyan); }
+
+  .wordmark-text{
+    font-family:'Space Grotesk', sans-serif;
+    font-size: 19px;
+    font-weight:600;
+    letter-spacing: 0.01em;
+    line-height:1;
+  }
+
+  .hero{
+    padding: 88px 48px 56px;
+    max-width:1180px;
+    margin: 0 auto;
+  }
+
+  .hero h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size: clamp(32px, 4.4vw, 52px);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    max-width: 780px;
+  }
+  .hero h1 em{ font-style:normal; color: var(--cyan); }
+
+  .desk{
+    max-width:1180px;
+    margin: 0 auto;
+    padding: 8px 48px 100px;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:20px;
+  }
+
+  @media (max-width: 880px){
+    .desk{ grid-template-columns: 1fr; }
+    .topbar{ padding:22px 24px; }
+    .hero{ padding: 56px 24px 40px; }
+    .desk{ padding: 8px 24px 72px; }
+  }
+
+  .module{
+    position:relative;
+    background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px 24px;
+    cursor:pointer;
+    overflow:hidden;
+  }
+
+  .module.drag{ border-color: rgba(139,92,246,0.5); }
+
+  .module-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    margin-bottom:26px;
+  }
+
+  .module-index{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.14em;
+    color: var(--muted-dim);
+  }
+
+  .module-icon{
+    width:38px; height:38px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: rgba(255,255,255,0.015);
+  }
+  .module-icon svg{ width:18px; height:18px; stroke: var(--cyan); fill:none; stroke-width:1.6; }
+
+  .module h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+
+  .module p.desc{ color: var(--muted); font-size:13.5px; line-height:1.55; margin-bottom:22px; }
+
+  .dropzone{
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 22px 14px;
+    text-align:center;
+  }
+  .module.drag .dropzone{ border-color: rgba(139,92,246,0.45); background: var(--cyan-dim); }
+
+  .dropzone .cta{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.05em; color: var(--text); }
+  .dropzone .cta .verb{ color: var(--cyan); }
+  .dropzone .hint{ margin-top:6px; font-size:11px; color: var(--muted-dim); }
+
+  .filename{
+    margin-top:14px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color: var(--brass);
+    display:none;
+    word-break: break-all;
+  }
+  .filename.show{ display:block; }
+
+  input[type="file"]{ display:none; }
+
+  .stream-wrap{ display:none; margin-top:16px; }
+  .stream-wrap.show{ display:block; }
+
+  .stream-meta{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color: var(--muted);
+    margin-bottom:8px;
+    letter-spacing:0.04em;
+  }
+  .stream-meta .label{ display:flex; align-items:center; gap:6px; color: var(--cyan); }
+  .stream-meta .label .blip{ width:5px; height:5px; border-radius:50%; background: var(--cyan); }
+
+  .track{ position:relative; height:5px; border-radius:999px; background: var(--border-soft); overflow:hidden; }
+  .track .fill{ position:absolute; left:0; top:0; bottom:0; width:0%; border-radius:999px; background: var(--cyan); }
+
+  .stream-stats{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:7px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    color: var(--muted-dim);
+  }
+
+  .preview{
+    display:none;
+    margin-top:14px;
+    border-radius:8px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    background: rgba(0,0,0,0.25);
+  }
+  .preview.show{ display:block; }
+
+  .preview-btn{
+    display:none;
+    width:100%;
+    margin-top:10px;
+    padding:9px 12px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    background: rgba(255,255,255,0.02);
+    color: var(--text);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.04em;
+    cursor:pointer;
+  }
+  .preview-btn.show{ display:block; }
+
+  .preview img{ display:block; width:100%; max-height:160px; object-fit:cover; }
+  .preview video{ display:block; width:100%; max-height:160px; background:#000; }
+
+  .doc-card{ display:flex; align-items:center; gap:12px; padding:14px; }
+  .doc-icon{
+    width:34px; height:34px;
+    flex-shrink:0;
+    border-radius:6px;
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:15px;
+  }
+  .doc-meta{ min-width:0; }
+  .doc-name{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color: var(--text);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .doc-size{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; color: var(--muted-dim); margin-top:3px; }
+
+  /* ---------- detection results (image module) ---------- */
+  .detect-wrap{ display:none; margin-top:14px; }
+  .detect-wrap.show{ display:block; }
+
+  .detect-loading{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color: var(--cyan);
+    padding:10px 0;
+  }
+  .detect-loading .blip{ width:5px; height:5px; border-radius:50%; background: var(--cyan); animation: pulse 1s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{ opacity:1; } 50%{ opacity:0.3; } }
+
+  .detect-summary{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    color: var(--muted);
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .detect-summary .count{ color: var(--good); }
+
+  .detect-list{ display:flex; flex-direction:column; gap:6px; }
+  .detect-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:8px 10px;
+    border-radius:6px;
+    border:1px solid var(--border);
+    background: rgba(255,255,255,0.015);
+    font-size:12.5px;
+  }
+  .detect-item .cls{ font-weight:500; }
+  .detect-item .cls.warn{ color: var(--warn); }
+  .detect-item .conf{ font-family:'IBM Plex Mono', monospace; font-size:11px; color: var(--muted); }
+  .detect-empty{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color: var(--muted-dim); padding:8px 0; }
+  .detect-error{ font-family:'IBM Plex Mono', monospace; font-size:11px; color: #F87171; padding:8px 0; }
+
+  /* ---------- document search (document module) ---------- */
+  .doc-search{
+    display:block;
+    margin-top:14px;
+    padding-top:14px;
+    border-top:1px solid var(--border);
+  }
+  .doc-search.show{ display:block; }
+
+  .doc-search-row{
+    display:flex;
+    gap:8px;
+  }
+  .doc-search-row input{
+    flex:1;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: var(--text);
+    font-family:'Inter', sans-serif;
+    font-size:13px;
+    outline:none;
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+  .doc-search-row input::placeholder{ color: var(--muted-dim); }
+  .doc-search-row input:focus{
+    border-color: rgba(139,92,246,0.55);
+    background: rgba(139,92,246,0.06);
+  }
+  .doc-search-row button{
+    padding: 10px 16px;
+    border-radius:8px;
+    border:1px solid transparent;
+    background: var(--cyan);
+    color:#0A0E14;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:12.5px;
+    cursor:pointer;
+    transition: background 0.25s ease;
+  }
+  .doc-search-row button:hover{ background: #7C4DFF; }
+  .doc-search-row button:disabled{ opacity:0.5; cursor:not-allowed; }
+
+  .doc-answer{
+    margin-top:12px;
+    padding:14px;
+    border-radius:8px;
+    border:1px solid rgba(139,92,246,0.35);
+    background: var(--cyan-dim);
+  }
+  .doc-answer-label{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color: var(--brass);
+    margin-bottom:6px;
+  }
+  .doc-answer-text{
+    font-size:13.5px;
+    line-height:1.6;
+    color: var(--text);
+  }
+
+  .confidence-badge{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:9.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:2px 7px;
+    border-radius:999px;
+    border:1px solid var(--border);
+  }
+  .confidence-badge.high{ color: var(--good); border-color: rgba(52,211,153,0.4); }
+  .confidence-badge.medium{ color: var(--warn); border-color: rgba(251,191,36,0.4); }
+  .confidence-badge.low{ color: var(--bad); border-color: rgba(248,113,113,0.4); }
+
+  .doc-sources-toggle{
+    margin-top:10px;
+    background:none;
+    border:none;
+    color: var(--muted);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.04em;
+    cursor:pointer;
+    padding:4px 0;
+    display:flex;
+    align-items:center;
+    gap:5px;
+  }
+  .doc-sources-toggle:hover{ color: var(--text); }
+  .doc-sources-toggle .arrow{ transition: transform 0.2s ease; display:inline-block; }
+  .doc-sources-toggle.open .arrow{ transform: rotate(90deg); }
+
+  .doc-results{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    margin-top:12px;
+  }
+  .doc-result-item{
+    padding:10px 12px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    background: rgba(255,255,255,0.015);
+    display:none;
+  }
+  .doc-result-item.show{ display:block; }
+  .doc-result-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:4px;
+    gap:8px;
+  }
+  .doc-result-file{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color: var(--cyan);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .doc-result-score{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    color: var(--muted-dim);
+    flex-shrink:0;
+  }
+  .doc-result-section{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    color: var(--brass);
+    margin-bottom:6px;
+  }
+  .doc-result-text{
+    font-size:12.5px;
+    color: var(--muted);
+    line-height:1.5;
+  }
+
+  /* ---------- investigation section ---------- */
+  .investigate{
+    max-width:1180px;
+    margin: 0 auto;
+    padding: 8px 48px 100px;
+  }
+  @media (max-width: 880px){ .investigate{ padding: 8px 24px 72px; } }
+
+  .investigate-panel{
+    background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px 24px;
+  }
+
+  .investigate-top{ display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:22px; }
+  .investigate-panel h3{ font-family:'Space Grotesk', sans-serif; font-size:18px; font-weight:600; margin-bottom:6px; }
+  .investigate-panel p.desc{ color: var(--muted); font-size:13.5px; line-height:1.55; }
+
+  .investigate-form{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; align-items:end; margin-top:20px; }
+  @media (max-width: 720px){ .investigate-form{ grid-template-columns: 1fr; } }
+
+  .investigate-field label{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color: var(--muted);
+    margin-bottom:8px;
+  }
+
+  .investigate-file-row{
+    display:flex; align-items:center; gap:10px;
+    border: 1px dashed var(--border);
+    border-radius:8px;
+    padding: 10px 12px;
+  }
+  .investigate-file-row input[type="file"]{ display:block; flex:1; font-family:'IBM Plex Mono', monospace; font-size:11px; color: var(--muted); }
+  .investigate-file-name{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; color: var(--brass); word-break:break-all; }
+
+  .investigate-query-row{ display:flex; flex-direction:column; }
+  .investigate-query-row input{
+    background: rgba(0,0,0,0.25);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 11px 12px;
+    color: var(--text);
+    font-family:'Inter', sans-serif;
+    font-size:13px;
+    outline:none;
+  }
+  .investigate-query-row input:focus{ border-color: rgba(139,92,246,0.55); background: rgba(139,92,246,0.06); }
+
+  .investigate-run-row{ grid-column: 1 / -1; display:flex; justify-content:flex-end; }
+  .investigate-run-btn{
+    padding: 11px 22px;
+    border-radius:8px;
+    border:1px solid transparent;
+    background: var(--cyan);
+    color:#0A0E14;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:13px;
+    cursor:pointer;
+  }
+  .investigate-run-btn:hover{ background:#7C4DFF; }
+  .investigate-run-btn:disabled{ opacity:0.5; cursor:not-allowed; }
+
+  /* agent pipeline progress */
+  .agent-pipeline{
+    display:none;
+    margin-top:24px;
+    padding-top:20px;
+    border-top:1px solid var(--border);
+  }
+  .agent-pipeline.show{ display:block; }
+  .agent-pipeline-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color: var(--muted-dim);
+    margin-bottom:14px;
+  }
+  .agent-steps{ display:flex; flex-wrap:wrap; gap:10px; }
+  .agent-step{
+    display:flex; align-items:center; gap:7px;
+    padding:7px 12px;
+    border-radius:999px;
+    border:1px solid var(--border);
+    background: rgba(255,255,255,0.015);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color: var(--muted-dim);
+    transition: all 0.3s ease;
+  }
+  .agent-step .dot{ width:6px; height:6px; border-radius:50%; background: var(--border); transition: background 0.3s ease; flex-shrink:0; }
+  .agent-step.active{ color: var(--cyan); border-color: rgba(139,92,246,0.4); }
+  .agent-step.active .dot{ background: var(--cyan); animation: pulse 1s ease-in-out infinite; }
+  .agent-step.done{ color: var(--good); border-color: rgba(52,211,153,0.35); }
+  .agent-step.done .dot{ background: var(--good); }
+
+  /* result */
+  .investigate-result{ display:none; margin-top:24px; padding-top:20px; border-top:1px solid var(--border); }
+  .investigate-result.show{ display:block; }
+
+  .result-badges{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+  .status-pill{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:9.5px; letter-spacing:0.06em; text-transform:uppercase;
+    padding:3px 9px; border-radius:999px; border:1px solid var(--border);
+    color: var(--muted);
+  }
+  .status-pill.draft{ color: var(--muted); }
+  .status-pill.approved{ color: var(--good); border-color: rgba(52,211,153,0.4); }
+  .status-pill.rejected{ color: var(--bad); border-color: rgba(248,113,113,0.4); }
+  .status-pill.edited{ color: var(--brass); border-color: rgba(196,181,253,0.4); }
+
+  .severity-badge{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:9.5px; letter-spacing:0.06em; text-transform:uppercase;
+    padding:3px 9px; border-radius:999px; border:1px solid var(--border);
+  }
+  .severity-badge.none{ color: var(--good); border-color: rgba(52,211,153,0.4); }
+  .severity-badge.minor{ color: var(--warn); border-color: rgba(251,191,36,0.4); }
+  .severity-badge.moderate{ color: var(--warn); border-color: rgba(251,191,36,0.4); }
+  .severity-badge.severe{ color: var(--bad); border-color: rgba(248,113,113,0.4); }
+  .severity-badge.unknown{ color: var(--muted-dim); }
+
+  .investigate-error-banner{
+    display:none;
+    margin-bottom:14px;
+    padding:10px 12px;
+    border-radius:8px;
+    border:1px solid rgba(248,113,113,0.4);
+    background: rgba(248,113,113,0.08);
+    color: var(--bad);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    line-height:1.6;
+  }
+  .investigate-error-banner.show{ display:block; }
+
+  .pipeline-debug{
+    margin-bottom:14px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color: var(--muted-dim);
+    display:flex;
+    flex-wrap:wrap;
+    gap: 4px 14px;
+  }
+  .pipeline-debug span b{ color: var(--muted); font-weight:500; }
+
+  .report-render{ font-size:13.5px; line-height:1.7; color: var(--text); }
+  .report-render h1{ font-family:'Space Grotesk', sans-serif; font-size:19px; font-weight:600; margin-bottom:14px; }
+  .report-render h2{ font-family:'Space Grotesk', sans-serif; font-size:14.5px; font-weight:600; margin: 20px 0 8px; color: var(--brass); }
+  .report-render p{ margin-bottom:6px; color: var(--muted); }
+  .report-render strong{ color: var(--text); }
+  .report-render ul{ margin: 6px 0 6px 20px; color: var(--muted); }
+  .report-render blockquote{
+    margin:6px 0; padding: 8px 12px;
+    border-left:2px solid rgba(139,92,246,0.4);
+    background: rgba(255,255,255,0.015);
+    color: var(--muted); font-size:12.5px;
+  }
+
+  .review-actions{ display:flex; gap:8px; margin-top:20px; flex-wrap:wrap; }
+  .review-btn{
+    padding: 9px 16px; border-radius:8px; border:1px solid var(--border);
+    background: rgba(255,255,255,0.02); color: var(--text);
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.03em;
+    cursor:pointer;
+  }
+  .review-btn.approve:hover{ border-color: rgba(52,211,153,0.5); color: var(--good); }
+  .review-btn.reject:hover{ border-color: rgba(248,113,113,0.5); color: var(--bad); }
+  .review-btn.edit:hover{ border-color: rgba(139,92,246,0.5); color: var(--cyan); }
+  .review-btn:disabled{ opacity:0.4; cursor:not-allowed; }
+
+  .edit-report-box{ display:none; margin-top:14px; }
+  .edit-report-box.show{ display:block; }
+  .edit-report-box textarea{
+    width:100%; min-height:220px;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    color: var(--text);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    line-height:1.6;
+    resize: vertical;
+  }
+  .edit-report-box .edit-actions{ display:flex; gap:8px; margin-top:10px; }
+
+  footer{
+    text-align:center;
+    padding: 0 24px 40px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color: var(--muted-dim);
+    letter-spacing:0.08em;
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wordmark">
+      <div class="aperture">
+        <svg viewBox="0 0 30 30">
+          <circle class="ring-outer" cx="15" cy="15" r="13"></circle>
+          <circle cx="15" cy="15" r="8.5" stroke-dasharray="2 4"></circle>
+          <line class="tick" x1="15" y1="3" x2="15" y2="7"></line>
+          <line class="tick" x1="15" y1="23" x2="15" y2="27"></line>
+          <line class="tick" x1="3" y1="15" x2="7" y2="15"></line>
+          <line class="tick" x1="23" y1="15" x2="27" y2="15"></line>
+          <circle class="core" cx="15" cy="15" r="2.2"></circle>
+        </svg>
+      </div>
+      <div class="wordmark-text">VISION DESK AI</div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Bring images, documents,<br>and video <em>into focus.</em></h1>
+  </div>
+
+  <div class="desk">
+
+    <div class="module" id="mod-image" tabindex="0">
+      <div class="module-top">
+        <span class="module-index">01 / IMAGE</span>
+      </div>
+      <h3>Image</h3>
+
+      <label class="dropzone" for="input-image">
+        <div class="cta"><span class="verb">Upload</span> or drag a file here</div>
+        <div class="hint">up to 20 MB</div>
+        <div class="filename" id="name-image"></div>
+      </label>
+
+      <div class="stream-wrap" id="stream-image">
+        <div class="stream-meta" id="stream-meta-image">
+          <span class="label"><span class="blip"></span><span class="label-text">STREAMING</span></span>
+          <span class="pct" id="pct-image">0%</span>
+        </div>
+        <div class="track"><div class="fill" id="fill-image"></div></div>
+        <div class="stream-stats">
+          <span id="bytes-image">0 KB / 0 KB</span>
+          <span id="speed-image">0 KB/s</span>
+        </div>
+      </div>
+
+      <div class="preview" id="preview-image">
+        <img id="preview-img-image" src="" alt="Image preview">
+      </div>
+      <button type="button" class="preview-btn" id="preview-btn-image">Preview file</button>
+
+      <!-- Detection results appear here after analysis -->
+      <div class="detect-wrap" id="detect-wrap-image">
+        <div class="detect-loading" id="detect-loading-image">
+          <span class="blip"></span> Analyzing for PPE...
+        </div>
+        <div class="detect-summary" id="detect-summary-image" style="display:none;"></div>
+        <div class="detect-list" id="detect-list-image"></div>
+        <div class="doc-answer" id="detect-insight-image" style="display:none; margin-top:14px;"></div>
+        <button type="button" class="doc-sources-toggle" id="detect-sources-toggle-image" style="display:none;">
+          <span class="arrow">&#9656;</span><span class="toggle-text">Show sources</span>
+        </button>
+        <div class="doc-results" id="detect-sources-image"></div>
+      </div>
+
+      <input type="file" id="input-image" accept="image/*">
+    </div>
+
+
+    <div class="module" id="mod-document" tabindex="0">
+      <div class="module-top">
+        <span class="module-index">02 / DOCUMENT</span>
+      </div>
+      <h3>Document</h3>
+
+      <label class="dropzone" for="input-document">
+        <div class="cta"><span class="verb">Upload</span> or drag a file here</div>
+        <div class="hint">up to 50 MB</div>
+        <div class="filename" id="name-document"></div>
+      </label>
+
+      <div class="stream-wrap" id="stream-document">
+        <div class="stream-meta" id="stream-meta-document">
+          <span class="label"><span class="blip"></span><span class="label-text">STREAMING</span></span>
+          <span class="pct" id="pct-document">0%</span>
+        </div>
+        <div class="track"><div class="fill" id="fill-document"></div></div>
+        <div class="stream-stats">
+          <span id="bytes-document">0 KB / 0 KB</span>
+          <span id="speed-document">0 KB/s</span>
+        </div>
+      </div>
+
+      <div class="preview" id="preview-document">
+        <div class="doc-card">
+          <div class="doc-icon" id="doc-icon-document">📄</div>
+          <div class="doc-meta">
+            <div class="doc-name" id="doc-name-document"></div>
+            <div class="doc-size" id="doc-size-document"></div>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="preview-btn" id="preview-btn-document">Preview file</button>
+      <input type="file" id="input-document" accept=".pdf,.doc,.docx,.txt,.xls,.xlsx,.csv">
+
+      <!-- Knowledge repository search -->
+      <div class="doc-search" id="doc-search">
+        <div class="doc-search-row">
+          <input type="text" id="doc-search-input" placeholder="Ask something about your documents...">
+          <button type="button" id="doc-search-btn">Search</button>
+        </div>
+        <div id="doc-answer-box"></div>
+        <button type="button" class="doc-sources-toggle" id="doc-sources-toggle" style="display:none;">
+          <span class="arrow">&#9656;</span><span class="toggle-text">Show sources</span>
+        </button>
+        <div class="doc-results" id="doc-results"></div>
+      </div>
+    </div>
+
+    <!-- VIDEO -->
+    <div class="module" id="mod-video" tabindex="0">
+      <div class="module-top">
+        <span class="module-index">03 / VIDEO</span>
+      </div>
+      <h3>Video</h3>
+
+      <label class="dropzone" for="input-video">
+        <div class="cta"><span class="verb">Upload</span> or drag a file here</div>
+        <div class="hint">up to 200 MB</div>
+        <div class="filename" id="name-video"></div>
+      </label>
+
+      <div class="stream-wrap" id="stream-video">
+        <div class="stream-meta" id="stream-meta-video">
+          <span class="label"><span class="blip"></span><span class="label-text">STREAMING</span></span>
+          <span class="pct" id="pct-video">0%</span>
+        </div>
+        <div class="track"><div class="fill" id="fill-video"></div></div>
+        <div class="stream-stats">
+          <span id="bytes-video">0 KB / 0 KB</span>
+          <span id="speed-video">0 KB/s</span>
+        </div>
+      </div>
+
+      <div class="preview" id="preview-video">
+        <video id="preview-vid-video" src="" controls></video>
+      </div>
+      <button type="button" class="preview-btn" id="preview-btn-video">Preview file</button>
+
+      <!-- Detection results appear here after analysis -->
+      <div class="detect-wrap" id="detect-wrap-video">
+        <div class="detect-loading" id="detect-loading-video">
+          <span class="blip"></span> Analyzing frames for PPE...
+        </div>
+        <div class="detect-summary" id="detect-summary-video" style="display:none;"></div>
+        <div class="detect-list" id="detect-list-video"></div>
+        <div class="doc-answer" id="detect-insight-video" style="display:none; margin-top:14px;"></div>
+        <button type="button" class="doc-sources-toggle" id="detect-sources-toggle-video" style="display:none;">
+          <span class="arrow">&#9656;</span><span class="toggle-text">Show sources</span>
+        </button>
+        <div class="doc-results" id="detect-sources-video"></div>
+      </div>
+
+      <input type="file" id="input-video" accept="video/*">
+    </div>
+
+  </div>
+
+  <div class="investigate">
+    <div class="investigate-panel">
+      <div class="investigate-top">
+        <div>
+          <span class="module-index">04 / INVESTIGATION</span>
+          <h3 style="margin-top:6px;">Automated Investigation</h3>
+          <p class="desc">Runs a six-agent pipeline — query analysis, visual analysis, document retrieval, evidence validation, reasoning, and report generation — then hands you a draft report to review.</p>
+        </div>
+      </div>
+
+      <div class="investigate-form">
+        <div class="investigate-field">
+          <label for="investigate-file">Image or video</label>
+          <div class="investigate-file-row">
+            <input type="file" id="investigate-file" accept="image/*,video/*">
+          </div>
+          <div class="investigate-file-name" id="investigate-file-name"></div>
+        </div>
+
+        <div class="investigate-field investigate-query-row">
+          <label for="investigate-query">Investigation request</label>
+          <input type="text" id="investigate-query" placeholder="e.g. Check PPE compliance for the workers shown" value="Check PPE compliance">
+        </div>
+
+        <div class="investigate-run-row">
+          <button type="button" class="investigate-run-btn" id="investigate-run-btn">Run investigation</button>
+        </div>
+      </div>
+
+      <div class="agent-pipeline" id="agent-pipeline">
+        <div class="agent-pipeline-label">Agent pipeline</div>
+        <div class="agent-steps" id="agent-steps">
+          <div class="agent-step" data-step="query_analysis"><span class="dot"></span>Query Analysis</div>
+          <div class="agent-step" data-step="visual_analysis"><span class="dot"></span>Visual Analysis</div>
+          <div class="agent-step" data-step="document_retrieval"><span class="dot"></span>Document Retrieval</div>
+          <div class="agent-step" data-step="evidence_validation"><span class="dot"></span>Evidence Validation</div>
+          <div class="agent-step" data-step="reasoning"><span class="dot"></span>Reasoning</div>
+          <div class="agent-step" data-step="report_generation"><span class="dot"></span>Report Generation</div>
+        </div>
+      </div>
+
+      <div class="investigate-result" id="investigate-result">
+        <div class="investigate-error-banner" id="investigate-error-banner"></div>
+        <div class="pipeline-debug" id="pipeline-debug"></div>
+        <div class="result-badges" id="result-badges"></div>
+        <div class="report-render" id="report-render"></div>
+
+        <div class="review-actions" id="review-actions">
+          <button type="button" class="review-btn approve" id="review-approve-btn">Approve</button>
+          <button type="button" class="review-btn edit" id="review-edit-btn">Edit</button>
+          <button type="button" class="review-btn reject" id="review-reject-btn">Reject</button>
+        </div>
+
+        <div class="edit-report-box" id="edit-report-box">
+          <textarea id="edit-report-textarea"></textarea>
+          <div class="edit-actions">
+            <button type="button" class="review-btn approve" id="edit-save-btn">Save edit</button>
+            <button type="button" class="review-btn" id="edit-cancel-btn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>VISION DESK AI</footer>
+
+<script>
+  ['image','document','video'].forEach(function(kind){
+    const input = document.getElementById('input-' + kind);
+    const module = document.getElementById('mod-' + kind);
+    const nameEl = document.getElementById('name-' + kind);
+    const previewEl = document.getElementById('preview-' + kind);
+
+    const streamWrap = document.getElementById('stream-' + kind);
+    const streamMeta = document.getElementById('stream-meta-' + kind);
+    const labelText = streamMeta.querySelector('.label-text');
+    const pctEl = document.getElementById('pct-' + kind);
+    const fillEl = document.getElementById('fill-' + kind);
+    const bytesEl = document.getElementById('bytes-' + kind);
+    const speedEl = document.getElementById('speed-' + kind);
+
+    const previewBtn = document.getElementById('preview-btn-' + kind);
+    let currentUrl = null;
+
+    function formatSize(bytes){
+      if(bytes < 1024) return bytes.toFixed(0) + ' B';
+      if(bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+    }
+
+    function revealPreview(file){
+      if(currentUrl){
+        URL.revokeObjectURL(currentUrl);
+      }
+      currentUrl = URL.createObjectURL(file);
+
+      if(kind === 'image'){
+        document.getElementById('preview-img-image').src = currentUrl;
+      }
+      else if(kind === 'video'){
+        document.getElementById('preview-vid-video').src = currentUrl;
+      }
+      else if(kind === 'document'){
+        document.getElementById('doc-name-document').textContent = file.name;
+        document.getElementById('doc-size-document').textContent = formatSize(file.size);
+        const ext = file.name.split('.').pop().toLowerCase();
+        const icons = { pdf:'📕', doc:'📘', docx:'📘', xls:'📗', xlsx:'📗', csv:'📗', txt:'📄' };
+        document.getElementById('doc-icon-document').textContent = icons[ext] || '📄';
+      }
+
+      previewEl.classList.add('show');
+      previewBtn.classList.add('show');
+
+      // Image module runs live PPE detection; Video module runs frame-sampled detection;
+      // Document module uploads into the searchable knowledge repository
+      if(kind === 'image'){
+        runDetection(file);
+      }
+      else if(kind === 'video'){
+        runVideoDetection(file);
+      }
+      else if(kind === 'document'){
+        uploadDocumentToRepo(file);
+      }
+    }
+
+    previewBtn.addEventListener('click', function(){
+      if(currentUrl){
+        window.open(currentUrl, '_blank');
+      }
+    });
+
+    async function streamUpload(file){
+      if(!file) return;
+
+      nameEl.textContent = file.name;
+      nameEl.classList.add('show');
+      previewEl.classList.remove('show');
+      previewBtn.classList.remove('show');
+
+      labelText.textContent = 'STREAMING';
+      pctEl.textContent = '0%';
+      fillEl.style.width = '0%';
+      streamWrap.classList.add('show');
+
+      const total = file.size;
+      let loaded = 0;
+      const startTime = performance.now();
+      let lastTick = startTime;
+      let lastLoaded = 0;
+
+      const reader = file.stream().getReader();
+      const targetChunk = Math.max(16 * 1024, Math.ceil(total / 60));
+
+      let buffered = 0;
+
+      while(true){
+        const { done, value } = await reader.read();
+        if(done) break;
+
+        loaded += value.length;
+        buffered += value.length;
+
+        if(buffered >= targetChunk || loaded === total){
+          buffered = 0;
+          const now = performance.now();
+          const pct = total ? Math.min(100, (loaded / total) * 100) : 100;
+
+          fillEl.style.width = pct.toFixed(1) + '%';
+          pctEl.textContent = Math.floor(pct) + '%';
+          bytesEl.textContent = formatSize(loaded) + ' / ' + formatSize(total);
+
+          const dt = (now - lastTick) / 1000;
+          if(dt > 0){
+            const kbps = ((loaded - lastLoaded) / 1024) / dt;
+            speedEl.textContent = kbps.toFixed(0) + ' KB/s';
+          }
+          lastTick = now;
+          lastLoaded = loaded;
+
+          await new Promise(function(r){ setTimeout(r, 16); });
+        }
+      }
+
+      fillEl.style.width = '100%';
+      pctEl.textContent = '100%';
+      bytesEl.textContent = formatSize(total) + ' / ' + formatSize(total);
+      streamWrap.classList.remove('show');
+
+      revealPreview(file);
+    }
+
+    input.addEventListener('change', function(e){
+      streamUpload(e.target.files[0]);
+    });
+
+    ['dragenter','dragover'].forEach(evt =>
+      module.addEventListener(evt, function(e){
+        e.preventDefault();
+        module.classList.add('drag');
+      })
+    );
+    ['dragleave','drop'].forEach(evt =>
+      module.addEventListener(evt, function(e){
+        e.preventDefault();
+        module.classList.remove('drag');
+      })
+    );
+    module.addEventListener('drop', function(e){
+      const file = e.dataTransfer.files[0];
+      if(file){
+        input.files = e.dataTransfer.files;
+        streamUpload(file);
+      }
+    });
+
+    module.addEventListener('keydown', function(e){
+      // Only act when the card itself (not a child like the search input,
+      // preview button, etc.) is the focused element. Without this check,
+      // keydown events bubbling up from any child input/textarea/button
+      // inside the card would hit this handler too — which is why pressing
+      // Space while typing in the document search box was opening the file
+      // picker instead of typing a space.
+      if(e.target !== module) return;
+
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        input.click();
+      }
+    });
+  });
+
+  // ---------- shared helpers for rendering evidence + confidence ----------
+
+  function escapeHtml(str){
+    const div = document.createElement('div');
+    div.textContent = str == null ? '' : String(str);
+    return div.innerHTML;
+  }
+
+  function confidenceBadgeHtml(confidence){
+    if(!confidence) return '';
+    const level = String(confidence).toLowerCase();
+    return '<span class="confidence-badge ' + level + '">' + escapeHtml(confidence) + '</span>';
+  }
+
+  // Renders an answer block (with an optional confidence badge) plus a
+  // collapsible "Show sources" list built from the evidence array returned
+  // by the API: [{source, section, excerpt, relevance}, ...]
+  function renderAnswerWithEvidence(opts){
+    const answerBox = opts.answerBox;       // element to hold the answer text
+    const toggleBtn = opts.toggleBtn;        // "Show sources" button
+    const resultsBox = opts.resultsBox;      // container for evidence items
+    const data = opts.data;                  // API response
+
+    if(data.answer){
+      answerBox.style.display = 'block';
+      answerBox.innerHTML =
+        '<div class="doc-answer-label"><span>Answer</span>' + confidenceBadgeHtml(data.confidence) + '</div>' +
+        '<div class="doc-answer-text">' + escapeHtml(data.answer) + '</div>';
+    } else {
+      answerBox.style.display = 'none';
+      answerBox.innerHTML = '';
+    }
+
+    const evidence = data.evidence || [];
+    resultsBox.innerHTML = evidence.map(function(item){
+      return '<div class="doc-result-item">' +
+        '<div class="doc-result-meta">' +
+          '<span class="doc-result-file">' + escapeHtml(item.source) + '</span>' +
+          '<span class="doc-result-score">' + escapeHtml(item.relevance) + '</span>' +
+        '</div>' +
+        (item.section && item.section !== 'N/A'
+          ? '<div class="doc-result-section">' + escapeHtml(item.section) + '</div>'
+          : '') +
+        '<div class="doc-result-text">' + escapeHtml(item.excerpt) + '</div>' +
+      '</div>';
+    }).join('');
+
+    if(evidence.length > 0){
+      toggleBtn.style.display = 'flex';
+      toggleBtn.classList.remove('open');
+      const toggleText = toggleBtn.querySelector('.toggle-text');
+      toggleText.textContent = 'Show sources (' + evidence.length + ')';
+      // reset to collapsed each time new results come in
+      resultsBox.querySelectorAll('.doc-result-item').forEach(el => el.classList.remove('show'));
+    } else {
+      toggleBtn.style.display = 'none';
+    }
+  }
+
+  function wireSourcesToggle(toggleBtn, resultsBox){
+    toggleBtn.addEventListener('click', function(){
+      const opening = !toggleBtn.classList.contains('open');
+      toggleBtn.classList.toggle('open', opening);
+      resultsBox.querySelectorAll('.doc-result-item').forEach(function(el){
+        el.classList.toggle('show', opening);
+      });
+    });
+  }
+
+  // ---------- PPE detection (Image module only) ----------
+  const detectToggleImage = document.getElementById('detect-sources-toggle-image');
+  const detectSourcesImage = document.getElementById('detect-sources-image');
+  wireSourcesToggle(detectToggleImage, detectSourcesImage);
+
+  async function runDetection(file){
+    const wrap = document.getElementById('detect-wrap-image');
+    const loading = document.getElementById('detect-loading-image');
+    const summary = document.getElementById('detect-summary-image');
+    const list = document.getElementById('detect-list-image');
+    const insight = document.getElementById('detect-insight-image');
+
+    wrap.classList.add('show');
+    loading.style.display = 'flex';
+    summary.style.display = 'none';
+    list.innerHTML = '';
+    insight.style.display = 'none';
+    insight.innerHTML = '';
+    detectToggleImage.style.display = 'none';
+    detectSourcesImage.innerHTML = '';
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try{
+      const res = await fetch('/api/analyze', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await res.json();
+
+      loading.style.display = 'none';
+
+      if(!res.ok){
+        list.innerHTML = '<div class="detect-error">' + (data.detail || 'Detection failed.') + '</div>';
+        return;
+      }
+
+      summary.style.display = 'block';
+      summary.innerHTML = '<span class="count">' + data.count + '</span> item' + (data.count === 1 ? '' : 's') + ' detected';
+
+      if(data.count === 0){
+        list.innerHTML = '<div class="detect-empty">No PPE items detected in this image.</div>';
+      } else {
+        list.innerHTML = data.detections.map(function(d){
+          const isWarning = d.class.startsWith('NO-') || d.class === 'Fall-Detected';
+          return '<div class="detect-item">' +
+            '<span class="cls' + (isWarning ? ' warn' : '') + '">' + d.class + '</span>' +
+            '<span class="conf">' + Math.round(d.confidence * 100) + '%</span>' +
+          '</div>';
+        }).join('');
+      }
+
+      renderAnswerWithEvidence({
+        answerBox: insight,
+        toggleBtn: detectToggleImage,
+        resultsBox: detectSourcesImage,
+        data: data
+      });
+
+    } catch(err){
+      loading.style.display = 'none';
+      list.innerHTML = '<div class="detect-error">Could not reach the detection server.</div>';
+    }
+  }
+
+  // ---------- PPE detection (Video module) ----------
+  const detectToggleVideo = document.getElementById('detect-sources-toggle-video');
+  const detectSourcesVideo = document.getElementById('detect-sources-video');
+  wireSourcesToggle(detectToggleVideo, detectSourcesVideo);
+
+  async function runVideoDetection(file){
+    const wrap = document.getElementById('detect-wrap-video');
+    const loading = document.getElementById('detect-loading-video');
+    const summary = document.getElementById('detect-summary-video');
+    const list = document.getElementById('detect-list-video');
+    const insight = document.getElementById('detect-insight-video');
+
+    wrap.classList.add('show');
+    loading.style.display = 'flex';
+    summary.style.display = 'none';
+    list.innerHTML = '';
+    insight.style.display = 'none';
+    insight.innerHTML = '';
+    detectToggleVideo.style.display = 'none';
+    detectSourcesVideo.innerHTML = '';
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try{
+      const res = await fetch('/api/analyze', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await res.json();
+
+      loading.style.display = 'none';
+
+      if(!res.ok){
+        list.innerHTML = '<div class="detect-error">' + (data.detail || 'Analysis failed.') + '</div>';
+        return;
+      }
+
+      // Summary line
+      summary.style.display = 'block';
+      const violationText = data.video_analysis && data.video_analysis.violation_frame_count > 0
+        ? ' — <span style="color:var(--warn)">' + data.video_analysis.violation_frame_count + ' with violations</span>'
+        : '';
+      summary.innerHTML = data.video_analysis.frames_analyzed + ' frames analyzed' + violationText;
+
+      // Class count breakdown
+      const counts = data.video_analysis.class_counts || {};
+      const entries = Object.entries(counts);
+      if(entries.length === 0){
+        list.innerHTML = '<div class="detect-empty">No PPE items detected across sampled frames.</div>';
+      } else {
+        list.innerHTML = entries.map(function([cls, count]){
+          const isWarning = cls.startsWith('NO-') || cls === 'Fall-Detected';
+          return '<div class="detect-item">' +
+            '<span class="cls' + (isWarning ? ' warn' : '') + '">' + cls + '</span>' +
+            '<span class="conf">' + count + 'x</span>' +
+          '</div>';
+        }).join('');
+      }
+
+      renderAnswerWithEvidence({
+        answerBox: insight,
+        toggleBtn: detectToggleVideo,
+        resultsBox: detectSourcesVideo,
+        data: data
+      });
+
+    } catch(err){
+      loading.style.display = 'none';
+      list.innerHTML = '<div class="detect-error">Could not reach the detection server.</div>';
+    }
+  }
+
+  // ---------- Document knowledge repository (Document module) ----------
+  async function uploadDocumentToRepo(file){
+    const searchPanel = document.getElementById('doc-search');
+    const resultsBox = document.getElementById('doc-results');
+    const answerBox = document.getElementById('doc-answer-box');
+    const toggleBtn = document.getElementById('doc-sources-toggle');
+
+    resultsBox.innerHTML = '';
+    answerBox.innerHTML = '<div class="detect-loading" style="display:flex;"><span class="blip"></span> Adding to knowledge repository...</div>';
+    toggleBtn.style.display = 'none';
+    searchPanel.classList.add('show');
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try{
+      const res = await fetch('/api/document/upload', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await res.json();
+
+      if(!res.ok){
+        answerBox.innerHTML = '<div class="detect-error">' + (data.detail || 'Upload failed.') + '</div>';
+        return;
+      }
+
+      answerBox.innerHTML = '<div class="detect-empty">Added — ' + data.chunks_created + ' chunk(s) indexed. Search above to query it.</div>';
+    } catch(err){
+      answerBox.innerHTML = '<div class="detect-error">Could not reach the server.</div>';
+    }
+  }
+
+  const docToggle = document.getElementById('doc-sources-toggle');
+  const docResults = document.getElementById('doc-results');
+  wireSourcesToggle(docToggle, docResults);
+
+  async function searchDocumentRepo(){
+    const input = document.getElementById('doc-search-input');
+    const btn = document.getElementById('doc-search-btn');
+    const answerBox = document.getElementById('doc-answer-box');
+
+    const query = input.value.trim();
+    if(!query) return;
+
+    btn.disabled = true;
+    answerBox.innerHTML = '<div class="detect-loading" style="display:flex;"><span class="blip"></span> Searching...</div>';
+    docToggle.style.display = 'none';
+    docResults.innerHTML = '';
+
+    try{
+      const res = await fetch('/api/document/search', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: query, top_k: 5 })
+      });
+      const data = await res.json();
+
+      if(!res.ok){
+        answerBox.innerHTML = '<div class="detect-error">' + (data.detail || 'Search failed.') + '</div>';
+        return;
+      }
+
+      if(!data.answer){
+        answerBox.innerHTML = '<div class="detect-empty">No matches found.</div>';
+        return;
+      }
+
+      renderAnswerWithEvidence({
+        answerBox: answerBox,
+        toggleBtn: docToggle,
+        resultsBox: docResults,
+        data: data
+      });
+
+    } catch(err){
+      answerBox.innerHTML = '<div class="detect-error">Could not reach the server.</div>';
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  document.getElementById('doc-search-btn').addEventListener('click', searchDocumentRepo);
+  document.getElementById('doc-search-input').addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){
+      e.preventDefault();
+      searchDocumentRepo();
+    }
+  });
+
+  // ---------- Investigation panel (Module 5) ----------
+
+  let investigateFile = null;
+  let currentInvestigationId = null;
+
+  const investigateFileInput = document.getElementById('investigate-file');
+  const investigateFileName = document.getElementById('investigate-file-name');
+  const investigateQueryInput = document.getElementById('investigate-query');
+  const investigateRunBtn = document.getElementById('investigate-run-btn');
+  const agentPipeline = document.getElementById('agent-pipeline');
+  const agentSteps = document.getElementById('agent-steps').querySelectorAll('.agent-step');
+  const investigateResult = document.getElementById('investigate-result');
+  const resultBadges = document.getElementById('result-badges');
+  const reportRender = document.getElementById('report-render');
+  const reviewActions = document.getElementById('review-actions');
+  const editReportBox = document.getElementById('edit-report-box');
+  const editReportTextarea = document.getElementById('edit-report-textarea');
+
+  investigateFileInput.addEventListener('change', function(e){
+    investigateFile = e.target.files[0] || null;
+    investigateFileName.textContent = investigateFile ? investigateFile.name : '';
+  });
+
+  // Very small markdown-ish renderer for the report field (## headers,
+  // **bold**, and "- " bullet lines) - the backend returns plain markdown
+  // text, not HTML, so this turns it into something readable without
+  // pulling in a markdown library for a handful of syntax cases.
+  function renderReportMarkdown(md){
+    const lines = (md || '').split('\n');
+    let html = '';
+    let inList = false;
+
+    function closeList(){
+      if(inList){ html += '</ul>'; inList = false; }
+    }
+
+    function inlineFormat(text){
+      return escapeHtml(text).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    }
+
+    lines.forEach(function(line){
+      const trimmed = line.trim();
+      if(trimmed.startsWith('# ')){
+        closeList();
+        html += '<h1>' + inlineFormat(trimmed.slice(2)) + '</h1>';
+      } else if(trimmed.startsWith('## ')){
+        closeList();
+        html += '<h2>' + inlineFormat(trimmed.slice(3)) + '</h2>';
+      } else if(trimmed.startsWith('- ')){
+        if(!inList){ html += '<ul>'; inList = true; }
+        html += '<li>' + inlineFormat(trimmed.slice(2)) + '</li>';
+      } else if(trimmed.startsWith('> ')){
+        closeList();
+        html += '<blockquote>' + inlineFormat(trimmed.slice(2)) + '</blockquote>';
+      } else if(trimmed === ''){
+        closeList();
+      } else {
+        closeList();
+        html += '<p>' + inlineFormat(trimmed) + '</p>';
+      }
+    });
+    closeList();
+    return html;
+  }
+
+  function setAgentStep(stepName, state){
+    agentSteps.forEach(function(el){
+      if(el.dataset.step === stepName){
+        el.classList.remove('active', 'done');
+        if(state) el.classList.add(state);
+      }
+    });
+  }
+
+  function resetAgentPipeline(){
+    agentSteps.forEach(function(el){ el.classList.remove('active', 'done'); });
+  }
+
+  // The backend runs the whole graph in one request/response - there's no
+  // step-by-step stream from the server. This simulates progress through
+  // the known step order while the request is in flight, purely so the
+  // person isn't staring at a blank screen for 10-20 seconds; the final
+  // state always reflects the real response once it arrives.
+  function animatePipelineWhileWaiting(){
+    const order = ['query_analysis', 'visual_analysis', 'document_retrieval', 'evidence_validation', 'reasoning', 'report_generation'];
+    let i = 0;
+    setAgentStep(order[0], 'active');
+    const interval = setInterval(function(){
+      setAgentStep(order[i], 'done');
+      i++;
+      if(i < order.length){
+        setAgentStep(order[i], 'active');
+      } else {
+        clearInterval(interval);
+      }
+    }, 1800);
+    return interval;
+  }
+
+  function renderBadges(data){
+    const items = [
+      { cls: 'status-pill ' + data.status, text: data.status },
+      { cls: 'confidence-badge ' + (data.confidence || 'low'), text: data.confidence },
+      { cls: 'severity-badge ' + (data.severity || 'unknown'), text: data.severity },
+    ];
+    resultBadges.innerHTML = items
+      .filter(item => item.text)
+      .map(item => '<span class="' + item.cls + '">' + escapeHtml(item.text) + '</span>')
+      .join('');
+  }
+
+  function renderInvestigation(data){
+    currentInvestigationId = data.id;
+    renderBadges(data);
+    reportRender.innerHTML = renderReportMarkdown(data.report);
+    investigateResult.classList.add('show');
+
+    const errorBanner = document.getElementById('investigate-error-banner');
+    const errors = data.errors || [];
+    if(errors.length > 0){
+      errorBanner.innerHTML = '⚠ ' + errors.map(escapeHtml).join('<br>⚠ ');
+      errorBanner.classList.add('show');
+    } else {
+      errorBanner.classList.remove('show');
+      errorBanner.innerHTML = '';
+    }
+
+    const debugEl = document.getElementById('pipeline-debug');
+    const debugParts = [];
+    if(data.search_query){
+      debugParts.push('<span><b>Search query:</b> ' + escapeHtml(data.search_query) + '</span>');
+    }
+    if(typeof data.retrieved_chunk_count === 'number'){
+      debugParts.push('<span><b>Chunks retrieved:</b> ' + data.retrieved_chunk_count + '</span>');
+    }
+    debugEl.innerHTML = debugParts.join('');
+
+    const isDecided = data.status === 'approved' || data.status === 'rejected';
+    reviewActions.style.display = isDecided ? 'none' : 'flex';
+    editReportBox.classList.remove('show');
+  }
+
+  async function runInvestigation(){
+    if(!investigateFile){
+      investigateFileName.textContent = 'Choose a file first.';
+      return;
+    }
+
+    investigateRunBtn.disabled = true;
+    investigateResult.classList.remove('show');
+    agentPipeline.classList.add('show');
+    resetAgentPipeline();
+    const progressInterval = animatePipelineWhileWaiting();
+
+    const formData = new FormData();
+    formData.append('file', investigateFile);
+    formData.append('query', investigateQueryInput.value.trim() || 'Check PPE compliance');
+
+    try{
+      const res = await fetch('/api/investigate', { method: 'POST', body: formData });
+      const data = await res.json();
+
+      clearInterval(progressInterval);
+      agentSteps.forEach(function(el){ el.classList.remove('active'); el.classList.add('done'); });
+
+      if(!res.ok){
+        reportRender.innerHTML = '<p style="color:var(--bad)">' + escapeHtml(data.detail || 'Investigation failed.') + '</p>';
+        investigateResult.classList.add('show');
+        reviewActions.style.display = 'none';
+        return;
+      }
+
+      renderInvestigation(data);
+    } catch(err){
+      clearInterval(progressInterval);
+      reportRender.innerHTML = '<p style="color:var(--bad)">Could not reach the server.</p>';
+      investigateResult.classList.add('show');
+      reviewActions.style.display = 'none';
+    } finally {
+      investigateRunBtn.disabled = false;
+    }
+  }
+
+  investigateRunBtn.addEventListener('click', runInvestigation);
+
+  async function submitReview(action, editedReport){
+    if(!currentInvestigationId) return;
+
+    const body = { action: action };
+    if(editedReport !== undefined) body.edited_report = editedReport;
+
+    try{
+      const res = await fetch('/api/investigation/' + currentInvestigationId + '/review', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      const data = await res.json();
+      if(res.ok){
+        renderInvestigation(data);
+      }
+    } catch(err){
+      // network error on review - leave the draft state as-is, person can retry
+    }
+  }
+
+  document.getElementById('review-approve-btn').addEventListener('click', function(){
+    submitReview('approve');
+  });
+  document.getElementById('review-reject-btn').addEventListener('click', function(){
+    submitReview('reject');
+  });
+  document.getElementById('review-edit-btn').addEventListener('click', function(){
+    editReportTextarea.value = reportRender.innerText;
+    editReportBox.classList.add('show');
+  });
+  document.getElementById('edit-cancel-btn').addEventListener('click', function(){
+    editReportBox.classList.remove('show');
+  });
+  document.getElementById('edit-save-btn').addEventListener('click', function(){
+    submitReview('edit', editReportTextarea.value);
+  });
+
+</script>
+
+</body>
+</html>
