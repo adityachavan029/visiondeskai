@@ -116,17 +116,17 @@ export default function InvestigationEngine({ theme }) {
     return lines.map((line, idx) => {
       const trimmed = line.trim();
       if (trimmed.startsWith('# ')) {
-        return <h1 key={idx} className="text-xl font-bold font-heading text-zinc-900 dark:text-zinc-100 mt-4 mb-2">{trimmed.slice(2)}</h1>;
+        return <h1 key={idx} className="text-lg sm:text-xl font-bold font-heading text-zinc-900 dark:text-zinc-100 mt-4 mb-2">{trimmed.slice(2)}</h1>;
       }
       if (trimmed.startsWith('## ')) {
-        return <h2 key={idx} className="text-sm font-bold font-mono text-zinc-800 dark:text-zinc-200 mt-5 mb-2 border-b border-zinc-200 dark:border-zinc-800 pb-1">{trimmed.slice(3)}</h2>;
+        return <h2 key={idx} className="text-xs sm:text-sm font-bold font-mono text-zinc-900 dark:text-zinc-200 mt-5 mb-2 border-b border-zinc-300 dark:border-zinc-800 pb-1">{trimmed.slice(3)}</h2>;
       }
       if (trimmed.startsWith('- ')) {
-        return <li key={idx} className="ml-4 list-disc text-xs text-zinc-700 dark:text-zinc-300 my-1">{trimmed.slice(2)}</li>;
+        return <li key={idx} className="ml-4 list-disc text-xs text-zinc-800 dark:text-zinc-200 my-1">{trimmed.slice(2)}</li>;
       }
       if (trimmed.startsWith('> ')) {
         return (
-          <blockquote key={idx} className="my-2 p-3 border-l-2 border-zinc-400 dark:border-zinc-600 bg-zinc-100 dark:bg-zinc-900 text-xs italic text-zinc-700 dark:text-zinc-300 rounded-r-xl">
+          <blockquote key={idx} className="my-2 p-3 border-l-2 border-zinc-400 dark:border-zinc-600 bg-zinc-100 dark:bg-zinc-900 text-xs italic text-zinc-800 dark:text-zinc-200 rounded-r-xl">
             {trimmed.slice(2)}
           </blockquote>
         );
@@ -134,20 +134,20 @@ export default function InvestigationEngine({ theme }) {
       if (trimmed === '') {
         return <div key={idx} className="h-2" />;
       }
-      return <p key={idx} className="text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed my-1 font-sans">{trimmed}</p>;
+      return <p key={idx} className="text-xs text-zinc-800 dark:text-zinc-200 leading-relaxed my-1 font-sans">{trimmed}</p>;
     });
   };
 
   return (
     <div className="space-y-6">
       {/* Header Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 sm:p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-[#0c0d12]/90">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-[#0c0d12]/90">
         <div>
           <Badge variant="outline" className="mb-2">MODULE 04 / AGENTIC WORKFLOW</Badge>
-          <h1 className="text-2xl sm:text-3xl font-bold font-heading text-zinc-900 dark:text-zinc-100">
+          <h1 className="text-xl sm:text-3xl font-bold font-heading text-zinc-900 dark:text-zinc-100">
             Autonomous AI Safety Investigation Engine
           </h1>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 font-sans">
+          <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 font-sans">
             Autonomous multi-agent LangGraph workflow for visual analysis, regulation retrieval, evidence validation, and executive drafting.
           </p>
         </div>
@@ -161,8 +161,8 @@ export default function InvestigationEngine({ theme }) {
       {/* Case Input Controls */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-sm font-mono flex items-center space-x-2">
-            <Sparkles className="w-4 h-4 text-zinc-400" />
+          <CardTitle className="text-xs sm:text-sm font-mono flex items-center space-x-2 text-zinc-900 dark:text-zinc-100">
+            <Sparkles className="w-4 h-4 text-zinc-500" />
             <span>Configure Investigation Parameters</span>
           </CardTitle>
         </CardHeader>
@@ -170,25 +170,25 @@ export default function InvestigationEngine({ theme }) {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
             
             <div className="md:col-span-5 space-y-1">
-              <label className="text-xs font-mono text-zinc-500">TARGET MEDIA FILE</label>
-              <div className="relative flex items-center border border-zinc-200 dark:border-zinc-800 rounded-2xl px-3 py-2 text-xs font-mono bg-zinc-50 dark:bg-zinc-900">
+              <label className="text-xs font-mono text-zinc-700 dark:text-zinc-300 font-semibold">TARGET MEDIA FILE</label>
+              <div className="relative flex items-center border border-zinc-300 dark:border-zinc-800 rounded-2xl px-3 py-2 text-xs font-mono bg-white dark:bg-zinc-900">
                 <input
                   type="file"
                   accept="image/*,video/*"
                   onChange={handleFileChange}
-                  className="w-full text-zinc-700 dark:text-zinc-300 file:mr-3 file:py-1 file:px-2.5 file:rounded-xl file:border-0 file:text-xs file:font-mono file:font-semibold file:bg-zinc-900 file:text-white dark:file:bg-zinc-100 dark:file:text-zinc-950 hover:file:opacity-90 cursor-pointer"
+                  className="w-full text-zinc-800 dark:text-zinc-200 file:mr-3 file:py-1 file:px-2.5 file:rounded-xl file:border-0 file:text-xs file:font-mono file:font-semibold file:bg-zinc-900 file:text-white dark:file:bg-zinc-100 dark:file:text-zinc-950 hover:file:opacity-90 cursor-pointer"
                 />
               </div>
             </div>
 
             <div className="md:col-span-5 space-y-1">
-              <label className="text-xs font-mono text-zinc-500">INVESTIGATION REQUEST</label>
+              <label className="text-xs font-mono text-zinc-700 dark:text-zinc-300 font-semibold">INVESTIGATION REQUEST</label>
               <input
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="e.g. Check PPE compliance for workers shown"
-                className="w-full px-4 py-2.5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-xs text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 transition-all font-sans"
+                className="w-full px-4 py-2.5 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-xs text-zinc-900 dark:text-zinc-100 placeholder-zinc-500 dark:placeholder-zinc-400 focus:outline-none focus:border-zinc-500 dark:focus:border-zinc-600 transition-all font-sans"
               />
             </div>
 
@@ -197,7 +197,7 @@ export default function InvestigationEngine({ theme }) {
                 data-cursor="RUN"
                 onClick={runInvestigation}
                 disabled={running || !file}
-                className="w-full font-mono text-xs"
+                className="w-full font-mono text-xs py-2.5"
               >
                 {running ? (
                   <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
@@ -217,8 +217,8 @@ export default function InvestigationEngine({ theme }) {
       {/* Step Tracker Grid */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-xs font-mono text-zinc-500 uppercase flex items-center space-x-2">
-            <Terminal className="w-4 h-4 text-zinc-400" />
+          <CardTitle className="text-xs font-mono text-zinc-600 dark:text-zinc-400 uppercase flex items-center space-x-2 font-semibold">
+            <Terminal className="w-4 h-4 text-zinc-500" />
             <span>Agent Pipeline Progression Engine</span>
           </CardTitle>
         </CardHeader>
@@ -233,16 +233,16 @@ export default function InvestigationEngine({ theme }) {
                   key={step.id}
                   className={`p-3.5 rounded-2xl border transition-all duration-300 flex flex-col justify-between space-y-2 font-mono text-xs ${
                     isCompleted
-                      ? 'bg-emerald-950/40 border-emerald-800/60 text-emerald-300 font-semibold'
+                      ? 'bg-emerald-100 border-emerald-300 text-emerald-900 dark:bg-emerald-950/60 dark:border-emerald-800/80 dark:text-emerald-300 font-semibold'
                       : isActive
                       ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 font-bold border-zinc-700'
-                      : 'bg-zinc-50 dark:bg-zinc-900/40 border-zinc-200 dark:border-zinc-800 text-zinc-400'
+                      : 'bg-zinc-50 dark:bg-zinc-900/40 border-zinc-200 dark:border-zinc-800 text-zinc-500'
                   }`}
                 >
                   <div className="flex items-center justify-between text-[10px]">
                     <span>STEP 0{idx + 1}</span>
                     {isCompleted ? (
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                     ) : isActive ? (
                       <div className="w-3 h-3 rounded-full border-2 border-current border-t-transparent animate-spin" />
                     ) : (
@@ -259,7 +259,7 @@ export default function InvestigationEngine({ theme }) {
 
       {/* Error Alert */}
       {error && (
-        <div className="p-4 rounded-2xl bg-rose-950/40 border border-rose-800/60 text-rose-300 text-xs flex items-center space-x-2">
+        <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-900 dark:bg-rose-950/60 dark:border-rose-800/80 dark:text-rose-300 text-xs flex items-center space-x-2">
           <AlertCircle className="w-4 h-4 flex-shrink-0" />
           <span>{error}</span>
         </div>
@@ -288,7 +288,7 @@ export default function InvestigationEngine({ theme }) {
                 )}
               </div>
 
-              <div className="text-[10px] font-mono text-zinc-500 flex items-center space-x-3">
+              <div className="text-[10px] font-mono text-zinc-600 dark:text-zinc-400 flex items-center space-x-3">
                 <span>Chunks Retrieved: {investigation.retrieved_chunk_count || 0}</span>
                 <span>Case ID: #{investigation.id}</span>
               </div>
@@ -298,12 +298,12 @@ export default function InvestigationEngine({ theme }) {
           <CardContent className="space-y-6">
             
             {!isEditing ? (
-              <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 font-sans">
+              <div className="p-4 sm:p-6 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-950 font-sans text-zinc-900 dark:text-zinc-100">
                 {renderMarkdown(investigation.report)}
               </div>
             ) : (
               <div className="space-y-3 font-mono">
-                <label className="text-xs font-bold text-zinc-700 dark:text-zinc-300">LIVE MARKDOWN REPORT EDITOR</label>
+                <label className="text-xs font-bold text-zinc-900 dark:text-zinc-100">LIVE MARKDOWN REPORT EDITOR</label>
                 <textarea
                   rows={12}
                   value={editedReportText}
@@ -335,7 +335,7 @@ export default function InvestigationEngine({ theme }) {
             {/* Action Bar */}
             {investigation.status !== 'approved' && investigation.status !== 'rejected' && !isEditing && (
               <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800 font-mono">
-                <span className="text-xs text-zinc-500 mr-2">HUMAN REVIEW:</span>
+                <span className="text-xs text-zinc-600 dark:text-zinc-400 font-semibold mr-2">HUMAN REVIEW:</span>
                 
                 <Button
                   data-cursor="APPROVE"

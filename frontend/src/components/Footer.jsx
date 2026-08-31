@@ -31,7 +31,7 @@ export default function Footer({ theme }) {
 
         {/* Right */}
         <div>
-          <span>Mobbin Inspired Minimalist UI</span>
+          <span>Made with ❤️ by Team <a href="https://github.com/adityachavan029/visiondeskai">D</a></span>
         </div>
 
       </div>

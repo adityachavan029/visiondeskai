@@ -4,7 +4,7 @@ import confetti from 'canvas-confetti';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/card';
-import { ArrowRight, Eye, BookOpen, Bot, ShieldCheck, Play, CheckCircle2, Terminal, Sparkles, Layers, Cpu, Check, Activity, ChevronRight } from 'lucide-react';
+import { ArrowRight, Play, Check, Sparkles, ChevronRight } from 'lucide-react';
 
 export default function LandingPage({ onLaunchWorkstation, theme }) {
   const isDark = theme === 'dark';
@@ -77,25 +77,25 @@ export default function LandingPage({ onLaunchWorkstation, theme }) {
     : showcaseCards.filter((c) => c.category === activeCategory);
 
   return (
-    <div className="space-y-24 py-6">
+    <div className="space-y-16 sm:space-y-24 py-4 sm:py-8">
       
-      {/* 1. Hero Section (Mobbin Minimalist Style) */}
-      <section className="relative pt-8 pb-12 flex flex-col items-center text-center space-y-8">
+      {/* 1. Hero Section */}
+      <section className="relative pt-4 sm:pt-8 pb-8 sm:pb-12 flex flex-col items-center text-center space-y-6 sm:space-y-8">
         
-        {/* Subtle Ambient Radial Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-zinc-500/5 dark:bg-zinc-400/5 blur-[120px] rounded-full pointer-events-none" />
+        {/* Subtle Radial Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[200px] sm:h-[350px] bg-zinc-500/5 dark:bg-zinc-400/5 blur-[100px] sm:blur-[120px] rounded-full pointer-events-none" />
 
         {/* Top Status Capsule */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-zinc-300 dark:border-zinc-800 bg-zinc-100/80 dark:bg-zinc-900/80 backdrop-blur-md text-xs font-mono"
+          className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 rounded-full border border-zinc-300 dark:border-zinc-800 bg-zinc-100/90 dark:bg-zinc-900/90 backdrop-blur-md text-[11px] sm:text-xs font-mono"
         >
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-zinc-700 dark:text-zinc-300 font-medium">VISIONDESK AI 2.0 ENTERPRISE RELEASE</span>
-          <span className="text-zinc-400 dark:text-zinc-600">|</span>
-          <span className="text-zinc-500 dark:text-zinc-400 font-semibold">100% AUDIT READY</span>
+          <span className="text-zinc-800 dark:text-zinc-200 font-semibold">VISIONDESK AI 2.0 ENTERPRISE RELEASE</span>
+          <span className="text-zinc-400 dark:text-zinc-600 hidden sm:inline">|</span>
+          <span className="text-zinc-600 dark:text-zinc-400 font-semibold hidden sm:inline">100% AUDIT READY</span>
         </motion.div>
 
         {/* Hero Title */}
@@ -103,14 +103,14 @@ export default function LandingPage({ onLaunchWorkstation, theme }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="max-w-4xl space-y-4"
+          className="max-w-4xl space-y-3 sm:space-y-4 px-2"
         >
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-heading tracking-tight leading-[1.08] text-zinc-900 dark:text-zinc-50">
+          <h1 className="text-3xl sm:text-6xl lg:text-7xl font-extrabold font-heading tracking-tight leading-[1.1] text-zinc-900 dark:text-zinc-50">
             Industrial Safety Intelligence. <br />
-            <span className="text-zinc-500 dark:text-zinc-400 font-light">Precision at scale.</span>
+            <span className="text-zinc-600 dark:text-zinc-400 font-light">Precision at scale.</span>
           </h1>
-          <p className="max-w-2xl mx-auto text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-sans leading-relaxed">
-            Unifying real-time YOLO vision inspection, vector regulation retrieval, and 6-agent autonomous compliance workflows into a single monochrome workstation.
+          <p className="max-w-2xl mx-auto text-xs sm:text-base text-zinc-700 dark:text-zinc-300 font-sans leading-relaxed">
+            Unifying real-time YOLO vision inspection, vector regulation retrieval, and 6-agent autonomous compliance workflows into a single workstation.
           </p>
         </motion.div>
 
@@ -119,7 +119,7 @@ export default function LandingPage({ onLaunchWorkstation, theme }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap items-center justify-center gap-4 pt-2"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-md sm:max-w-none pt-2"
         >
           <Button
             data-cursor="LAUNCH"
@@ -129,7 +129,7 @@ export default function LandingPage({ onLaunchWorkstation, theme }) {
               confetti({ particleCount: 50, spread: 50, origin: { y: 0.8 } });
               onLaunchWorkstation();
             }}
-            className="flex items-center space-x-2 text-xs font-mono"
+            className="w-full sm:w-auto flex items-center justify-center space-x-2 text-xs font-mono"
           >
             <span>Launch Studio Workstation</span>
             <ArrowRight className="w-4 h-4" />
@@ -140,57 +140,57 @@ export default function LandingPage({ onLaunchWorkstation, theme }) {
             size="lg"
             variant="secondary"
             onClick={handleSimulate}
-            className="flex items-center space-x-2 text-xs font-mono"
+            className="w-full sm:w-auto flex items-center justify-center space-x-2 text-xs font-mono"
           >
             <Play className="w-3.5 h-3.5 fill-current" />
             <span>Simulate Case Workflow</span>
           </Button>
         </motion.div>
 
-        {/* Telemetry Stats Bar */}
+        {/* Telemetry Stats Grid */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="w-full max-w-5xl pt-10 grid grid-cols-2 md:grid-cols-4 gap-4 text-left"
+          className="w-full max-w-5xl pt-6 sm:pt-10 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-left"
         >
-          <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/40">
-            <p className="text-xs font-mono text-zinc-500 uppercase">YOLO INFERENCE</p>
-            <p className="text-2xl font-bold font-mono text-zinc-900 dark:text-zinc-100 mt-1">0.18s</p>
-            <p className="text-[11px] text-zinc-500 mt-0.5">Sub-second bounding box scan</p>
+          <div className="p-4 sm:p-5 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/40">
+            <p className="text-[10px] sm:text-xs font-mono text-zinc-600 dark:text-zinc-400 uppercase font-semibold">YOLO INFERENCE</p>
+            <p className="text-xl sm:text-2xl font-bold font-mono text-zinc-900 dark:text-zinc-100 mt-1">0.18s</p>
+            <p className="text-[10px] sm:text-[11px] text-zinc-600 dark:text-zinc-400 mt-0.5">Sub-second bounding scan</p>
           </div>
 
-          <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/40">
-            <p className="text-xs font-mono text-zinc-500 uppercase">CHROMADB VECTOR</p>
-            <p className="text-2xl font-bold font-mono text-zinc-900 dark:text-zinc-100 mt-1">Top-5 RAG</p>
-            <p className="text-[11px] text-zinc-500 mt-0.5">Semantic document matching</p>
+          <div className="p-4 sm:p-5 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/40">
+            <p className="text-[10px] sm:text-xs font-mono text-zinc-600 dark:text-zinc-400 uppercase font-semibold">CHROMADB VECTOR</p>
+            <p className="text-xl sm:text-2xl font-bold font-mono text-zinc-900 dark:text-zinc-100 mt-1">Top-5 RAG</p>
+            <p className="text-[10px] sm:text-[11px] text-zinc-600 dark:text-zinc-400 mt-0.5">Semantic document matching</p>
           </div>
 
-          <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/40">
-            <p className="text-xs font-mono text-zinc-500 uppercase">LANGGRAPH AGENTS</p>
-            <p className="text-2xl font-bold font-mono text-zinc-900 dark:text-zinc-100 mt-1">6 Steps</p>
-            <p className="text-[11px] text-zinc-500 mt-0.5">Autonomous investigation pipeline</p>
+          <div className="p-4 sm:p-5 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/40">
+            <p className="text-[10px] sm:text-xs font-mono text-zinc-600 dark:text-zinc-400 uppercase font-semibold">LANGGRAPH AGENTS</p>
+            <p className="text-xl sm:text-2xl font-bold font-mono text-zinc-900 dark:text-zinc-100 mt-1">6 Steps</p>
+            <p className="text-[10px] sm:text-[11px] text-zinc-600 dark:text-zinc-400 mt-0.5">Autonomous pipeline</p>
           </div>
 
-          <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/40">
-            <p className="text-xs font-mono text-zinc-500 uppercase">HUMAN REVIEW</p>
-            <p className="text-2xl font-bold font-mono text-zinc-900 dark:text-zinc-100 mt-1">100% HITL</p>
-            <p className="text-[11px] text-zinc-500 mt-0.5">Approve, edit, or reject drafts</p>
+          <div className="p-4 sm:p-5 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/40">
+            <p className="text-[10px] sm:text-xs font-mono text-zinc-600 dark:text-zinc-400 uppercase font-semibold">HUMAN REVIEW</p>
+            <p className="text-xl sm:text-2xl font-bold font-mono text-zinc-900 dark:text-zinc-100 mt-1">100% HITL</p>
+            <p className="text-[10px] sm:text-[11px] text-zinc-600 dark:text-zinc-400 mt-0.5">Approve or edit drafts</p>
           </div>
         </motion.div>
 
       </section>
 
-      {/* 2. Interactive Workflow Simulator Demo */}
+      {/* 2. Interactive Workflow Simulator */}
       <section className="space-y-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
             <Badge variant="outline" className="mb-2">LIVE SIMULATION</Badge>
             <h2 className="text-2xl sm:text-3xl font-bold font-heading text-zinc-900 dark:text-zinc-100">
               Autonomous Investigation Workflow Simulator
             </h2>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 font-sans">
-              Watch how our 6-agent pipeline processes media, queries regulations, and drafts executive compliance reports.
+            <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 font-sans">
+              Watch how our 6-agent pipeline processes media, queries regulations, and drafts compliance reports.
             </p>
           </div>
 
@@ -199,7 +199,7 @@ export default function LandingPage({ onLaunchWorkstation, theme }) {
             onClick={handleSimulate}
             disabled={simRunning}
             variant="secondary"
-            className="self-start md:self-auto font-mono text-xs"
+            className="self-start sm:self-auto font-mono text-xs"
           >
             {simRunning ? (
               <span className="flex items-center space-x-2">
@@ -212,76 +212,76 @@ export default function LandingPage({ onLaunchWorkstation, theme }) {
           </Button>
         </div>
 
-        {/* Step Progress Container */}
-        <div className="p-6 sm:p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#0c0d12]/90 space-y-6">
+        {/* Step Progress Box */}
+        <div className="p-4 sm:p-8 rounded-3xl border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-[#0c0d12]/90 space-y-6">
           
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <div className={`p-4 rounded-2xl border text-xs font-mono space-y-2 transition-all ${
-              simStep >= 1 ? 'border-zinc-400 dark:border-zinc-600 bg-zinc-100/80 dark:bg-zinc-800/60 text-zinc-900 dark:text-zinc-100' : 'border-zinc-200 dark:border-zinc-800 text-zinc-400'
+              simStep >= 1 ? 'border-zinc-400 dark:border-zinc-600 bg-zinc-100 dark:bg-zinc-800/60 text-zinc-900 dark:text-zinc-100' : 'border-zinc-200 dark:border-zinc-800 text-zinc-400'
             }`}>
               <div className="flex justify-between items-center text-[10px]">
                 <span>STEP 01</span>
                 {simStep >= 1 && <Check className="w-3.5 h-3.5 text-emerald-500" />}
               </div>
               <p className="font-bold">Media Upload</p>
-              <p className="text-[10px] text-zinc-500">Site JPEG loaded</p>
+              <p className="text-[10px] text-zinc-600 dark:text-zinc-400">Site JPEG loaded</p>
             </div>
 
             <div className={`p-4 rounded-2xl border text-xs font-mono space-y-2 transition-all ${
-              simStep >= 2 ? 'border-zinc-400 dark:border-zinc-600 bg-zinc-100/80 dark:bg-zinc-800/60 text-zinc-900 dark:text-zinc-100' : 'border-zinc-200 dark:border-zinc-800 text-zinc-400'
+              simStep >= 2 ? 'border-zinc-400 dark:border-zinc-600 bg-zinc-100 dark:bg-zinc-800/60 text-zinc-900 dark:text-zinc-100' : 'border-zinc-200 dark:border-zinc-800 text-zinc-400'
             }`}>
               <div className="flex justify-between items-center text-[10px]">
                 <span>STEP 02</span>
                 {simStep >= 2 && <Check className="w-3.5 h-3.5 text-emerald-500" />}
               </div>
               <p className="font-bold">YOLO Scan</p>
-              <p className="text-[10px] text-zinc-500">2 PPE objects detected</p>
+              <p className="text-[10px] text-zinc-600 dark:text-zinc-400">2 PPE objects detected</p>
             </div>
 
             <div className={`p-4 rounded-2xl border text-xs font-mono space-y-2 transition-all ${
-              simStep >= 3 ? 'border-zinc-400 dark:border-zinc-600 bg-zinc-100/80 dark:bg-zinc-800/60 text-zinc-900 dark:text-zinc-100' : 'border-zinc-200 dark:border-zinc-800 text-zinc-400'
+              simStep >= 3 ? 'border-zinc-400 dark:border-zinc-600 bg-zinc-100 dark:bg-zinc-800/60 text-zinc-900 dark:text-zinc-100' : 'border-zinc-200 dark:border-zinc-800 text-zinc-400'
             }`}>
               <div className="flex justify-between items-center text-[10px]">
                 <span>STEP 03</span>
                 {simStep >= 3 && <Check className="w-3.5 h-3.5 text-emerald-500" />}
               </div>
               <p className="font-bold">Vector RAG</p>
-              <p className="text-[10px] text-zinc-500">OSHA 1926.100 matched</p>
+              <p className="text-[10px] text-zinc-600 dark:text-zinc-400">OSHA 1926.100 matched</p>
             </div>
 
             <div className={`p-4 rounded-2xl border text-xs font-mono space-y-2 transition-all ${
-              simStep >= 4 ? 'border-zinc-400 dark:border-zinc-600 bg-zinc-100/80 dark:bg-zinc-800/60 text-zinc-900 dark:text-zinc-100' : 'border-zinc-200 dark:border-zinc-800 text-zinc-400'
+              simStep >= 4 ? 'border-zinc-400 dark:border-zinc-600 bg-zinc-100 dark:bg-zinc-800/60 text-zinc-900 dark:text-zinc-100' : 'border-zinc-200 dark:border-zinc-800 text-zinc-400'
             }`}>
               <div className="flex justify-between items-center text-[10px]">
                 <span>STEP 04</span>
                 {simStep >= 4 && <Check className="w-3.5 h-3.5 text-emerald-500" />}
               </div>
               <p className="font-bold">Executive Report</p>
-              <p className="text-[10px] text-zinc-500">Draft ready for review</p>
+              <p className="text-[10px] text-zinc-600 dark:text-zinc-400">Draft ready for review</p>
             </div>
           </div>
 
-          {/* Simulated Executive Report Box */}
-          <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 font-mono text-xs space-y-3">
-            <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-3">
+          {/* Report Display */}
+          <div className="p-4 sm:p-5 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 font-mono text-xs space-y-3">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-zinc-200 dark:border-zinc-800 pb-3">
               <span className="text-zinc-900 dark:text-zinc-100 font-bold flex items-center space-x-2">
-                <Sparkles className="w-4 h-4 text-zinc-400" />
+                <Sparkles className="w-4 h-4 text-zinc-500" />
                 <span>SIMULATED EXECUTIVE COMPLIANCE REPORT</span>
               </span>
               <Badge variant="monochrome">SEVERITY: MODERATE</Badge>
             </div>
 
             {simStep < 4 ? (
-              <div className="py-8 text-center text-zinc-400 space-y-2">
+              <div className="py-8 text-center text-zinc-500 space-y-2">
                 <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin mx-auto" />
                 <p>Executing agentic analysis sequence...</p>
               </div>
             ) : (
-              <div className="space-y-2 text-zinc-700 dark:text-zinc-300 animate-fadeIn">
+              <div className="space-y-2 text-zinc-800 dark:text-zinc-200 animate-fadeIn">
                 <p className="font-bold text-zinc-900 dark:text-zinc-100"># Executive Safety Summary</p>
                 <p>Visual inspection detected worker operating without mandated head protection on Scaffolding Tower B.</p>
-                <p className="text-zinc-500 font-semibold">• Referenced Policy: OSHA 1926.100 (Head Protection Equipment)</p>
-                <p className="text-zinc-500 font-semibold">• Corrective Action: Issue immediate site warning & provide hardhat.</p>
+                <p className="text-zinc-600 dark:text-zinc-400 font-semibold">• Referenced Policy: OSHA 1926.100 (Head Protection Equipment)</p>
+                <p className="text-zinc-600 dark:text-zinc-400 font-semibold">• Corrective Action: Issue immediate site warning & provide hardhat.</p>
               </div>
             )}
           </div>
@@ -289,21 +289,21 @@ export default function LandingPage({ onLaunchWorkstation, theme }) {
         </div>
       </section>
 
-      {/* 3. Mobbin-Style Showcase Grid */}
+      {/* 3. Mobbin Capabilities Grid */}
       <section className="space-y-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
             <Badge variant="outline" className="mb-2">CAPABILITIES GRID</Badge>
             <h2 className="text-2xl sm:text-3xl font-bold font-heading text-zinc-900 dark:text-zinc-100">
               Mobbin-Grade Component Architecture
             </h2>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 font-sans">
+            <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 font-sans">
               Explore the core engine components powering the VisionDesk AI workstation.
             </p>
           </div>
 
           {/* Filter Pills */}
-          <div className="flex flex-wrap gap-1.5 p-1 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900/80">
+          <div className="flex flex-wrap gap-1.5 p-1 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900/80">
             {['all', 'vision', 'knowledge', 'agent'].map((cat) => (
               <button
                 key={cat}
@@ -312,7 +312,7 @@ export default function LandingPage({ onLaunchWorkstation, theme }) {
                 className={`px-3 py-1.5 rounded-xl text-xs font-mono font-medium transition-all ${
                   activeCategory === cat
                     ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 font-bold shadow-sm'
-                    : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
+                    : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
                 }`}
               >
                 {cat === 'all' ? 'ALL' : cat.toUpperCase()}
@@ -328,7 +328,7 @@ export default function LandingPage({ onLaunchWorkstation, theme }) {
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
                   <Badge variant="secondary">{card.tag}</Badge>
-                  <span className="text-[11px] font-mono text-zinc-500 font-semibold">{card.metric}</span>
+                  <span className="text-[11px] font-mono text-zinc-600 dark:text-zinc-400 font-semibold">{card.metric}</span>
                 </div>
                 <CardTitle className="group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">
                   {card.title}
@@ -336,10 +336,10 @@ export default function LandingPage({ onLaunchWorkstation, theme }) {
                 <CardDescription>{card.desc}</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="h-44 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-950/90 p-4 flex flex-col justify-between font-mono text-xs text-zinc-400 overflow-hidden relative group-hover:border-zinc-600 transition-colors">
+                <div className="h-44 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-900 dark:bg-zinc-950 p-4 flex flex-col justify-between font-mono text-xs text-zinc-300 overflow-hidden relative group-hover:border-zinc-500 transition-colors">
                   
-                  <div className="flex justify-between items-center border-b border-zinc-800 pb-2 text-[10px]">
-                    <span className="text-zinc-300 font-bold">SYSTEM WORKSPACE PREVIEW</span>
+                  <div className="flex justify-between items-center border-b border-zinc-700 dark:border-zinc-800 pb-2 text-[10px]">
+                    <span className="text-zinc-200 font-bold">SYSTEM WORKSPACE PREVIEW</span>
                     <span className="text-emerald-400 flex items-center space-x-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
                       <span>LIVE</span>
@@ -348,7 +348,7 @@ export default function LandingPage({ onLaunchWorkstation, theme }) {
 
                   {card.previewType === 'image' && (
                     <div className="space-y-2 my-auto">
-                      <div className="flex justify-between text-[11px] text-zinc-200 font-bold">
+                      <div className="flex justify-between text-[11px] text-zinc-100 font-bold">
                         <span>DETECTIONS: 2 OBJECTS</span>
                         <span className="text-amber-400 font-mono">NO-Hardhat (89%)</span>
                       </div>
@@ -360,27 +360,27 @@ export default function LandingPage({ onLaunchWorkstation, theme }) {
 
                   {card.previewType === 'rag' && (
                     <div className="space-y-1.5 my-auto text-[11px]">
-                      <p className="text-zinc-300 font-bold">Query: "OSHA construction helmet standard"</p>
-                      <p className="text-zinc-500 italic">"OSHA 1926.100 mandates protective helmets in areas of potential head injury."</p>
+                      <p className="text-zinc-100 font-bold">Query: "OSHA construction helmet standard"</p>
+                      <p className="text-zinc-400 italic">"OSHA 1926.100 mandates protective helmets in areas of potential head injury."</p>
                     </div>
                   )}
 
                   {card.previewType === 'agent' && (
                     <div className="space-y-1.5 my-auto text-[11px]">
-                      <p className="text-zinc-200 font-bold">Agent Flow: Step 04 / Reasoning</p>
-                      <p className="text-zinc-400">Synthesizing evidence and drafting severity status...</p>
+                      <p className="text-zinc-100 font-bold">Agent Flow: Step 04 / Reasoning</p>
+                      <p className="text-zinc-300">Synthesizing evidence and drafting severity status...</p>
                     </div>
                   )}
 
                   {card.previewType === 'video' && (
                     <div className="space-y-1.5 my-auto text-[11px]">
-                      <p className="text-zinc-200 font-bold">Video Stream Sample: 48 Frames</p>
-                      <p className="text-zinc-400">Violations Flagged: 3 Frames</p>
+                      <p className="text-zinc-100 font-bold">Video Stream Sample: 48 Frames</p>
+                      <p className="text-zinc-300">Violations Flagged: 3 Frames</p>
                     </div>
                   )}
 
-                  <div className="flex justify-end pt-2 border-t border-zinc-800 text-[10px] text-zinc-500">
-                    <span className="flex items-center space-x-1 group-hover:text-zinc-200 transition-colors">
+                  <div className="flex justify-end pt-2 border-t border-zinc-700 dark:border-zinc-800 text-[10px] text-zinc-400">
+                    <span className="flex items-center space-x-1 group-hover:text-white transition-colors">
                       <span>Inspect Details</span>
                       <ChevronRight className="w-3 h-3" />
                     </span>
@@ -394,13 +394,13 @@ export default function LandingPage({ onLaunchWorkstation, theme }) {
 
       </section>
 
-      {/* 4. Bottom CTA Launch Station */}
-      <section className="p-8 sm:p-12 rounded-3xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900/60 text-center space-y-6">
+      {/* 4. Bottom CTA */}
+      <section className="p-6 sm:p-12 rounded-3xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900/60 text-center space-y-6">
         <Badge variant="monochrome" className="mx-auto">READY TO DEPLOY</Badge>
-        <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-zinc-900 dark:text-zinc-50">
+        <h2 className="text-2xl sm:text-4xl font-extrabold font-heading text-zinc-900 dark:text-zinc-50">
           Enter the VisionDesk AI Studio Workstation
         </h2>
-        <p className="max-w-xl mx-auto text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-sans">
+        <p className="max-w-xl mx-auto text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 font-sans">
           Access all four compliance modules, upload site media, query regulations, and review AI reports.
         </p>
 

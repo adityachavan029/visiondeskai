@@ -1,194 +1,172 @@
 import React, { useState } from 'react';
-import { X, Lock, Mail, User, ShieldCheck, AlertCircle } from 'lucide-react';
+import { X, Lock, Mail, User, AlertCircle, ArrowRight } from 'lucide-react';
+import { Button } from './ui/button';
+import { Badge } from './ui/badge';
 import axios from 'axios';
 
 export default function AuthModal({ isOpen, onClose, onAuthSuccess, theme }) {
-  const [isLogin, setIsLogin] = useState(true);
-  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
   if (!isOpen) return null;
 
-  const isDark = theme === 'dark';
+  const [mode, setMode] = useState('login'); // 'login' or 'register'
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
 
-    const endpoint = isLogin ? '/api/login' : '/api/signup';
-    const payload = isLogin
-      ? { email: formData.email, password: formData.password }
-      : { name: formData.name, email: formData.email, password: formData.password };
+    const endpoint = mode === 'login' ? '/api/auth/login' : '/api/auth/register';
+    const payload = mode === 'login' ? { email, password } : { email, password, name };
 
     try {
       const res = await axios.post(endpoint, payload);
-      if (res.data && res.data.access_token) {
-        localStorage.setItem('token', res.data.access_token);
-        if (res.data.user) {
-          localStorage.setItem('user', JSON.stringify(res.data.user));
-          onAuthSuccess(res.data.user);
-        } else {
-          onAuthSuccess({ email: formData.email });
-        }
+      if (res.data.token) {
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('user', JSON.stringify(res.data.user || { email, name }));
+        onAuthSuccess(res.data.user || { email, name });
         onClose();
       }
     } catch (err) {
-      setError(err.response?.data?.detail || 'Authentication failed. Please check your details.');
+      setError(err.response?.data?.detail || 'Authentication failed.');
     } finally {
       setLoading(false);
     }
   };
 
+  const isDark = theme === 'dark';
+
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-      <div className={`relative w-full max-w-md p-6 sm:p-8 rounded-3xl border shadow-2xl overflow-hidden transition-colors ${
-        isDark ? 'bg-[#0f1117]/95 border-slate-800 text-slate-100' : 'bg-white/95 border-slate-200 text-slate-900'
-      }`}>
-        
-        {/* Top Accent Strip */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600" />
-        
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md animate-fadeIn">
+      <div
+        className={`w-full max-w-[92vw] sm:max-w-md rounded-3xl border p-6 sm:p-8 space-y-6 shadow-2xl relative transition-all ${
+          isDark ? 'bg-[#09090b] border-zinc-800 text-zinc-100' : 'bg-white border-zinc-300 text-zinc-900'
+        }`}
+      >
+        {/* Close Button */}
         <button
           data-cursor="CLOSE"
           onClick={onClose}
-          className={`absolute top-4 right-4 p-2 rounded-xl transition-colors ${
-            isDark ? 'text-slate-400 hover:text-white hover:bg-slate-800/60' : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'
-          }`}
+          className="absolute top-5 right-5 p-2 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4" />
         </button>
 
-        {/* Header */}
-        <div className="text-center mb-6">
-          <div className={`inline-flex items-center justify-center w-12 h-12 rounded-2xl border mb-3 ${
-            isDark ? 'bg-amber-500/10 border-amber-500/30 text-amber-400' : 'bg-amber-100 border-amber-300 text-amber-800'
-          }`}>
-            <ShieldCheck className="w-6 h-6" />
-          </div>
-          <h2 className="text-xl font-bold font-heading">
-            {isLogin ? 'Welcome Back' : 'Create Account'}
+        {/* Modal Header */}
+        <div className="space-y-1">
+          <Badge variant="monochrome" className="mb-1">ENTERPRISE AUTH</Badge>
+          <h2 className="text-xl sm:text-2xl font-bold font-heading">
+            {mode === 'login' ? 'Welcome Back' : 'Create Intelligence Account'}
           </h2>
-          <p className={`text-xs mt-1 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
-            {isLogin ? 'Sign in to access your enterprise workstation' : 'Register to get started with VisionDesk AI'}
+          <p className="text-xs text-zinc-600 dark:text-zinc-400 font-sans">
+            {mode === 'login' ? 'Sign in to access your saved audit logs and reports.' : 'Register to unlock enterprise compliance persistence.'}
           </p>
         </div>
 
-        {/* Tab Selector */}
-        <div className={`flex p-1.5 rounded-2xl border mb-6 ${
-          isDark ? 'bg-slate-900/90 border-slate-800' : 'bg-slate-100 border-slate-200'
-        }`}>
-          <button
-            data-cursor="SIGN IN"
-            onClick={() => { setIsLogin(true); setError(null); }}
-            className={`flex-1 py-2 text-xs font-semibold font-mono rounded-xl transition-all ${
-              isLogin
-                ? isDark ? 'bg-amber-500 text-slate-950 font-bold shadow-md' : 'bg-slate-900 text-white shadow-md'
-                : isDark ? 'text-slate-400 hover:text-white' : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            Sign In
-          </button>
-          <button
-            data-cursor="REGISTER"
-            onClick={() => { setIsLogin(false); setError(null); }}
-            className={`flex-1 py-2 text-xs font-semibold font-mono rounded-xl transition-all ${
-              !isLogin
-                ? isDark ? 'bg-amber-500 text-slate-950 font-bold shadow-md' : 'bg-slate-900 text-white shadow-md'
-                : isDark ? 'text-slate-400 hover:text-white' : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            Register
-          </button>
-        </div>
-
-        {/* Error Alert */}
-        {error && (
-          <div className="mb-4 p-3 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs flex items-center space-x-2">
-            <AlertCircle className="w-4 h-4 flex-shrink-0" />
-            <span>{error}</span>
-          </div>
-        )}
-
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-4 font-sans">
-          {!isLogin && (
-            <div>
-              <label className={`block text-xs font-mono mb-1 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>Full Name</label>
-              <div className="relative">
-                <User className={`absolute left-3 top-3 w-4 h-4 ${isDark ? 'text-slate-500' : 'text-slate-400'}`} />
+        <form onSubmit={handleSubmit} className="space-y-4 font-mono text-xs">
+          
+          {mode === 'register' && (
+            <div className="space-y-1">
+              <label className="text-zinc-700 dark:text-zinc-300 font-semibold">FULL NAME</label>
+              <div className="relative flex items-center">
+                <User className="absolute left-3.5 w-4 h-4 text-zinc-400" />
                 <input
                   type="text"
                   required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   placeholder="John Doe"
-                  className={`w-full pl-9 pr-4 py-2.5 rounded-xl text-xs focus:outline-none transition-all ${
-                    isDark
-                      ? 'bg-slate-900/80 border border-slate-800 text-white placeholder-slate-500 focus:border-amber-500'
-                      : 'bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:border-amber-600'
-                  }`}
+                  className="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 placeholder-zinc-500 dark:placeholder-zinc-400 focus:outline-none focus:border-zinc-500 transition-all font-sans text-xs"
                 />
               </div>
             </div>
           )}
 
-          <div>
-            <label className={`block text-xs font-mono mb-1 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>Email Address</label>
-            <div className="relative">
-              <Mail className={`absolute left-3 top-3 w-4 h-4 ${isDark ? 'text-slate-500' : 'text-slate-400'}`} />
+          <div className="space-y-1">
+            <label className="text-zinc-700 dark:text-zinc-300 font-semibold">WORK EMAIL</label>
+            <div className="relative flex items-center">
+              <Mail className="absolute left-3.5 w-4 h-4 text-zinc-400" />
               <input
                 type="email"
                 required
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@company.com"
-                className={`w-full pl-9 pr-4 py-2.5 rounded-xl text-xs focus:outline-none transition-all ${
-                  isDark
-                    ? 'bg-slate-900/80 border border-slate-800 text-white placeholder-slate-500 focus:border-amber-500'
-                    : 'bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:border-amber-600'
-                }`}
+                className="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 placeholder-zinc-500 dark:placeholder-zinc-400 focus:outline-none focus:border-zinc-500 transition-all font-sans text-xs"
               />
             </div>
           </div>
 
-          <div>
-            <label className={`block text-xs font-mono mb-1 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>Password</label>
-            <div className="relative">
-              <Lock className={`absolute left-3 top-3 w-4 h-4 ${isDark ? 'text-slate-500' : 'text-slate-400'}`} />
+          <div className="space-y-1">
+            <label className="text-zinc-700 dark:text-zinc-300 font-semibold">PASSWORD</label>
+            <div className="relative flex items-center">
+              <Lock className="absolute left-3.5 w-4 h-4 text-zinc-400" />
               <input
                 type="password"
                 required
-                value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                placeholder="••••••••"
-                className={`w-full pl-9 pr-4 py-2.5 rounded-xl text-xs focus:outline-none transition-all ${
-                  isDark
-                    ? 'bg-slate-900/80 border border-slate-800 text-white placeholder-slate-500 focus:border-amber-500'
-                    : 'bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:border-amber-600'
-                }`}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••••••"
+                className="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 placeholder-zinc-500 dark:placeholder-zinc-400 focus:outline-none focus:border-zinc-500 transition-all font-sans text-xs"
               />
             </div>
           </div>
 
-          <button
+          {error && (
+            <div className="p-3 rounded-2xl bg-rose-50 border border-rose-200 text-rose-900 dark:bg-rose-950/60 dark:border-rose-800/80 dark:text-rose-300 text-[11px] flex items-center space-x-2">
+              <AlertCircle className="w-4 h-4 flex-shrink-0" />
+              <span>{error}</span>
+            </div>
+          )}
+
+          <Button
             data-cursor="SUBMIT"
             type="submit"
             disabled={loading}
-            className={`w-full py-3 mt-2 font-semibold font-mono rounded-xl text-xs transition-all flex items-center justify-center space-x-2 disabled:opacity-50 cursor-pointer ${
-              isDark
-                ? 'bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold shadow-lg shadow-amber-500/20'
-                : 'bg-slate-900 hover:bg-slate-800 text-white shadow-lg shadow-slate-900/20'
-            }`}
+            className="w-full py-3 text-xs font-mono"
           >
             {loading ? (
               <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
             ) : (
-              <span>{isLogin ? 'Sign In to VisionDesk' : 'Create VisionDesk Account'}</span>
+              <span className="flex items-center space-x-2">
+                <span>{mode === 'login' ? 'Sign In to Workspace' : 'Create Account'}</span>
+                <ArrowRight className="w-4 h-4" />
+              </span>
             )}
-          </button>
+          </Button>
         </form>
+
+        {/* Footer Mode Switcher */}
+        <div className="pt-2 text-center text-xs font-sans text-zinc-600 dark:text-zinc-400 border-t border-zinc-200 dark:border-zinc-800">
+          {mode === 'login' ? (
+            <p>
+              Don't have an enterprise account?{' '}
+              <button
+                data-cursor="REGISTER"
+                onClick={() => setMode('register')}
+                className="font-bold text-zinc-900 dark:text-white underline hover:opacity-80 ml-1"
+              >
+                Register Now
+              </button>
+            </p>
+          ) : (
+            <p>
+              Already registered?{' '}
+              <button
+                data-cursor="LOGIN"
+                onClick={() => setMode('login')}
+                className="font-bold text-zinc-900 dark:text-white underline hover:opacity-80 ml-1"
+              >
+                Sign In
+              </button>
+            </p>
+          )}
+        </div>
+
       </div>
     </div>
   );
