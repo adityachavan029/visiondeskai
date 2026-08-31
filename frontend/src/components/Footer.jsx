@@ -5,8 +5,9 @@ export default function Footer({ theme }) {
   const isDark = theme === 'dark';
 
   return (
-    <footer className={`mt-20 border-t py-10 px-4 text-xs font-mono transition-colors ${isDark ? 'border-zinc-800/80 bg-[#09090b] text-zinc-500' : 'border-zinc-200 bg-zinc-50 text-zinc-600'
-      }`}>
+    <footer className={`mt-20 border-t py-10 px-4 text-xs font-mono transition-colors ${
+      isDark ? 'border-zinc-800/80 bg-[#09090b] text-zinc-500' : 'border-zinc-200 bg-zinc-50 text-zinc-600'
+    }`}>
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
 
         {/* Left */}
@@ -30,7 +31,7 @@ export default function Footer({ theme }) {
 
         {/* Right */}
         <div>
-          <span>Made with ❤️ <a href="https://github.com/adityachavan029/visiondeskai"> by Team D</a></span>
+          <span>Made with ❤️ by <a href="https://github.com/adityachavan029/visiondeskai" className="underline hover:text-zinc-900 dark:hover:text-zinc-100">Team D</a></span>
         </div>
 
       </div>
