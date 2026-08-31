@@ -1,0 +1,899 @@
+{
+  "5d266168d98a4219a15abdd3334b03ea": {
+    "id": "5d266168d98a4219a15abdd3334b03ea",
+    "status": "draft",
+    "created_at": "2026-08-18T01:55:07.293256+00:00",
+    "reviewed_at": null,
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "Steps-You-Can-Take-When-a-Construction-Contract-Is-Breached-e1763582965656.jpg",
+    "kind": "image",
+    "investigation_focus": "General PPE compliance review.",
+    "detected_classes": [
+      "Hardhat",
+      "Hardhat",
+      "Safety Vest",
+      "Safety Vest"
+    ],
+    "visual_summary": "Image analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).",
+    "evidence": [],
+    "validated_answer": "Couldn't generate an answer right now (Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}).",
+    "grounded": false,
+    "confidence": "low",
+    "severity": "unknown",
+    "recommended_action": "Insufficient grounded evidence to determine an action. Manual review required.",
+    "reasoning": "No validated evidence was available to support a compliance conclusion.",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** General PPE compliance review.\n**Media type analyzed:** image\n**Grounded:** No\n**Confidence:** low\n**Severity:** unknown\n\n## Visual Findings\nImage analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).\n\nDetected classes: Hardhat, Hardhat, Safety Vest, Safety Vest\n\n## Validated Answer\nCouldn't generate an answer right now (Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}).\n\n## Supporting Evidence\n_No grounded evidence was found._\n\n## Reasoning\nNo validated evidence was available to support a compliance conclusion.\n\n## Recommended Action\nInsufficient grounded evidence to determine an action. Manual review required.\n",
+    "errors": [
+      "query_analysis: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}"
+    ]
+  },
+  "b974d38825d34ea1ab7808571c8c0121": {
+    "id": "b974d38825d34ea1ab7808571c8c0121",
+    "status": "draft",
+    "created_at": "2026-08-18T02:26:43.013225+00:00",
+    "reviewed_at": null,
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "Steps-You-Can-Take-When-a-Construction-Contract-Is-Breached-e1763582965656.jpg",
+    "kind": "image",
+    "investigation_focus": "General PPE compliance review.",
+    "detected_classes": [
+      "Hardhat",
+      "Hardhat",
+      "Safety Vest",
+      "Safety Vest"
+    ],
+    "visual_summary": "Image analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).",
+    "evidence": [],
+    "validated_answer": "Couldn't generate an answer right now (Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}).",
+    "grounded": false,
+    "confidence": "low",
+    "severity": "unknown",
+    "recommended_action": "Insufficient grounded evidence to determine an action. Manual review required.",
+    "reasoning": "No validated evidence was available to support a compliance conclusion.",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** General PPE compliance review.\n**Media type analyzed:** image\n**Grounded:** No\n**Confidence:** low\n**Severity:** unknown\n\n## Visual Findings\nImage analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).\n\nDetected classes: Hardhat, Hardhat, Safety Vest, Safety Vest\n\n## Validated Answer\nCouldn't generate an answer right now (Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}).\n\n## Supporting Evidence\n_No grounded evidence was found._\n\n## Reasoning\nNo validated evidence was available to support a compliance conclusion.\n\n## Recommended Action\nInsufficient grounded evidence to determine an action. Manual review required.\n",
+    "errors": [
+      "query_analysis: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}"
+    ]
+  },
+  "73bf426174c94399ae7f7b955b987d68": {
+    "id": "73bf426174c94399ae7f7b955b987d68",
+    "status": "draft",
+    "created_at": "2026-08-18T02:30:21.279292+00:00",
+    "reviewed_at": null,
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "Steps-You-Can-Take-When-a-Construction-Contract-Is-Breached-e1763582965656.jpg",
+    "kind": "image",
+    "investigation_focus": "Determine whether the safety manual specifies the required PPE and proper usage for the identified hazards.",
+    "detected_classes": [
+      "Hardhat",
+      "Hardhat",
+      "Safety Vest",
+      "Safety Vest"
+    ],
+    "visual_summary": "Image analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).",
+    "evidence": [
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "CONSTRUCTION SITE SAFETY MANUAL Vision Desk AI - Personal Protective Equipment (PPE) Compliance Guide Version 1.0 SECTION 1: HARDHAT REQUIREMENTS All workers must wear an approved hardhat at all times when on an active construction site. Hardhats protect against falling objects, bumps, and...",
+        "relevance": "N/A"
+      }
+    ],
+    "validated_answer": "The image possibly shows hardhats and safety vests, though the detections are low\u2011confidence. The safety manual requires workers to wear an approved hardhat at all times on an active construction site and describes its protective purpose and enforcement actions\u202f[1]. The manual does not provide any guidance regarding safety vests.",
+    "grounded": true,
+    "confidence": "medium",
+    "severity": "moderate",
+    "recommended_action": "Instruct the site supervisor to conduct an immediate visual check to confirm that all workers are wearing approved hardhats and enforce compliance before work continues.",
+    "reasoning": "The manual mandates hardhat use on an active construction site, but the image detections are low\u2011confidence and cannot verify compliance. No guidance is given for safety vests, so the primary concern is the uncertain presence of required hardhats.",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** Determine whether the safety manual specifies the required PPE and proper usage for the identified hazards.\n**Media type analyzed:** image\n**Grounded:** Yes\n**Confidence:** medium\n**Severity:** moderate\n\n## Visual Findings\nImage analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).\n\nDetected classes: Hardhat, Hardhat, Safety Vest, Safety Vest\n\n## Validated Answer\nThe image possibly shows hardhats and safety vests, though the detections are low\u2011confidence. The safety manual requires workers to wear an approved hardhat at all times on an active construction site and describes its protective purpose and enforcement actions\u202f[1]. The manual does not provide any guidance regarding safety vests.\n\n## Supporting Evidence\n- **ppe_safety_manual.txt** \u2014 relevance N/A\n  > CONSTRUCTION SITE SAFETY MANUAL Vision Desk AI - Personal Protective Equipment (PPE) Compliance Guide Version 1.0 SECTION 1: HARDHAT REQUIREMENTS All workers must wear an approved hardhat at all times when on an active construction site. Hardhats protect against falling objects, bumps, and...\n\n## Reasoning\nThe manual mandates hardhat use on an active construction site, but the image detections are low\u2011confidence and cannot verify compliance. No guidance is given for safety vests, so the primary concern is the uncertain presence of required hardhats.\n\n## Recommended Action\nInstruct the site supervisor to conduct an immediate visual check to confirm that all workers are wearing approved hardhats and enforce compliance before work continues.\n",
+    "errors": []
+  },
+  "c129cb3295154bfb904a8a5432b4ed37": {
+    "id": "c129cb3295154bfb904a8a5432b4ed37",
+    "status": "draft",
+    "created_at": "2026-08-18T02:35:28.811756+00:00",
+    "reviewed_at": null,
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "construction-worker-is-standing-front-building-construction-1-1024x1024.webp",
+    "kind": "image",
+    "investigation_focus": "Determine whether the safety manual specifies the required PPE and proper usage for the identified hazards.",
+    "detected_classes": [
+      "Safety Vest",
+      "Hardhat"
+    ],
+    "visual_summary": "Image analysis found 2 items: Safety Vest detected at 58% confidence (moderate confidence), Hardhat detected at 32% confidence (low confidence).",
+    "evidence": [],
+    "validated_answer": "The knowledge repository does not contain information to answer this question.",
+    "grounded": false,
+    "confidence": "low",
+    "severity": "unknown",
+    "recommended_action": "Insufficient grounded evidence to determine an action. Manual review required.",
+    "reasoning": "No validated evidence was available to support a compliance conclusion.",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** Determine whether the safety manual specifies the required PPE and proper usage for the identified hazards.\n**Media type analyzed:** image\n**Grounded:** No\n**Confidence:** low\n**Severity:** unknown\n\n## Visual Findings\nImage analysis found 2 items: Safety Vest detected at 58% confidence (moderate confidence), Hardhat detected at 32% confidence (low confidence).\n\nDetected classes: Safety Vest, Hardhat\n\n## Validated Answer\nThe knowledge repository does not contain information to answer this question.\n\n## Supporting Evidence\n_No grounded evidence was found._\n\n## Reasoning\nNo validated evidence was available to support a compliance conclusion.\n\n## Recommended Action\nInsufficient grounded evidence to determine an action. Manual review required.\n",
+    "errors": []
+  },
+  "391c2b6e753446319c35872c30676ea4": {
+    "id": "391c2b6e753446319c35872c30676ea4",
+    "status": "approved",
+    "created_at": "2026-08-18T02:37:21.249271+00:00",
+    "reviewed_at": "2026-08-18T02:38:08.180436+00:00",
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "istockphoto-2198788321-640_adpp_is.mp4",
+    "kind": "video",
+    "investigation_focus": "Determine if the organization is consistently providing and enforcing the required PPE for identified workplace hazards.",
+    "detected_classes": [
+      "Hardhat",
+      "Safety Vest"
+    ],
+    "visual_summary": "Video analysis processed 7 frames. 0 frames contained violations. Also observed: Hardhat, Safety Vest.",
+    "evidence": [
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "CONSTRUCTION SITE SAFETY MANUAL Vision Desk AI - Personal Protective Equipment (PPE) Compliance Guide Version 1.0 SECTION 1: HARDHAT REQUIREMENTS All workers must wear an approved hardhat at all times when on an active construction site. Hardhats protect against falling objects, bumps, and...",
+        "relevance": "N/A"
+      },
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...",
+        "relevance": "N/A"
+      }
+    ],
+    "validated_answer": "The video of seven frames shows workers wearing hardhats and safety vests, and no violations were detected. This complies with the hard\u2011hat requirement that all workers wear an approved hardhat on an active construction site\u202f[1] and the safety\u2011vest requirement that vests be kept clean and reflective at all times\u202f[3], indicating consistent provision and enforcement of the required PPE.",
+    "grounded": true,
+    "confidence": "high",
+    "severity": "none",
+    "recommended_action": "Continue current PPE enforcement and routine monitoring",
+    "reasoning": "The video frames show all workers wearing approved hardhats and clean, reflective safety vests, and no violations were detected, indicating full compliance with the hard\u2011hat and safety\u2011vest requirements.",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** Determine if the organization is consistently providing and enforcing the required PPE for identified workplace hazards.\n**Media type analyzed:** video\n**Grounded:** Yes\n**Confidence:** high\n**Severity:** none\n\n## Visual Findings\nVideo analysis processed 7 frames. 0 frames contained violations. Also observed: Hardhat, Safety Vest.\n\nDetected classes: Hardhat, Safety Vest\n\n## Validated Answer\nThe video of seven frames shows workers wearing hardhats and safety vests, and no violations were detected. This complies with the hard\u2011hat requirement that all workers wear an approved hardhat on an active construction site\u202f[1] and the safety\u2011vest requirement that vests be kept clean and reflective at all times\u202f[3], indicating consistent provision and enforcement of the required PPE.\n\n## Supporting Evidence\n- **ppe_safety_manual.txt** \u2014 relevance N/A\n  > CONSTRUCTION SITE SAFETY MANUAL Vision Desk AI - Personal Protective Equipment (PPE) Compliance Guide Version 1.0 SECTION 1: HARDHAT REQUIREMENTS All workers must wear an approved hardhat at all times when on an active construction site. Hardhats protect against falling objects, bumps, and...\n- **ppe_safety_manual.txt** \u2014 relevance N/A\n  > vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...\n\n## Reasoning\nThe video frames show all workers wearing approved hardhats and clean, reflective safety vests, and no violations were detected, indicating full compliance with the hard\u2011hat and safety\u2011vest requirements.\n\n## Recommended Action\nContinue current PPE enforcement and routine monitoring\n",
+    "errors": []
+  },
+  "5abe40b515cb415bbb32c29c7380b2c5": {
+    "id": "5abe40b515cb415bbb32c29c7380b2c5",
+    "status": "edited",
+    "created_at": "2026-08-18T02:43:45.381491+00:00",
+    "reviewed_at": "2026-08-18T02:44:42.901835+00:00",
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "african-businesspeople-wearing-hard-hats-AMRFXR.jpg",
+    "kind": "image",
+    "search_query": "hardhat safety vest gloves compliance",
+    "investigation_focus": "Determine if the required PPE such as hardhats, safety vests, and gloves is being used correctly and meets compliance standards.",
+    "detected_classes": [
+      "Hardhat",
+      "Hardhat",
+      "Hardhat"
+    ],
+    "visual_summary": "Image analysis found 3 items: Hardhat detected at 52% confidence (moderate confidence), Hardhat detected at 28% confidence (low confidence), Hardhat detected at 26% confidence (low confidence).",
+    "retrieved_chunk_count": 3,
+    "retrieved_chunk_debug": [
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      }
+    ],
+    "evidence": [
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...",
+        "relevance": "N/A"
+      },
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "olicy will result in suspension or termination. Hardhats must meet ANSI/ISEA Z89.1 standards and be inspected daily for cracks or damage. SECTION 2: SAFETY VEST REQUIREMENTS High-visibility safety vests must be worn by all personnel in active work zones. Safety vests must be Class 2 or Class 3...",
+        "relevance": "N/A"
+      },
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "CONSTRUCTION SITE SAFETY MANUAL Vision Desk AI - Personal Protective Equipment (PPE) Compliance Guide Version 1.0 SECTION 1: HARDHAT REQUIREMENTS All workers must wear an approved hardhat at all times when on an active construction site. Hardhats protect against falling objects, bumps, and...",
+        "relevance": "N/A"
+      }
+    ],
+    "validated_answer": "The image shows a hardhat detected with moderate confidence and two possible additional hardhats detected at low confidence, while no safety vests or gloves are visible. The safety manual requires all workers to wear approved hardhats that meet ANSI/ISEA\u202fZ89.1 standards [2][3], high\u2011visibility safety vests in active work zones [2], and protective gloves when handling hazards [1].",
+    "grounded": true,
+    "confidence": "high",
+    "severity": "moderate",
+    "recommended_action": "Instruct all personnel to put on high\u2011visibility safety vests and appropriate protective gloves immediately.",
+    "reasoning": "The image confirms a hardhat is being worn, but no vests or gloves are visible, violating the manual\u2019s requirement for both. The missing PPE creates a moderate safety risk.",
+    "report": "PPE Compliance Investigation Report\n\nInvestigation focus: Determine if the required PPE such as hardhats, safety vests, and gloves is being used correctly and meets compliance standards.\n\nMedia type analyzed: image\n\nGrounded: Yes\n\nConfidence: high\n\nSeverity: moderate\n\nVisual Findings\n\nImage analysis found 3 items: Hardhat detected at 52% confidence (moderate confidence), Hardhat detected at 28% confidence (low confidence), Hardhat detected at 26% confidence (low confidence).\n\nDetected classes: Hardhat, Hardhat, Hardhat\n\nValidated Answer\n\nThe image shows a hardhat detected with moderate confidence and two possible additional hardhats detected at low confidence, while no safety vests or gloves are visible. The safety manual requires all workers to wear approved hardhats that meet ANSI/ISEA\u202fZ89.1 standards [2][3], high\u2011visibility safety vests in active work zones [2], and protective gloves when handling hazards [1].\n\nSupporting Evidence\nppe_safety_manual.txt \u2014 relevance N/A\nvest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...\nppe_safety_manual.txt \u2014 relevance N/A\nolicy will result in suspension or termination. Hardhats must meet ANSI/ISEA Z89.1 standards and be inspected daily for cracks or damage. SECTION 2: SAFETY VEST REQUIREMENTS High-visibility safety vests must be worn by all personnel in active work zones. Safety vests must be Class 2 or Class 3...\nppe_safety_manual.txt \u2014 relevance N/A\nCONSTRUCTION SITE SAFETY MANUAL Vision Desk AI - Personal Protective Equipment (PPE) Compliance Guide Version 1.0 SECTION 1: HARDHAT REQUIREMENTS All workers must wear an approved hardhat at all times when on an active construction site. Hardhats protect against falling objects, bumps, and...\nReasoning\n\nThe image confirms a hardhat is being worn, but no vests or gloves are visible, violating the manual\u2019s requirement for both. The missing PPE creates a moderate safety risk.\n\nRecommended Action\n\nInstruct all personnel to put on high\u2011visibility safety vests and appropriate protective gloves immediately.",
+    "errors": []
+  },
+  "54cf4e53b0144574b804a330684bb3af": {
+    "id": "54cf4e53b0144574b804a330684bb3af",
+    "status": "rejected",
+    "created_at": "2026-08-18T02:49:02.840866+00:00",
+    "reviewed_at": "2026-08-18T02:50:03.407822+00:00",
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "Steps-You-Can-Take-When-a-Construction-Contract-Is-Breached-e1763582965656.jpg",
+    "kind": "image",
+    "search_query": "hardhat safety vest gloves goggles respirator compliance",
+    "investigation_focus": "Determine whether the site\u2019s personal protective equipment meets the required safety standards and regulatory guidelines.",
+    "detected_classes": [
+      "Hardhat",
+      "Hardhat",
+      "Safety Vest",
+      "Safety Vest"
+    ],
+    "visual_summary": "Image analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).",
+    "retrieved_chunk_count": 3,
+    "retrieved_chunk_debug": [
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      }
+    ],
+    "evidence": [
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...",
+        "relevance": "N/A"
+      }
+    ],
+    "validated_answer": "The image analysis only tentatively detects two hard\u2011hats (48\u202f% and 39\u202f% confidence) and two safety vests (34\u202f% and 30\u202f% confidence), so their presence cannot be confirmed. The manual requires safety vests to be clean and have clearly visible reflective strips\u202f[1]; the low\u2011confidence detections do not allow verification of those conditions, and no hard\u2011hat standards are provided in the excerpts. Consequently, the available evidence is insufficient to confirm that the site\u2019s PPE meets the required safety standards.",
+    "grounded": true,
+    "confidence": "medium",
+    "severity": "moderate",
+    "recommended_action": "Conduct an on\u2011site verification of hard\u2011hat and safety\u2011vest compliance",
+    "reasoning": "The image analysis yields only low\u2011confidence detections of two hard\u2011hats and two safety vests, which cannot confirm their presence or condition. Because the required clean, reflective\u2011strip vests cannot be verified, the evidence is insufficient to confirm compliance, necessitating a physical inspection.",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** Determine whether the site\u2019s personal protective equipment meets the required safety standards and regulatory guidelines.\n**Media type analyzed:** image\n**Grounded:** Yes\n**Confidence:** medium\n**Severity:** moderate\n\n## Visual Findings\nImage analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).\n\nDetected classes: Hardhat, Hardhat, Safety Vest, Safety Vest\n\n## Validated Answer\nThe image analysis only tentatively detects two hard\u2011hats (48\u202f% and 39\u202f% confidence) and two safety vests (34\u202f% and 30\u202f% confidence), so their presence cannot be confirmed. The manual requires safety vests to be clean and have clearly visible reflective strips\u202f[1]; the low\u2011confidence detections do not allow verification of those conditions, and no hard\u2011hat standards are provided in the excerpts. Consequently, the available evidence is insufficient to confirm that the site\u2019s PPE meets the required safety standards.\n\n## Supporting Evidence\n- **ppe_safety_manual.txt** \u2014 relevance N/A\n  > vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...\n\n## Reasoning\nThe image analysis yields only low\u2011confidence detections of two hard\u2011hats and two safety vests, which cannot confirm their presence or condition. Because the required clean, reflective\u2011strip vests cannot be verified, the evidence is insufficient to confirm compliance, necessitating a physical inspection.\n\n## Recommended Action\nConduct an on\u2011site verification of hard\u2011hat and safety\u2011vest compliance\n",
+    "errors": []
+  },
+  "24b53d4ee9c14ad4ac5751a9665249ce": {
+    "id": "24b53d4ee9c14ad4ac5751a9665249ce",
+    "status": "draft",
+    "created_at": "2026-08-18T02:50:14.217714+00:00",
+    "reviewed_at": null,
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "Steps-You-Can-Take-When-a-Construction-Contract-Is-Breached-e1763582965656.jpg",
+    "kind": "image",
+    "search_query": "hardhat safety vest gloves goggles respirator compliance",
+    "investigation_focus": "Determine whether the site\u2019s workers are using and maintaining the required personal protective equipment according to safety standards.",
+    "detected_classes": [
+      "Hardhat",
+      "Hardhat",
+      "Safety Vest",
+      "Safety Vest"
+    ],
+    "visual_summary": "Image analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).",
+    "retrieved_chunk_count": 3,
+    "retrieved_chunk_debug": [
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      }
+    ],
+    "evidence": [
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...",
+        "relevance": "N/A"
+      }
+    ],
+    "validated_answer": "The image analysis tentatively detects safety vests (34\u202f% and 30\u202f% confidence) and hardhats (48\u202f% and 39\u202f% confidence), so their presence is possible but not certain. The safety manual requires safety vests to be kept clean and have clearly visible reflective strips at all times [1]; the analysis cannot confirm whether these conditions are met, and no hard\u2011hat requirement is provided in the excerpts. Consequently, compliance with the PPE standards cannot be verified from the available evidence.",
+    "grounded": true,
+    "confidence": "medium",
+    "severity": "moderate",
+    "recommended_action": "Conduct an on\u2011site inspection to verify that workers are wearing clean, reflective safety vests and hardhats as required",
+    "reasoning": "The image analysis only tentatively detected safety vests and hardhats with low confidence and cannot confirm that the vests meet the clean, reflective\u2011strip criteria; thus compliance cannot be verified from the available evidence.",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** Determine whether the site\u2019s workers are using and maintaining the required personal protective equipment according to safety standards.\n**Media type analyzed:** image\n**Grounded:** Yes\n**Confidence:** medium\n**Severity:** moderate\n\n## Visual Findings\nImage analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).\n\nDetected classes: Hardhat, Hardhat, Safety Vest, Safety Vest\n\n## Validated Answer\nThe image analysis tentatively detects safety vests (34\u202f% and 30\u202f% confidence) and hardhats (48\u202f% and 39\u202f% confidence), so their presence is possible but not certain. The safety manual requires safety vests to be kept clean and have clearly visible reflective strips at all times [1]; the analysis cannot confirm whether these conditions are met, and no hard\u2011hat requirement is provided in the excerpts. Consequently, compliance with the PPE standards cannot be verified from the available evidence.\n\n## Supporting Evidence\n- **ppe_safety_manual.txt** \u2014 relevance N/A\n  > vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...\n\n## Reasoning\nThe image analysis only tentatively detected safety vests and hardhats with low confidence and cannot confirm that the vests meet the clean, reflective\u2011strip criteria; thus compliance cannot be verified from the available evidence.\n\n## Recommended Action\nConduct an on\u2011site inspection to verify that workers are wearing clean, reflective safety vests and hardhats as required\n",
+    "errors": []
+  },
+  "72a8e0eb0315435fa7a44ef946a60f30": {
+    "id": "72a8e0eb0315435fa7a44ef946a60f30",
+    "status": "draft",
+    "created_at": "2026-08-18T02:51:04.193920+00:00",
+    "reviewed_at": null,
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "istockphoto-2198788321-640_adpp_is.mp4",
+    "kind": "video",
+    "search_query": "hardhat safety vest gloves goggles respirator compliance",
+    "investigation_focus": "Determine whether the site\u2019s personnel are wearing and maintaining all required PPE items in accordance with safety standards.",
+    "detected_classes": [
+      "Hardhat",
+      "Safety Vest"
+    ],
+    "visual_summary": "Video analysis processed 7 frames. 0 frames contained violations. Also observed: Hardhat, Safety Vest.",
+    "retrieved_chunk_count": 3,
+    "retrieved_chunk_debug": [
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      }
+    ],
+    "evidence": [],
+    "validated_answer": "The knowledge repository does not contain information to answer this question.",
+    "grounded": false,
+    "confidence": "low",
+    "severity": "unknown",
+    "recommended_action": "Insufficient grounded evidence to determine an action. Manual review required.",
+    "reasoning": "No validated evidence was available to support a compliance conclusion.",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** Determine whether the site\u2019s personnel are wearing and maintaining all required PPE items in accordance with safety standards.\n**Media type analyzed:** video\n**Grounded:** No\n**Confidence:** low\n**Severity:** unknown\n\n## Visual Findings\nVideo analysis processed 7 frames. 0 frames contained violations. Also observed: Hardhat, Safety Vest.\n\nDetected classes: Hardhat, Safety Vest\n\n## Validated Answer\nThe knowledge repository does not contain information to answer this question.\n\n## Supporting Evidence\n_No grounded evidence was found._\n\n## Reasoning\nNo validated evidence was available to support a compliance conclusion.\n\n## Recommended Action\nInsufficient grounded evidence to determine an action. Manual review required.\n",
+    "errors": []
+  },
+  "3c67ea9e7c3d49b0a5cd7fb9d760502a": {
+    "id": "3c67ea9e7c3d49b0a5cd7fb9d760502a",
+    "status": "draft",
+    "created_at": "2026-08-18T02:51:39.833300+00:00",
+    "reviewed_at": null,
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "10498144-business-people-in-hard-hats-at-construction-site.jpg",
+    "kind": "image",
+    "search_query": "hardhat safety vest gloves goggles respirator compliance",
+    "investigation_focus": "Determine whether the site\u2019s workers are using and maintaining the required personal protective equipment according to safety standards.",
+    "detected_classes": [
+      "Hardhat",
+      "Hardhat",
+      "Hardhat",
+      "Hardhat"
+    ],
+    "visual_summary": "Image analysis found 4 items: Hardhat detected at 56% confidence (moderate confidence), Hardhat detected at 52% confidence (moderate confidence), Hardhat detected at 48% confidence (low confidence), Hardhat detected at 26% confidence (low confidence).",
+    "retrieved_chunk_count": 3,
+    "retrieved_chunk_debug": [
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      }
+    ],
+    "evidence": [],
+    "validated_answer": "The knowledge repository does not contain information to answer this question.",
+    "grounded": false,
+    "confidence": "low",
+    "severity": "unknown",
+    "recommended_action": "Insufficient grounded evidence to determine an action. Manual review required.",
+    "reasoning": "No validated evidence was available to support a compliance conclusion.",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** Determine whether the site\u2019s workers are using and maintaining the required personal protective equipment according to safety standards.\n**Media type analyzed:** image\n**Grounded:** No\n**Confidence:** low\n**Severity:** unknown\n\n## Visual Findings\nImage analysis found 4 items: Hardhat detected at 56% confidence (moderate confidence), Hardhat detected at 52% confidence (moderate confidence), Hardhat detected at 48% confidence (low confidence), Hardhat detected at 26% confidence (low confidence).\n\nDetected classes: Hardhat, Hardhat, Hardhat, Hardhat\n\n## Validated Answer\nThe knowledge repository does not contain information to answer this question.\n\n## Supporting Evidence\n_No grounded evidence was found._\n\n## Reasoning\nNo validated evidence was available to support a compliance conclusion.\n\n## Recommended Action\nInsufficient grounded evidence to determine an action. Manual review required.\n",
+    "errors": []
+  },
+  "ddcb9aa2fb5c4bd0907aaa7e80ecef27": {
+    "id": "ddcb9aa2fb5c4bd0907aaa7e80ecef27",
+    "status": "draft",
+    "created_at": "2026-08-18T02:52:46.513750+00:00",
+    "reviewed_at": null,
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "Steps-You-Can-Take-When-a-Construction-Contract-Is-Breached-e1763582965656.jpg",
+    "kind": "image",
+    "search_query": "hardhat safety vest gloves goggles respirator compliance",
+    "investigation_focus": "Determine whether the site\u2019s workers are using and maintaining the required personal protective equipment according to safety standards.",
+    "detected_classes": [
+      "Hardhat",
+      "Hardhat",
+      "Safety Vest",
+      "Safety Vest"
+    ],
+    "visual_summary": "Image analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).",
+    "retrieved_chunk_count": 3,
+    "retrieved_chunk_debug": [
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      }
+    ],
+    "evidence": [
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...",
+        "relevance": "N/A"
+      }
+    ],
+    "validated_answer": "The image analysis yields low\u2011confidence detections of hard\u2011hats (\u224848\u202f% and 39\u202f%) and safety vests (\u224834\u202f% and 30\u202f%), suggesting workers might be wearing those items but the observations are uncertain. The safety manual requires vests to be clean and have clearly visible reflective strips [1]; the analysis does not indicate the condition of the vests or the presence of other required PPE such as gloves, eye protection, or respirators. Consequently, the available evidence is insufficient to confirm full compliance with the documented PPE standards.",
+    "grounded": true,
+    "confidence": "medium",
+    "severity": "moderate",
+    "recommended_action": "Perform an on\u2011site inspection to verify that workers are wearing the required PPE and that safety vests are clean with visible reflective strips.",
+    "reasoning": "The image only shows low\u2011confidence detections of hard\u2011hats and safety vests, providing no confirmation of their presence, condition, or of other required items such as gloves or eye protection. Because the evidence is insufficient to confirm full compliance, a direct check is needed.",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** Determine whether the site\u2019s workers are using and maintaining the required personal protective equipment according to safety standards.\n**Media type analyzed:** image\n**Grounded:** Yes\n**Confidence:** medium\n**Severity:** moderate\n\n## Visual Findings\nImage analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).\n\nDetected classes: Hardhat, Hardhat, Safety Vest, Safety Vest\n\n## Validated Answer\nThe image analysis yields low\u2011confidence detections of hard\u2011hats (\u224848\u202f% and 39\u202f%) and safety vests (\u224834\u202f% and 30\u202f%), suggesting workers might be wearing those items but the observations are uncertain. The safety manual requires vests to be clean and have clearly visible reflective strips [1]; the analysis does not indicate the condition of the vests or the presence of other required PPE such as gloves, eye protection, or respirators. Consequently, the available evidence is insufficient to confirm full compliance with the documented PPE standards.\n\n## Supporting Evidence\n- **ppe_safety_manual.txt** \u2014 relevance N/A\n  > vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...\n\n## Reasoning\nThe image only shows low\u2011confidence detections of hard\u2011hats and safety vests, providing no confirmation of their presence, condition, or of other required items such as gloves or eye protection. Because the evidence is insufficient to confirm full compliance, a direct check is needed.\n\n## Recommended Action\nPerform an on\u2011site inspection to verify that workers are wearing the required PPE and that safety vests are clean with visible reflective strips.\n",
+    "errors": []
+  },
+  "81d3628ca26143108f9a8fd92743c6d2": {
+    "id": "81d3628ca26143108f9a8fd92743c6d2",
+    "status": "draft",
+    "created_at": "2026-08-18T02:53:17.648719+00:00",
+    "reviewed_at": null,
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "african-businesspeople-wearing-hard-hats-AMRFXR.jpg",
+    "kind": "image",
+    "search_query": "hardhat safety vest gloves compliance",
+    "investigation_focus": "Determine if the required PPE such as hardhats, safety vests, and gloves is being used correctly and meets compliance standards.",
+    "detected_classes": [
+      "Hardhat",
+      "Hardhat",
+      "Hardhat"
+    ],
+    "visual_summary": "Image analysis found 3 items: Hardhat detected at 52% confidence (moderate confidence), Hardhat detected at 28% confidence (low confidence), Hardhat detected at 26% confidence (low confidence).",
+    "retrieved_chunk_count": 3,
+    "retrieved_chunk_debug": [
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      }
+    ],
+    "evidence": [
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "olicy will result in suspension or termination. Hardhats must meet ANSI/ISEA Z89.1 standards and be inspected daily for cracks or damage. SECTION 2: SAFETY VEST REQUIREMENTS High-visibility safety vests must be worn by all personnel in active work zones. Safety vests must be Class 2 or Class 3...",
+        "relevance": "N/A"
+      },
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "CONSTRUCTION SITE SAFETY MANUAL Vision Desk AI - Personal Protective Equipment (PPE) Compliance Guide Version 1.0 SECTION 1: HARDHAT REQUIREMENTS All workers must wear an approved hardhat at all times when on an active construction site. Hardhats protect against falling objects, bumps, and...",
+        "relevance": "N/A"
+      }
+    ],
+    "validated_answer": "The image analysis shows three hardhat detections, one at moderate confidence (52\u202f%) and two at low confidence, suggesting workers are likely wearing hardhats. All workers must wear an approved hardhat that meets ANSI/ISEA\u202fZ89.1 standards and be worn at all times on an active construction site [3][2]. No safety vests or protective gloves were identified in the image, so compliance with the high\u2011visibility vest requirement [2] and glove",
+    "grounded": true,
+    "confidence": "high",
+    "severity": "moderate",
+    "recommended_action": "Instruct all personnel to put on approved high\u2011visibility vests and protective gloves immediately.",
+    "reasoning": "The image shows three hardhats (one moderate confidence, two low), indicating hardhat compliance, but no vests or gloves are visible, violating required PPE standards for visibility and hand protection. This partial compliance creates a moderate safety risk.",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** Determine if the required PPE such as hardhats, safety vests, and gloves is being used correctly and meets compliance standards.\n**Media type analyzed:** image\n**Grounded:** Yes\n**Confidence:** high\n**Severity:** moderate\n\n## Visual Findings\nImage analysis found 3 items: Hardhat detected at 52% confidence (moderate confidence), Hardhat detected at 28% confidence (low confidence), Hardhat detected at 26% confidence (low confidence).\n\nDetected classes: Hardhat, Hardhat, Hardhat\n\n## Validated Answer\nThe image analysis shows three hardhat detections, one at moderate confidence (52\u202f%) and two at low confidence, suggesting workers are likely wearing hardhats. All workers must wear an approved hardhat that meets ANSI/ISEA\u202fZ89.1 standards and be worn at all times on an active construction site [3][2]. No safety vests or protective gloves were identified in the image, so compliance with the high\u2011visibility vest requirement [2] and glove\n\n## Supporting Evidence\n- **ppe_safety_manual.txt** \u2014 relevance N/A\n  > olicy will result in suspension or termination. Hardhats must meet ANSI/ISEA Z89.1 standards and be inspected daily for cracks or damage. SECTION 2: SAFETY VEST REQUIREMENTS High-visibility safety vests must be worn by all personnel in active work zones. Safety vests must be Class 2 or Class 3...\n- **ppe_safety_manual.txt** \u2014 relevance N/A\n  > CONSTRUCTION SITE SAFETY MANUAL Vision Desk AI - Personal Protective Equipment (PPE) Compliance Guide Version 1.0 SECTION 1: HARDHAT REQUIREMENTS All workers must wear an approved hardhat at all times when on an active construction site. Hardhats protect against falling objects, bumps, and...\n\n## Reasoning\nThe image shows three hardhats (one moderate confidence, two low), indicating hardhat compliance, but no vests or gloves are visible, violating required PPE standards for visibility and hand protection. This partial compliance creates a moderate safety risk.\n\n## Recommended Action\nInstruct all personnel to put on approved high\u2011visibility vests and protective gloves immediately.\n",
+    "errors": []
+  },
+  "34feaf2390b34394a09a832e9d0a70d9": {
+    "id": "34feaf2390b34394a09a832e9d0a70d9",
+    "status": "draft",
+    "created_at": "2026-08-18T02:56:39.394549+00:00",
+    "reviewed_at": null,
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "Steps-You-Can-Take-When-a-Construction-Contract-Is-Breached-e1763582965656.jpg",
+    "kind": "image",
+    "search_query": "hardhat safety vest gloves goggles respirator compliance",
+    "investigation_focus": "Determine whether the site\u2019s workers are using and maintaining the required personal protective equipment according to safety standards.",
+    "detected_classes": [
+      "Hardhat",
+      "Hardhat",
+      "Safety Vest",
+      "Safety Vest"
+    ],
+    "visual_summary": "Image analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).",
+    "retrieved_chunk_count": 3,
+    "retrieved_chunk_debug": [
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      }
+    ],
+    "evidence": [
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...",
+        "relevance": "N/A"
+      }
+    ],
+    "validated_answer": "The image analysis tentatively detects hardhats (\u224848\u202f% and 39\u202f% confidence) and safety vests (\u224834\u202f% and 30\u202f% confidence). The safety manual requires safety vests to be clean and have clearly visible reflective strips [1]; the image does not show the condition of the vests, and the excerpts contain no hard\u2011hat requirement. Consequently, the evidence is insufficient to confirm full compliance with PPE standards.",
+    "grounded": true,
+    "confidence": "medium",
+    "severity": "moderate",
+    "recommended_action": "Perform an on\u2011site PPE inspection to verify that all workers are wearing approved hardhats and clean, reflective safety vests",
+    "reasoning": "The image only tentatively detects hardhats and safety vests at low confidence, and the condition of the vests is not shown, so compliance cannot be confirmed. This uncertainty poses a moderate safety risk that warrants immediate verification.",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** Determine whether the site\u2019s workers are using and maintaining the required personal protective equipment according to safety standards.\n**Media type analyzed:** image\n**Grounded:** Yes\n**Confidence:** medium\n**Severity:** moderate\n\n## Visual Findings\nImage analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).\n\nDetected classes: Hardhat, Hardhat, Safety Vest, Safety Vest\n\n## Validated Answer\nThe image analysis tentatively detects hardhats (\u224848\u202f% and 39\u202f% confidence) and safety vests (\u224834\u202f% and 30\u202f% confidence). The safety manual requires safety vests to be clean and have clearly visible reflective strips [1]; the image does not show the condition of the vests, and the excerpts contain no hard\u2011hat requirement. Consequently, the evidence is insufficient to confirm full compliance with PPE standards.\n\n## Supporting Evidence\n- **ppe_safety_manual.txt** \u2014 relevance N/A\n  > vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...\n\n## Reasoning\nThe image only tentatively detects hardhats and safety vests at low confidence, and the condition of the vests is not shown, so compliance cannot be confirmed. This uncertainty poses a moderate safety risk that warrants immediate verification.\n\n## Recommended Action\nPerform an on\u2011site PPE inspection to verify that all workers are wearing approved hardhats and clean, reflective safety vests\n",
+    "errors": []
+  },
+  "532674f9c732499bbfcdb88ea809a299": {
+    "id": "532674f9c732499bbfcdb88ea809a299",
+    "status": "approved",
+    "created_at": "2026-08-18T02:59:29.407460+00:00",
+    "reviewed_at": "2026-08-18T03:32:13.629780+00:00",
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "Steps-You-Can-Take-When-a-Construction-Contract-Is-Breached-e1763582965656.jpg",
+    "kind": "image",
+    "search_query": "hardhat safety vest gloves goggles respirator compliance",
+    "investigation_focus": "Determine whether all required PPE items are being correctly used and maintained according to safety standards.",
+    "detected_classes": [
+      "Hardhat",
+      "Hardhat",
+      "Safety Vest",
+      "Safety Vest"
+    ],
+    "visual_summary": "Image analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).",
+    "retrieved_chunk_count": 3,
+    "retrieved_chunk_debug": [
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      }
+    ],
+    "evidence": [
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...",
+        "relevance": "62%"
+      }
+    ],
+    "validated_answer": "The image analysis only tentatively detects a hard\u2011hat and a safety vest (confidence below 50%). The safety\u2011vest requirement states it must be kept clean and have clearly visible reflective strips, but the image does not provide enough detail to confirm this\u202f[1]. Consequently, we cannot determine that all required PPE is being correctly used and maintained.",
+    "grounded": true,
+    "confidence": "medium",
+    "severity": "moderate",
+    "recommended_action": "Conduct an on\u2011site inspection to verify that workers are wearing proper hard hats and clean, reflective safety vests",
+    "reasoning": "The image only tentatively detects hard hats and safety vests with confidence below 50%, and the condition of the safety vest cannot be confirmed, so compliance cannot be assured. A",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** Determine whether all required PPE items are being correctly used and maintained according to safety standards.\n**Media type analyzed:** image\n**Grounded:** Yes\n**Confidence:** medium\n**Severity:** moderate\n\n## Visual Findings\nImage analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).\n\nDetected classes: Hardhat, Hardhat, Safety Vest, Safety Vest\n\n## Validated Answer\nThe image analysis only tentatively detects a hard\u2011hat and a safety vest (confidence below 50%). The safety\u2011vest requirement states it must be kept clean and have clearly visible reflective strips, but the image does not provide enough detail to confirm this\u202f[1]. Consequently, we cannot determine that all required PPE is being correctly used and maintained.\n\n## Supporting Evidence\n- **ppe_safety_manual.txt** \u2014 relevance 62%\n  > vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...\n\n## Reasoning\nThe image only tentatively detects hard hats and safety vests with confidence below 50%, and the condition of the safety vest cannot be confirmed, so compliance cannot be assured. A\n\n## Recommended Action\nConduct an on\u2011site inspection to verify that workers are wearing proper hard hats and clean, reflective safety vests\n",
+    "errors": []
+  },
+  "00a4709520034ef68880298efda3ac45": {
+    "id": "00a4709520034ef68880298efda3ac45",
+    "status": "draft",
+    "created_at": "2026-08-18T14:32:19.723699+00:00",
+    "reviewed_at": null,
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "construction-worker-is-standing-front-building-construction-1-1024x1024.webp",
+    "kind": "image",
+    "search_query": "hardhat safety vest gloves goggles respirator compliance",
+    "investigation_focus": "Determine whether the site\u2019s personnel are wearing and maintaining all required PPE items in accordance with safety standards.",
+    "detected_classes": [
+      "Safety Vest",
+      "Hardhat"
+    ],
+    "visual_summary": "Image analysis found 2 items: Safety Vest detected at 58% confidence (moderate confidence), Hardhat detected at 32% confidence (low confidence).",
+    "retrieved_chunk_count": 3,
+    "retrieved_chunk_debug": [
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      }
+    ],
+    "evidence": [],
+    "validated_answer": "The knowledge repository does not contain information to answer this question.",
+    "grounded": false,
+    "confidence": "low",
+    "severity": "unknown",
+    "recommended_action": "Insufficient grounded evidence to determine an action. Manual review required.",
+    "reasoning": "No validated evidence was available to support a compliance conclusion.",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** Determine whether the site\u2019s personnel are wearing and maintaining all required PPE items in accordance with safety standards.\n**Media type analyzed:** image\n**Grounded:** No\n**Confidence:** low\n**Severity:** unknown\n\n## Visual Findings\nImage analysis found 2 items: Safety Vest detected at 58% confidence (moderate confidence), Hardhat detected at 32% confidence (low confidence).\n\nDetected classes: Safety Vest, Hardhat\n\n## Validated Answer\nThe knowledge repository does not contain information to answer this question.\n\n## Supporting Evidence\n_No grounded evidence was found._\n\n## Reasoning\nNo validated evidence was available to support a compliance conclusion.\n\n## Recommended Action\nInsufficient grounded evidence to determine an action. Manual review required.\n",
+    "errors": []
+  },
+  "2067e3214bf849ae82fb3bae74eac03c": {
+    "id": "2067e3214bf849ae82fb3bae74eac03c",
+    "status": "draft",
+    "created_at": "2026-08-18T14:32:43.033882+00:00",
+    "reviewed_at": null,
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "african-businesspeople-wearing-hard-hats-AMRFXR.jpg",
+    "kind": "image",
+    "search_query": "hardhat safety vest gloves goggles respirator compliance",
+    "investigation_focus": "Determine if the required PPE (hard hats, safety vests, gloves, goggles, and respirators) meets applicable safety standards and is being properly used.",
+    "detected_classes": [
+      "Hardhat",
+      "Hardhat",
+      "Hardhat"
+    ],
+    "visual_summary": "Image analysis found 3 items: Hardhat detected at 52% confidence (moderate confidence), Hardhat detected at 28% confidence (low confidence), Hardhat detected at 26% confidence (low confidence).",
+    "retrieved_chunk_count": 3,
+    "retrieved_chunk_debug": [
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      }
+    ],
+    "evidence": [
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...",
+        "relevance": "62%"
+      },
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "ical equipment must use insulated gloves rated for the voltage level. SECTION 4: GOGGLES AND EYE PROTECTION Safety goggles or face shields must be worn when working with chemicals, power tools, or flying debris. Standard prescription glasses do not qualify as safety eyewear. Eye protection must...",
+        "relevance": "60%"
+      },
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "t masks or respirators must be worn in areas with airborne particles, dust, or chemical fumes. The correct mask type must be selected based on the specific hazard level. N95 masks are required in areas with fine dust or biological hazards. Masks must be properly fitted and inspected before each...",
+        "relevance": "59%"
+      }
+    ],
+    "validated_answer": "The image analysis shows a hard hat detected with moderate confidence (52%) and two additional possible hard hats at low confidence (28% and 26%). The safety manual outlines requirements for safety vests, gloves, goggles, and respirators\u202f[1][2][3], but none of these items are visible in the image, so their proper use cannot be confirmed.",
+    "grounded": true,
+    "confidence": "high",
+    "severity": "severe",
+    "recommended_action": "Stop work and require all workers to don the required safety vests, gloves, goggles, and respirators before proceeding.",
+    "reasoning": "Only a hard hat (moderately confident) is visible, while the safety manual mandates additional PPE (vests, gloves, goggles, respirators) that are absent from the image, indicating a clear violation of safety requirements.",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** Determine if the required PPE (hard hats, safety vests, gloves, goggles, and respirators) meets applicable safety standards and is being properly used.\n**Media type analyzed:** image\n**Grounded:** Yes\n**Confidence:** high\n**Severity:** severe\n\n## Visual Findings\nImage analysis found 3 items: Hardhat detected at 52% confidence (moderate confidence), Hardhat detected at 28% confidence (low confidence), Hardhat detected at 26% confidence (low confidence).\n\nDetected classes: Hardhat, Hardhat, Hardhat\n\n## Validated Answer\nThe image analysis shows a hard hat detected with moderate confidence (52%) and two additional possible hard hats at low confidence (28% and 26%). The safety manual outlines requirements for safety vests, gloves, goggles, and respirators\u202f[1][2][3], but none of these items are visible in the image, so their proper use cannot be confirmed.\n\n## Supporting Evidence\n- **ppe_safety_manual.txt** \u2014 relevance 62%\n  > vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...\n- **ppe_safety_manual.txt** \u2014 relevance 60%\n  > ical equipment must use insulated gloves rated for the voltage level. SECTION 4: GOGGLES AND EYE PROTECTION Safety goggles or face shields must be worn when working with chemicals, power tools, or flying debris. Standard prescription glasses do not qualify as safety eyewear. Eye protection must...\n- **ppe_safety_manual.txt** \u2014 relevance 59%\n  > t masks or respirators must be worn in areas with airborne particles, dust, or chemical fumes. The correct mask type must be selected based on the specific hazard level. N95 masks are required in areas with fine dust or biological hazards. Masks must be properly fitted and inspected before each...\n\n## Reasoning\nOnly a hard hat (moderately confident) is visible, while the safety manual mandates additional PPE (vests, gloves, goggles, respirators) that are absent from the image, indicating a clear violation of safety requirements.\n\n## Recommended Action\nStop work and require all workers to don the required safety vests, gloves, goggles, and respirators before proceeding.\n",
+    "errors": []
+  },
+  "79de1e19d10048bd9ad3a350d9f21386": {
+    "id": "79de1e19d10048bd9ad3a350d9f21386",
+    "status": "approved",
+    "created_at": "2026-08-18T14:39:51.162871+00:00",
+    "reviewed_at": "2026-08-18T14:42:08.397500+00:00",
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "Steps-You-Can-Take-When-a-Construction-Contract-Is-Breached-e1763582965656.jpg",
+    "kind": "image",
+    "search_query": "hardhat safety vest gloves goggles respirator compliance",
+    "investigation_focus": "Determine whether the site\u2019s workers are using and maintaining the required personal protective equipment according to safety standards.",
+    "detected_classes": [
+      "Hardhat",
+      "Hardhat",
+      "Safety Vest",
+      "Safety Vest"
+    ],
+    "visual_summary": "Image analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).",
+    "retrieved_chunk_count": 3,
+    "retrieved_chunk_debug": [
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      }
+    ],
+    "evidence": [
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...",
+        "relevance": "62%"
+      }
+    ],
+    "validated_answer": "The image only tentatively detects safety vests (34\u202f% and 30\u202f% confidence) and hard hats (48\u202f% and 39\u202f% confidence), so their presence is not confirmed. The safety manual requires safety vests to be clean and have clearly visible reflective strips\u202f[1]; the image does not show whether this condition is met, and it contains no hard\u2011hat requirement. Consequently, compliance with the required personal protective equipment cannot be determined.",
+    "grounded": true,
+    "confidence": "medium",
+    "severity": "moderate",
+    "recommended_action": "Conduct an on\u2011site inspection to verify that workers are wearing the required safety vests (clean with visible reflective strips) and hard hats.",
+    "reasoning": "The image only provides low\u2011confidence detections of hard hats and safety vests, so their presence and condition cannot be confirmed; the safety manual mandates specific vest criteria, which are not observable, resulting in uncertain compliance.",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** Determine whether the site\u2019s workers are using and maintaining the required personal protective equipment according to safety standards.\n**Media type analyzed:** image\n**Grounded:** Yes\n**Confidence:** medium\n**Severity:** moderate\n\n## Visual Findings\nImage analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).\n\nDetected classes: Hardhat, Hardhat, Safety Vest, Safety Vest\n\n## Validated Answer\nThe image only tentatively detects safety vests (34\u202f% and 30\u202f% confidence) and hard hats (48\u202f% and 39\u202f% confidence), so their presence is not confirmed. The safety manual requires safety vests to be clean and have clearly visible reflective strips\u202f[1]; the image does not show whether this condition is met, and it contains no hard\u2011hat requirement. Consequently, compliance with the required personal protective equipment cannot be determined.\n\n## Supporting Evidence\n- **ppe_safety_manual.txt** \u2014 relevance 62%\n  > vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...\n\n## Reasoning\nThe image only provides low\u2011confidence detections of hard hats and safety vests, so their presence and condition cannot be confirmed; the safety manual mandates specific vest criteria, which are not observable, resulting in uncertain compliance.\n\n## Recommended Action\nConduct an on\u2011site inspection to verify that workers are wearing the required safety vests (clean with visible reflective strips) and hard hats.\n",
+    "errors": []
+  },
+  "449d1b0f258f41a78d83bcde53deac59": {
+    "id": "449d1b0f258f41a78d83bcde53deac59",
+    "status": "draft",
+    "created_at": "2026-08-18T14:57:25.858435+00:00",
+    "reviewed_at": null,
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "african-businesspeople-wearing-hard-hats-AMRFXR.jpg",
+    "kind": "image",
+    "search_query": "hardhat safety vest gloves goggles respirator compliance",
+    "investigation_focus": "Determine whether the site\u2019s personal protective equipment meets the required safety standards and regulatory guidelines.",
+    "detected_classes": [
+      "Hardhat",
+      "Hardhat",
+      "Hardhat"
+    ],
+    "visual_summary": "Image analysis found 3 items: Hardhat detected at 52% confidence (moderate confidence), Hardhat detected at 28% confidence (low confidence), Hardhat detected at 26% confidence (low confidence).",
+    "retrieved_chunk_count": 3,
+    "retrieved_chunk_debug": [
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      }
+    ],
+    "evidence": [],
+    "validated_answer": "The knowledge repository does not contain information to answer this question.",
+    "grounded": false,
+    "confidence": "low",
+    "severity": "unknown",
+    "recommended_action": "Insufficient grounded evidence to determine an action. Manual review required.",
+    "reasoning": "No validated evidence was available to support a compliance conclusion.",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** Determine whether the site\u2019s personal protective equipment meets the required safety standards and regulatory guidelines.\n**Media type analyzed:** image\n**Grounded:** No\n**Confidence:** low\n**Severity:** unknown\n\n## Visual Findings\nImage analysis found 3 items: Hardhat detected at 52% confidence (moderate confidence), Hardhat detected at 28% confidence (low confidence), Hardhat detected at 26% confidence (low confidence).\n\nDetected classes: Hardhat, Hardhat, Hardhat\n\n## Validated Answer\nThe knowledge repository does not contain information to answer this question.\n\n## Supporting Evidence\n_No grounded evidence was found._\n\n## Reasoning\nNo validated evidence was available to support a compliance conclusion.\n\n## Recommended Action\nInsufficient grounded evidence to determine an action. Manual review required.\n",
+    "errors": []
+  },
+  "9431693645b141afa4e6a63466e6be84": {
+    "id": "9431693645b141afa4e6a63466e6be84",
+    "status": "draft",
+    "created_at": "2026-08-18T14:58:08.785942+00:00",
+    "reviewed_at": null,
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "Steps-You-Can-Take-When-a-Construction-Contract-Is-Breached-e1763582965656.jpg",
+    "kind": "image",
+    "search_query": "hardhat safety vest gloves goggles respirator compliance",
+    "investigation_focus": "Determine whether the site\u2019s personal protective equipment meets the required safety standards and regulatory guidelines.",
+    "detected_classes": [
+      "Hardhat",
+      "Hardhat",
+      "Safety Vest",
+      "Safety Vest"
+    ],
+    "visual_summary": "Image analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).",
+    "retrieved_chunk_count": 3,
+    "retrieved_chunk_debug": [
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      }
+    ],
+    "evidence": [
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...",
+        "relevance": "62%"
+      }
+    ],
+    "validated_answer": "The image analysis only tentatively detects hard\u2011hats (\u224848\u202f% and 39\u202f% confidence) and safety vests (\u224834\u202f% and 30\u202f% confidence), so their presence is not confirmed with high certainty. The PPE manual states that safety vests must be clean and have clearly visible reflective strips, and that a vest in a designated area constitutes a serious violation\u202f[1]; the analysis provides no information about vest condition or reflectivity. Because no hard\u2011hat requirements appear in the excerpts, compliance for hard\u2011hats cannot be evaluated, and the available evidence is insufficient to confirm that the site\u2019s PPE meets all required standards.",
+    "grounded": true,
+    "confidence": "medium",
+    "severity": "moderate",
+    "recommended_action": "Perform an on\u2011site visual inspection to confirm whether workers are wearing hard\u2011hats and clean, reflective safety vests.",
+    "reasoning": "The image analysis only tentatively detected hard\u2011hats and safety vests at low confidence, providing no reliable confirmation of their presence or condition. Because the PPE manual treats an unverified vest in a designated area as a serious violation, the lack of confirmed compliance warrants a moderate\u2011severity response and direct verification.",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** Determine whether the site\u2019s personal protective equipment meets the required safety standards and regulatory guidelines.\n**Media type analyzed:** image\n**Grounded:** Yes\n**Confidence:** medium\n**Severity:** moderate\n\n## Visual Findings\nImage analysis found 4 items: Hardhat detected at 48% confidence (low confidence), Hardhat detected at 39% confidence (low confidence), Safety Vest detected at 34% confidence (low confidence), Safety Vest detected at 30% confidence (low confidence).\n\nDetected classes: Hardhat, Hardhat, Safety Vest, Safety Vest\n\n## Validated Answer\nThe image analysis only tentatively detects hard\u2011hats (\u224848\u202f% and 39\u202f% confidence) and safety vests (\u224834\u202f% and 30\u202f% confidence), so their presence is not confirmed with high certainty. The PPE manual states that safety vests must be clean and have clearly visible reflective strips, and that a vest in a designated area constitutes a serious violation\u202f[1]; the analysis provides no information about vest condition or reflectivity. Because no hard\u2011hat requirements appear in the excerpts, compliance for hard\u2011hats cannot be evaluated, and the available evidence is insufficient to confirm that the site\u2019s PPE meets all required standards.\n\n## Supporting Evidence\n- **ppe_safety_manual.txt** \u2014 relevance 62%\n  > vest in designated areas is a serious safety violation. Safety vests must be kept clean and reflective strips must be clearly visible at all times. SECTION 3: GLOVES REQUIREMENTS Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment. The correct type of glove...\n\n## Reasoning\nThe image analysis only tentatively detected hard\u2011hats and safety vests at low confidence, providing no reliable confirmation of their presence or condition. Because the PPE manual treats an unverified vest in a designated area as a serious violation, the lack of confirmed compliance warrants a moderate\u2011severity response and direct verification.\n\n## Recommended Action\nPerform an on\u2011site visual inspection to confirm whether workers are wearing hard\u2011hats and clean, reflective safety vests.\n",
+    "errors": []
+  },
+  "bbb7a57c446e4fae9881077925ca1c55": {
+    "id": "bbb7a57c446e4fae9881077925ca1c55",
+    "status": "approved",
+    "created_at": "2026-08-29T07:53:30.361492+00:00",
+    "reviewed_at": "2026-08-29T07:53:54.718525+00:00",
+    "reviewer_notes": null,
+    "query": "Check PPE compliance",
+    "filename": "0ca7582917644eccb7da4391c2bd0f9d.webp",
+    "kind": "image",
+    "search_query": "Check PPE compliance",
+    "investigation_focus": "General PPE compliance review.",
+    "detected_classes": [
+      "Safety Vest",
+      "Hardhat"
+    ],
+    "visual_summary": "Image analysis found 2 items: Safety Vest detected at 58% confidence (moderate confidence), Hardhat detected at 32% confidence (low confidence).",
+    "retrieved_chunk_count": 3,
+    "retrieved_chunk_debug": [
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      },
+      {
+        "filename": "ppe_safety_manual.txt",
+        "score": null
+      }
+    ],
+    "evidence": [
+      {
+        "source": "ppe_safety_manual.txt",
+        "section": "N/A",
+        "excerpt": "CONSTRUCTION SITE SAFETY MANUAL Vision Desk AI - Personal Protective Equipment (PPE) Compliance Guide Version 1.0 SECTION 1: HARDHAT REQUIREMENTS All workers must wear an approved hardhat at all times when on an active construction site. Hardhats protect against falling objects, bumps, and...",
+        "relevance": "46%"
+      }
+    ],
+    "validated_answer": "The image analysis indicates a safety vest is likely present (58\u202f% confidence) and a hard\u2011hat is only tentatively detected (32\u202f% confidence). Section\u202f1 of the safety manual requires all workers to wear an approved hard\u2011hat at all times on an active construction site [1]; the low\u2011confidence detection means compliance cannot be confirmed. No safety\u2011vest requirement is provided in the excerpts.",
+    "grounded": true,
+    "confidence": "medium",
+    "severity": "moderate",
+    "recommended_action": "Perform an on\u2011site check and ensure all workers are wearing approved hard\u2011hats immediately.",
+    "reasoning": "The safety manual mandates hard\u2011hat use, but the image only shows a low\u2011confidence (32\u202f%) detection, so compliance cannot be confirmed. Since the requirement is not verified, a potential violation exists, warranting corrective action.",
+    "report": "# PPE Compliance Investigation Report\n\n**Investigation focus:** General PPE compliance review.\n**Media type analyzed:** image\n**Grounded:** Yes\n**Confidence:** medium\n**Severity:** moderate\n\n## Visual Findings\nImage analysis found 2 items: Safety Vest detected at 58% confidence (moderate confidence), Hardhat detected at 32% confidence (low confidence).\n\nDetected classes: Safety Vest, Hardhat\n\n## Validated Answer\nThe image analysis indicates a safety vest is likely present (58\u202f% confidence) and a hard\u2011hat is only tentatively detected (32\u202f% confidence). Section\u202f1 of the safety manual requires all workers to wear an approved hard\u2011hat at all times on an active construction site [1]; the low\u2011confidence detection means compliance cannot be confirmed. No safety\u2011vest requirement is provided in the excerpts.\n\n## Supporting Evidence\n- **ppe_safety_manual.txt** \u2014 relevance 46%\n  > CONSTRUCTION SITE SAFETY MANUAL Vision Desk AI - Personal Protective Equipment (PPE) Compliance Guide Version 1.0 SECTION 1: HARDHAT REQUIREMENTS All workers must wear an approved hardhat at all times when on an active construction site. Hardhats protect against falling objects, bumps, and...\n\n## Reasoning\nThe safety manual mandates hard\u2011hat use, but the image only shows a low\u2011confidence (32\u202f%) detection, so compliance cannot be confirmed. Since the requirement is not verified, a potential violation exists, warranting corrective action.\n\n## Recommended Action\nPerform an on\u2011site check and ensure all workers are wearing approved hard\u2011hats immediately.\n",
+    "errors": []
+  }
+}
