@@ -1,28 +1,20 @@
-<<<<<<< HEAD
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-=======
 # Node Dependencies
 node_modules/
 frontend/node_modules/
+frontend/dist/
+dist/
+dist-ssr/
+
+# Environment & Secrets
+.env
+*.env
+*.local
 
 # Virtual Environment
 venv/
 env/
 ENV/
-.venv
-
+.venv/
 
 # Python Bytecode & Cache
 __pycache__/
@@ -30,15 +22,27 @@ __pycache__/
 *.pyo
 *.pyd
 .pytest_cache/
->>>>>>> 20a8305 (Migrate UI to React with Mobbin-inspired agency landing page and workstation)
+
+# Databases & Large Assets
+*.db
+*.sqlite
+*.sqlite3
+vision_desk_ai.db
+yolov8n.pt
+vector_db/
+uploads/
+runs/
+datasets/
+models/
+static/detections/
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+.vscode/
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+*.code-workspace

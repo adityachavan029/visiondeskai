@@ -7,8 +7,9 @@ import AuthModal from './components/AuthModal';
 import VisionInspector from './components/VisionInspector';
 import KnowledgeHub from './components/KnowledgeHub';
 import InvestigationEngine from './components/InvestigationEngine';
+import SafetyDashboard from './components/SafetyDashboard';
 import Footer from './components/Footer';
-import { Eye, BookOpen, Bot } from 'lucide-react';
+import { Eye, BookOpen, Bot, ShieldCheck } from 'lucide-react';
 import axios from 'axios';
 
 export default function App() {
@@ -161,6 +162,19 @@ export default function App() {
                   <Bot className="w-4 h-4" />
                   <span>AI Investigation</span>
                 </button>
+
+                <button
+                  data-cursor="DASHBOARD"
+                  onClick={() => setActiveTab('dashboard')}
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-medium transition-all ${
+                    activeTab === 'dashboard'
+                      ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 font-bold shadow-sm'
+                      : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
+                  }`}
+                >
+                  <ShieldCheck className="w-4 h-4 text-emerald-500" />
+                  <span>Safety Dashboard</span>
+                </button>
               </div>
 
               <div className="text-[10px] text-zinc-500 hidden sm:block">
@@ -173,6 +187,7 @@ export default function App() {
               {activeTab === 'vision' && <VisionInspector theme={theme} />}
               {activeTab === 'knowledge' && <KnowledgeHub theme={theme} />}
               {activeTab === 'agent' && <InvestigationEngine theme={theme} />}
+              {activeTab === 'dashboard' && <SafetyDashboard theme={theme} />}
             </div>
 
           </div>
