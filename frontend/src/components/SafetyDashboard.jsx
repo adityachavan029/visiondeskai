@@ -347,10 +347,10 @@ export default function SafetyDashboard({ theme = 'dark' }) {
           <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono">
             {/* Department Filter */}
             <div>
-              <label className="block text-zinc-400 mb-1.5 font-sans font-medium">Departments</label>
+              <label className="block text-zinc-600 dark:text-zinc-400 mb-1.5 font-sans font-medium">Departments</label>
               <div className="space-y-1 max-h-32 overflow-y-auto pr-1">
                 {DEPARTMENTS.map((dept) => (
-                  <label key={dept} className="flex items-center space-x-2 text-zinc-300 cursor-pointer">
+                  <label key={dept} className="flex items-center space-x-2 text-zinc-700 dark:text-zinc-300 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={selectedDepts.includes(dept)}
@@ -358,7 +358,7 @@ export default function SafetyDashboard({ theme = 'dark' }) {
                         if (e.target.checked) setSelectedDepts([...selectedDepts, dept]);
                         else setSelectedDepts(selectedDepts.filter((d) => d !== dept));
                       }}
-                      className="rounded border-zinc-700 bg-zinc-900 text-emerald-500 focus:ring-0"
+                      className="rounded border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-emerald-600 dark:text-emerald-500 focus:ring-0"
                     />
                     <span className="truncate">{dept}</span>
                   </label>
@@ -368,10 +368,10 @@ export default function SafetyDashboard({ theme = 'dark' }) {
 
             {/* Severity Filter */}
             <div>
-              <label className="block text-zinc-400 mb-1.5 font-sans font-medium">Severity Level</label>
+              <label className="block text-zinc-600 dark:text-zinc-400 mb-1.5 font-sans font-medium">Severity Level</label>
               <div className="space-y-1">
                 {['Low', 'Medium', 'High', 'Critical'].map((sev) => (
-                  <label key={sev} className="flex items-center space-x-2 text-zinc-300 cursor-pointer">
+                  <label key={sev} className="flex items-center space-x-2 text-zinc-700 dark:text-zinc-300 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={selectedSeverities.includes(sev)}
@@ -379,7 +379,7 @@ export default function SafetyDashboard({ theme = 'dark' }) {
                         if (e.target.checked) setSelectedSeverities([...selectedSeverities, sev]);
                         else setSelectedSeverities(selectedSeverities.filter((s) => s !== sev));
                       }}
-                      className="rounded border-zinc-700 bg-zinc-900 text-emerald-500 focus:ring-0"
+                      className="rounded border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-emerald-600 dark:text-emerald-500 focus:ring-0"
                     />
                     <span className="capitalize" style={{ color: SEVERITY_COLORS[sev] }}>
                       ● {sev}
@@ -391,10 +391,10 @@ export default function SafetyDashboard({ theme = 'dark' }) {
 
             {/* Status Filter */}
             <div>
-              <label className="block text-zinc-400 mb-1.5 font-sans font-medium">Status</label>
+              <label className="block text-zinc-600 dark:text-zinc-400 mb-1.5 font-sans font-medium">Status</label>
               <div className="space-y-1">
                 {['Open', 'Investigating', 'Resolved'].map((st) => (
-                  <label key={st} className="flex items-center space-x-2 text-zinc-300 cursor-pointer">
+                  <label key={st} className="flex items-center space-x-2 text-zinc-700 dark:text-zinc-300 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={selectedStatuses.includes(st)}
@@ -402,7 +402,7 @@ export default function SafetyDashboard({ theme = 'dark' }) {
                         if (e.target.checked) setSelectedStatuses([...selectedStatuses, st]);
                         else setSelectedStatuses(selectedStatuses.filter((s) => s !== st));
                       }}
-                      className="rounded border-zinc-700 bg-zinc-900 text-emerald-500 focus:ring-0"
+                      className="rounded border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-emerald-600 dark:text-emerald-500 focus:ring-0"
                     />
                     <span style={{ color: STATUS_COLORS[st] }}>● {st}</span>
                   </label>
@@ -414,7 +414,7 @@ export default function SafetyDashboard({ theme = 'dark' }) {
             <div className="flex flex-col justify-end">
               <button
                 onClick={resetFilters}
-                className="flex items-center justify-center space-x-1.5 px-3 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 transition-all"
+                className="flex items-center justify-center space-x-1.5 px-3 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 transition-all font-semibold"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Reset All Filters</span>
@@ -432,14 +432,14 @@ export default function SafetyDashboard({ theme = 'dark' }) {
           isDark ? 'bg-zinc-900/60 border-zinc-800 text-white' : 'bg-white border-zinc-200 text-zinc-900 shadow-sm'
         }`}>
           <div className="flex items-center justify-between">
-            <span className="text-xs font-mono text-zinc-500 uppercase tracking-wider">Compliance Score</span>
-            <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400">
+            <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400 uppercase tracking-wider font-semibold">Compliance Score</span>
+            <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
               <ShieldCheck className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline space-x-2">
-            <span className="text-3xl font-extrabold tracking-tight font-heading">{compPct}%</span>
-            <span className="text-xs text-zinc-400 font-mono">
+            <span className="text-3xl font-extrabold tracking-tight font-heading text-zinc-900 dark:text-white">{compPct}%</span>
+            <span className="text-xs text-zinc-600 dark:text-zinc-400 font-mono">
               ({kpis.compliant_observations ?? 0} / {kpis.total_observations ?? 0} obs)
             </span>
           </div>
@@ -453,20 +453,20 @@ export default function SafetyDashboard({ theme = 'dark' }) {
           isDark ? 'bg-zinc-900/60 border-zinc-800 text-white' : 'bg-white border-zinc-200 text-zinc-900 shadow-sm'
         }`}>
           <div className="flex items-center justify-between">
-            <span className="text-xs font-mono text-zinc-500 uppercase tracking-wider">Total Violations</span>
-            <div className="p-2 rounded-xl bg-rose-500/10 text-rose-400">
+            <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400 uppercase tracking-wider font-semibold">Total Violations</span>
+            <div className="p-2 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400">
               <ShieldAlert className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline space-x-3">
-            <span className="text-3xl font-extrabold tracking-tight font-heading">{kpis.total_violations ?? 0}</span>
-            <span className="text-xs font-semibold text-rose-400 font-mono px-2 py-0.5 rounded bg-rose-500/10">
+            <span className="text-3xl font-extrabold tracking-tight font-heading text-zinc-900 dark:text-white">{kpis.total_violations ?? 0}</span>
+            <span className="text-xs font-semibold text-rose-600 dark:text-rose-400 font-mono px-2 py-0.5 rounded bg-rose-500/10 border border-rose-500/20">
               {kpis.critical_count ?? 0} Critical
             </span>
           </div>
-          <div className="mt-3 flex items-center justify-between text-xs text-zinc-400 font-mono">
-            <span>Open: <strong className="text-rose-400">{kpis.open_count ?? 0}</strong></span>
-            <span>Investigating: <strong className="text-amber-400">{kpis.investigating_count ?? 0}</strong></span>
+          <div className="mt-3 flex items-center justify-between text-xs text-zinc-600 dark:text-zinc-400 font-mono">
+            <span>Open: <strong className="text-rose-600 dark:text-rose-400">{kpis.open_count ?? 0}</strong></span>
+            <span>Investigating: <strong className="text-amber-600 dark:text-amber-400">{kpis.investigating_count ?? 0}</strong></span>
           </div>
         </div>
 
@@ -475,18 +475,18 @@ export default function SafetyDashboard({ theme = 'dark' }) {
           isDark ? 'bg-zinc-900/60 border-zinc-800 text-white' : 'bg-white border-zinc-200 text-zinc-900 shadow-sm'
         }`}>
           <div className="flex items-center justify-between">
-            <span className="text-xs font-mono text-zinc-500 uppercase tracking-wider">Resolution Efficiency</span>
-            <div className="p-2 rounded-xl bg-blue-500/10 text-blue-400">
+            <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400 uppercase tracking-wider font-semibold">Resolution Efficiency</span>
+            <div className="p-2 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400">
               <Clock className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline space-x-2">
-            <span className="text-3xl font-extrabold tracking-tight font-heading">{kpis.resolution_rate ?? 100}%</span>
-            <span className="text-xs text-zinc-400 font-mono">Resolved</span>
+            <span className="text-3xl font-extrabold tracking-tight font-heading text-zinc-900 dark:text-white">{kpis.resolution_rate ?? 100}%</span>
+            <span className="text-xs text-zinc-600 dark:text-zinc-400 font-mono">Resolved</span>
           </div>
-          <div className="mt-3 flex items-center justify-between text-xs text-zinc-400 font-mono">
+          <div className="mt-3 flex items-center justify-between text-xs text-zinc-600 dark:text-zinc-400 font-mono">
             <span>Avg Res Time:</span>
-            <strong className="text-blue-400 font-bold">{kpis.avg_resolution_time_hrs ?? 0} hrs</strong>
+            <strong className="text-blue-600 dark:text-blue-400 font-bold">{kpis.avg_resolution_time_hrs ?? 0} hrs</strong>
           </div>
         </div>
 
@@ -495,23 +495,23 @@ export default function SafetyDashboard({ theme = 'dark' }) {
           isDark ? 'bg-zinc-900/60 border-zinc-800 text-white' : 'bg-white border-zinc-200 text-zinc-900 shadow-sm'
         }`}>
           <div className="flex items-center justify-between">
-            <span className="text-xs font-mono text-zinc-500 uppercase tracking-wider">Risk Telemetry</span>
-            <div className="p-2 rounded-xl bg-amber-500/10 text-amber-400">
+            <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400 uppercase tracking-wider font-semibold">Risk Telemetry</span>
+            <div className="p-2 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
               <Flame className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2 space-y-1">
-            <div className="text-xs text-zinc-400 font-mono flex justify-between">
+            <div className="text-xs text-zinc-600 dark:text-zinc-400 font-mono flex justify-between">
               <span>Peak Risk Slot:</span>
-              <span className="text-amber-400 font-bold">{kpis.peak_hazard_time ?? '14:00 - 15:00'}</span>
+              <span className="text-amber-600 dark:text-amber-400 font-bold">{kpis.peak_hazard_time ?? '14:00 - 15:00'}</span>
             </div>
-            <div className="text-xs text-zinc-400 font-mono flex justify-between">
+            <div className="text-xs text-zinc-600 dark:text-zinc-400 font-mono flex justify-between">
               <span>High Risk Dept:</span>
-              <span className="text-rose-400 font-bold truncate max-w-[120px]">{kpis.high_risk_department ?? 'N/A'}</span>
+              <span className="text-rose-600 dark:text-rose-400 font-bold truncate max-w-[120px]">{kpis.high_risk_department ?? 'N/A'}</span>
             </div>
-            <div className="text-xs text-zinc-400 font-mono flex justify-between">
+            <div className="text-xs text-zinc-600 dark:text-zinc-400 font-mono flex justify-between">
               <span>Repeat Breaches:</span>
-              <span className="text-zinc-200 font-bold">{kpis.repeat_count ?? 0} ({kpis.repeat_rate ?? 0}%)</span>
+              <span className="text-zinc-900 dark:text-zinc-200 font-bold">{kpis.repeat_count ?? 0} ({kpis.repeat_rate ?? 0}%)</span>
             </div>
           </div>
         </div>
@@ -671,14 +671,14 @@ export default function SafetyDashboard({ theme = 'dark' }) {
             {analyticsData.charts.dept_leaderboard.map((item, idx) => (
               <div
                 key={item.department}
-                className="p-2.5 rounded-xl border border-zinc-200/50 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-950 flex items-center justify-between"
+                className="p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800/80 bg-zinc-100 dark:bg-zinc-950 flex items-center justify-between"
               >
                 <div className="space-y-0.5 max-w-[170px]">
                   <div className="flex items-center space-x-1.5">
                     <span className="text-[10px] font-mono font-bold text-zinc-500">#{idx + 1}</span>
-                    <span className="text-xs font-bold truncate">{item.department}</span>
+                    <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100 truncate">{item.department}</span>
                   </div>
-                  <div className="text-[10px] text-zinc-400 font-mono">
+                  <div className="text-[10px] text-zinc-600 dark:text-zinc-400 font-mono">
                     {item.violations} violations • {item.repeats} repeat
                   </div>
                 </div>
@@ -691,10 +691,10 @@ export default function SafetyDashboard({ theme = 'dark' }) {
                   </div>
                   <span className={`text-[9px] px-1.5 py-0.5 rounded font-mono font-bold uppercase ${
                     item.status_indicator === 'green'
-                      ? 'bg-emerald-500/10 text-emerald-400'
+                      ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
                       : item.status_indicator === 'amber'
-                      ? 'bg-amber-500/10 text-amber-400'
-                      : 'bg-rose-500/10 text-rose-400'
+                      ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20'
+                      : 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20'
                   }`}>
                     {item.status_indicator}
                   </span>
@@ -714,19 +714,19 @@ export default function SafetyDashboard({ theme = 'dark' }) {
           <div>
             <h3 className="font-bold text-sm sm:text-base font-heading flex items-center space-x-2">
               <span>Hourly Safety Risk Heatmap</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/30 font-mono uppercase font-bold">
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-violet-500/10 text-violet-600 dark:text-violet-400 border border-violet-500/30 font-mono uppercase font-bold">
                 Challenge Visualization
               </span>
             </h3>
-            <p className="text-xs text-zinc-500">Incident frequency density by hour of day (07:00 - 20:00)</p>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400">Incident frequency density by hour of day (07:00 - 20:00)</p>
           </div>
-          <div className="flex items-center space-x-2 text-[10px] font-mono text-zinc-400">
+          <div className="flex items-center space-x-2 text-[10px] font-mono text-zinc-600 dark:text-zinc-400">
             <span>Low Risk</span>
             <div className="flex space-x-1">
-              <span className="w-3 h-3 rounded bg-zinc-800" />
-              <span className="w-3 h-3 rounded bg-amber-900/60" />
-              <span className="w-3 h-3 rounded bg-amber-500" />
-              <span className="w-3 h-3 rounded bg-rose-600" />
+              <span className="w-3 h-3 rounded bg-zinc-200 dark:bg-zinc-800" />
+              <span className="w-3 h-3 rounded bg-amber-200 dark:bg-amber-900/60" />
+              <span className="w-3 h-3 rounded bg-amber-500 text-zinc-950 font-bold" />
+              <span className="w-3 h-3 rounded bg-rose-600 text-white font-bold" />
             </div>
             <span>High Risk</span>
           </div>
@@ -735,23 +735,23 @@ export default function SafetyDashboard({ theme = 'dark' }) {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs font-mono">
             <thead>
-              <tr className="text-zinc-400 border-b border-zinc-800">
-                <th className="py-2 pr-4 font-normal">Department</th>
+              <tr className="text-zinc-600 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800">
+                <th className="py-2 pr-4 font-bold">Department</th>
                 {[7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map((h) => (
-                  <th key={h} className="py-2 px-1 text-center font-normal">{h}:00</th>
+                  <th key={h} className="py-2 px-1 text-center font-semibold">{h}:00</th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {analyticsData.charts.heatmap.map((row) => (
-                <tr key={row.department} className="border-b border-zinc-800/40">
-                  <td className="py-2 pr-4 font-bold text-zinc-200 truncate max-w-[160px]">{row.department}</td>
+                <tr key={row.department} className="border-b border-zinc-200 dark:border-zinc-800/40">
+                  <td className="py-2 pr-4 font-bold text-zinc-900 dark:text-zinc-200 truncate max-w-[160px]">{row.department}</td>
                   {[7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map((h) => {
                     const count = row[`h_${h}`] || 0;
-                    let bgColor = 'bg-zinc-800/40 text-zinc-600';
+                    let bgColor = isDark ? 'bg-zinc-800/40 text-zinc-600' : 'bg-zinc-100 text-zinc-400';
                     if (count >= 4) bgColor = 'bg-rose-600 text-white font-bold animate-pulse';
                     else if (count >= 2) bgColor = 'bg-amber-500 text-zinc-950 font-bold';
-                    else if (count === 1) bgColor = 'bg-amber-900/60 text-amber-200';
+                    else if (count === 1) bgColor = isDark ? 'bg-amber-900/60 text-amber-200' : 'bg-amber-100 text-amber-800 font-semibold';
 
                     return (
                       <td key={h} className="py-1 px-1 text-center">
@@ -774,19 +774,19 @@ export default function SafetyDashboard({ theme = 'dark' }) {
       }`}>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
           <div>
-            <h3 className="font-bold text-sm sm:text-base font-heading">Detected Violations Table</h3>
-            <p className="text-xs text-zinc-500">Live safety monitoring incident log</p>
+            <h3 className="font-bold text-sm sm:text-base font-heading text-zinc-900 dark:text-zinc-100">Detected Violations Table</h3>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400">Live safety monitoring incident log</p>
           </div>
 
           {/* Search bar */}
           <div className="relative w-full sm:w-64">
-            <Search className="w-3.5 h-3.5 absolute left-3 top-3 text-zinc-500" />
+            <Search className="w-3.5 h-3.5 absolute left-3 top-3 text-zinc-500 dark:text-zinc-400" />
             <input
               type="text"
               placeholder="Search by ID, dept, type..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-4 py-1.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 text-xs text-zinc-200 focus:outline-none focus:border-zinc-600 font-mono"
+              className="w-full pl-9 pr-4 py-1.5 rounded-xl border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-xs text-zinc-900 dark:text-zinc-200 focus:outline-none focus:border-zinc-500 font-mono"
             />
           </div>
         </div>
@@ -794,7 +794,7 @@ export default function SafetyDashboard({ theme = 'dark' }) {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs font-mono">
             <thead>
-              <tr className="text-zinc-500 border-b border-zinc-200 dark:border-zinc-800">
+              <tr className="text-zinc-600 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800">
                 <th className="py-2.5 px-3">Violation ID</th>
                 <th className="py-2.5 px-3">Timestamp</th>
                 <th className="py-2.5 px-3">Department</th>
@@ -806,12 +806,12 @@ export default function SafetyDashboard({ theme = 'dark' }) {
             </thead>
             <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800/60">
               {filteredViolations.slice(0, 15).map((vio) => (
-                <tr key={vio.id} className="hover:bg-zinc-100/50 dark:hover:bg-zinc-800/40 transition-colors">
-                  <td className="py-2.5 px-3 font-bold text-zinc-200">{vio.id}</td>
-                  <td className="py-2.5 px-3 text-zinc-400">{vio.timestamp}</td>
-                  <td className="py-2.5 px-3 font-sans font-medium text-zinc-300">{vio.department}</td>
+                <tr key={vio.id} className="hover:bg-zinc-100/80 dark:hover:bg-zinc-800/40 transition-colors">
+                  <td className="py-2.5 px-3 font-bold text-zinc-900 dark:text-zinc-200">{vio.id}</td>
+                  <td className="py-2.5 px-3 text-zinc-600 dark:text-zinc-400">{vio.timestamp}</td>
+                  <td className="py-2.5 px-3 font-sans font-medium text-zinc-800 dark:text-zinc-300">{vio.department}</td>
                   <td className="py-2.5 px-3">
-                    <span className="px-2 py-0.5 rounded bg-zinc-800 text-zinc-200 border border-zinc-700">
+                    <span className="px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border border-zinc-300 dark:border-zinc-700">
                       {vio.violation_type}
                     </span>
                   </td>
@@ -842,7 +842,7 @@ export default function SafetyDashboard({ theme = 'dark' }) {
                   <td className="py-2.5 px-3 text-right">
                     <button
                       onClick={() => setSelectedViolationModal(vio)}
-                      className="text-xs text-blue-400 hover:underline font-semibold"
+                      className="text-xs text-blue-600 dark:text-blue-400 hover:underline font-semibold"
                     >
                       View Details
                     </button>
@@ -856,16 +856,18 @@ export default function SafetyDashboard({ theme = 'dark' }) {
 
       {/* 7. Incident Detail Modal */}
       {selectedViolationModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="w-full max-w-lg p-6 rounded-3xl border border-zinc-800 bg-zinc-900 text-white space-y-4">
-            <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+          <div className={`w-full max-w-lg p-6 rounded-3xl border space-y-4 transition-all shadow-2xl ${
+            isDark ? 'bg-zinc-900 border-zinc-800 text-white' : 'bg-white border-zinc-200 text-zinc-900'
+          }`}>
+            <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-3">
               <div className="flex items-center space-x-2">
                 <ShieldAlert className="w-5 h-5 text-rose-500" />
                 <h3 className="font-bold font-heading text-lg">{selectedViolationModal.id}</h3>
               </div>
               <button
                 onClick={() => setSelectedViolationModal(null)}
-                className="p-1 rounded-lg hover:bg-zinc-800 text-zinc-400"
+                className="p-1 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-500 dark:text-zinc-400"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -873,38 +875,38 @@ export default function SafetyDashboard({ theme = 'dark' }) {
 
             <div className="grid grid-cols-2 gap-3 text-xs font-mono">
               <div>
-                <span className="text-zinc-500">Department:</span>
-                <p className="font-bold text-zinc-200">{selectedViolationModal.department}</p>
+                <span className="text-zinc-500 dark:text-zinc-400">Department:</span>
+                <p className="font-bold text-zinc-900 dark:text-zinc-200">{selectedViolationModal.department}</p>
               </div>
               <div>
-                <span className="text-zinc-500">Location:</span>
-                <p className="font-bold text-zinc-200">{selectedViolationModal.location}</p>
+                <span className="text-zinc-500 dark:text-zinc-400">Location:</span>
+                <p className="font-bold text-zinc-900 dark:text-zinc-200">{selectedViolationModal.location}</p>
               </div>
               <div>
-                <span className="text-zinc-500">Timestamp:</span>
-                <p className="text-zinc-300">{selectedViolationModal.timestamp}</p>
+                <span className="text-zinc-500 dark:text-zinc-400">Timestamp:</span>
+                <p className="text-zinc-700 dark:text-zinc-300">{selectedViolationModal.timestamp}</p>
               </div>
               <div>
-                <span className="text-zinc-500">Violation Type:</span>
-                <p className="font-bold text-violet-400">{selectedViolationModal.violation_type}</p>
+                <span className="text-zinc-500 dark:text-zinc-400">Violation Type:</span>
+                <p className="font-bold text-violet-600 dark:text-violet-400">{selectedViolationModal.violation_type}</p>
               </div>
               <div>
-                <span className="text-zinc-500">Severity:</span>
+                <span className="text-zinc-500 dark:text-zinc-400">Severity:</span>
                 <p className="font-bold" style={{ color: SEVERITY_COLORS[selectedViolationModal.severity] }}>
                   {selectedViolationModal.severity}
                 </p>
               </div>
               <div>
-                <span className="text-zinc-500">Status:</span>
+                <span className="text-zinc-500 dark:text-zinc-400">Status:</span>
                 <p className="font-bold" style={{ color: STATUS_COLORS[selectedViolationModal.status] }}>
                   {selectedViolationModal.status}
                 </p>
               </div>
             </div>
 
-            <div className="pt-2 border-t border-zinc-800 space-y-1">
-              <span className="text-xs text-zinc-500 font-mono">Supervisor Investigation Notes:</span>
-              <p className="text-xs text-zinc-300 bg-zinc-950 p-3 rounded-xl border border-zinc-800 font-sans">
+            <div className="pt-2 border-t border-zinc-200 dark:border-zinc-800 space-y-1">
+              <span className="text-xs text-zinc-500 dark:text-zinc-400 font-mono">Supervisor Investigation Notes:</span>
+              <p className="text-xs text-zinc-800 dark:text-zinc-300 bg-zinc-50 dark:bg-zinc-950 p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 font-sans">
                 {selectedViolationModal.notes || 'No notes logged.'}
               </p>
             </div>
@@ -912,7 +914,7 @@ export default function SafetyDashboard({ theme = 'dark' }) {
             <div className="flex justify-end pt-2">
               <button
                 onClick={() => setSelectedViolationModal(null)}
-                className="px-4 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-xs font-mono font-bold"
+                className="px-4 py-2 rounded-xl bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-xs font-mono font-bold"
               >
                 Close
               </button>
@@ -923,57 +925,59 @@ export default function SafetyDashboard({ theme = 'dark' }) {
 
       {/* 8. Executive Report Modal (Print / Downloadable Summary) */}
       {isReportModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
-          <div className="w-full max-w-3xl max-h-[90vh] overflow-y-auto p-8 rounded-3xl border border-zinc-800 bg-zinc-950 text-white space-y-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md">
+          <div className={`w-full max-w-3xl max-h-[90vh] overflow-y-auto p-8 rounded-3xl border space-y-6 shadow-2xl ${
+            isDark ? 'bg-zinc-950 border-zinc-800 text-white' : 'bg-white border-zinc-200 text-zinc-900'
+          }`}>
             
-            <div className="flex items-center justify-between border-b border-zinc-800 pb-4">
+            <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-4">
               <div className="flex items-center space-x-3">
-                <div className="p-2.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                <div className="p-2.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400">
                   <FileText className="w-6 h-6" />
                 </div>
                 <div>
                   <h2 className="text-lg font-bold font-heading">VisionDesk AI Safety Audit Executive Report</h2>
-                  <p className="text-xs text-zinc-400 font-mono">Generated on {new Date().toLocaleDateString()}</p>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400 font-mono">Generated on {new Date().toLocaleDateString()}</p>
                 </div>
               </div>
               <button
                 onClick={() => setIsReportModalOpen(false)}
-                className="p-1.5 rounded-xl hover:bg-zinc-800 text-zinc-400"
+                className="p-1.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-500 dark:text-zinc-400"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {/* Summary Grid */}
-            <div className="grid grid-cols-3 gap-4 text-xs font-mono bg-zinc-900/60 p-4 rounded-2xl border border-zinc-800">
+            <div className="grid grid-cols-3 gap-4 text-xs font-mono bg-zinc-50 dark:bg-zinc-900/60 p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800">
               <div>
-                <span className="text-zinc-500">Overall Compliance:</span>
-                <p className="text-xl font-bold text-emerald-400">{compPct}%</p>
+                <span className="text-zinc-500 dark:text-zinc-400">Overall Compliance:</span>
+                <p className="text-xl font-bold text-emerald-600 dark:text-emerald-400">{compPct}%</p>
               </div>
               <div>
-                <span className="text-zinc-500">Total Violations:</span>
-                <p className="text-xl font-bold text-white">{kpis.total_violations}</p>
+                <span className="text-zinc-500 dark:text-zinc-400">Total Violations:</span>
+                <p className="text-xl font-bold text-zinc-900 dark:text-white">{kpis.total_violations}</p>
               </div>
               <div>
-                <span className="text-zinc-500">Critical Incidents:</span>
-                <p className="text-xl font-bold text-rose-400">{kpis.critical_count}</p>
+                <span className="text-zinc-500 dark:text-zinc-400">Critical Incidents:</span>
+                <p className="text-xl font-bold text-rose-600 dark:text-rose-400">{kpis.critical_count}</p>
               </div>
             </div>
 
             {/* Executive Notes */}
-            <div className="space-y-2 text-xs text-zinc-300 font-sans leading-relaxed">
-              <h4 className="font-bold text-white font-heading text-sm">Executive Key Observations:</h4>
-              <ul className="list-disc pl-5 space-y-1 text-zinc-400 font-mono">
+            <div className="space-y-2 text-xs text-zinc-700 dark:text-zinc-300 font-sans leading-relaxed">
+              <h4 className="font-bold text-zinc-900 dark:text-white font-heading text-sm">Executive Key Observations:</h4>
+              <ul className="list-disc pl-5 space-y-1 text-zinc-600 dark:text-zinc-400 font-mono">
                 <li>Workplace compliance currently stands at <strong>{compPct}%</strong> across all monitored zones.</li>
                 <li>Highest violation frequency recorded in <strong>{kpis.high_risk_department}</strong> during peak hours <strong>{kpis.peak_hazard_time}</strong>.</li>
                 <li>Average incident resolution window is <strong>{kpis.avg_resolution_time_hrs} hours</strong> with a resolution rate of <strong>{kpis.resolution_rate}%</strong>.</li>
               </ul>
             </div>
 
-            <div className="flex justify-end space-x-3 pt-4 border-t border-zinc-800">
+            <div className="flex justify-end space-x-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
               <button
                 onClick={() => window.print()}
-                className="flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-xs font-mono font-bold"
+                className="flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-900 dark:text-white text-xs font-mono font-bold border border-zinc-300 dark:border-zinc-700"
               >
                 <Printer className="w-4 h-4" />
                 <span>Print / Save as PDF</span>
