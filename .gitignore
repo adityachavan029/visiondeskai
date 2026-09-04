@@ -1,8 +1,20 @@
+# Node Dependencies
+node_modules/
+frontend/node_modules/
+frontend/dist/
+dist/
+dist-ssr/
+
+# Environment & Secrets
+.env
+*.env
+*.local
+
 # Virtual Environment
 venv/
 env/
 ENV/
-.venv
+.venv/
 
 # Python Bytecode & Cache
 __pycache__/
@@ -11,14 +23,11 @@ __pycache__/
 *.pyd
 .pytest_cache/
 
-# Environment & Credentials
-.env
-.env.local
-.env.*.local
-
-# Databases & Vector Stores
+# Databases, Vector Stores & Large Assets
 *.db
+*.sqlite
 *.sqlite3
+vision_desk_ai.db
 vector_db/
 chroma.sqlite3
 
@@ -28,18 +37,25 @@ outputs/
 reports/
 runs/
 datasets/
+static/detections/
 
 # AI Model Weights & Checkpoints
 *.pt
 *.onnx
 *.bin
 models/
+yolov8n.pt
 
 # IDE & Editor files
 .vscode/
 .idea/
 *.swp
 *.code-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 # OS Generated Files
 Thumbs.db

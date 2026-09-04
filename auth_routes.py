@@ -13,14 +13,18 @@ from schemas import (
 from auth_utils import (
     hash_password, verify_password, create_access_token, decode_access_token,
 )
+
 router = APIRouter(prefix="/api", tags=["auth"])
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/login", auto_error=False)
+
 GOOGLE_CLIENT_ID = "975199681043-ari1stn891vhktfti4cclrbtmg87b77q.apps.googleusercontent.com"
+
 @router.post("/signup", response_model=TokenResponse, status_code=status.HTTP_201_CREATED)
 def signup(payload: SignupRequest, db: Session = Depends(get_db)):
     existing = db.query(User).filter(User.email == payload.email).first()
     if existing:
         raise HTTPException(status_code=400, detail="An account with this email already exists.")
+
     user = User(
         name=payload.name,
         email=payload.email,
@@ -29,15 +33,19 @@ def signup(payload: SignupRequest, db: Session = Depends(get_db)):
     db.add(user)
     db.commit()
     db.refresh(user)
+
     token = create_access_token({"sub": str(user.id)})
     return TokenResponse(access_token=token, user=UserOut.model_validate(user))
+
 @router.post("/login", response_model=TokenResponse)
 def login(payload: LoginRequest, db: Session = Depends(get_db)):
     user = db.query(User).filter(User.email == payload.email).first()
     if not user or not verify_password(payload.password, user.hashed_password):
         raise HTTPException(status_code=401, detail="Incorrect email or password.")
+
     token = create_access_token({"sub": str(user.id)})
     return TokenResponse(access_token=token, user=UserOut.model_validate(user))
+
 @router.post("/google", response_model=TokenResponse)
 def google_login(payload: GoogleLoginRequest, db: Session = Depends(get_db)):
     try:
@@ -48,10 +56,12 @@ def google_login(payload: GoogleLoginRequest, db: Session = Depends(get_db)):
         )
     except ValueError:
         raise HTTPException(status_code=401, detail="Invalid Google token.")
+
     email = idinfo.get("email")
     name = idinfo.get("name", email.split("@")[0])
     if not email:
         raise HTTPException(status_code=401, detail="Google account has no email.")
+
     user = db.query(User).filter(User.email == email).first()
     if not user:
         random_password = secrets.token_urlsafe(32)
@@ -63,8 +73,10 @@ def google_login(payload: GoogleLoginRequest, db: Session = Depends(get_db)):
         db.add(user)
         db.commit()
         db.refresh(user)
+
     token = create_access_token({"sub": str(user.id)})
     return TokenResponse(access_token=token, user=UserOut.model_validate(user))
+
 def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)) -> User:
     credentials_error = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -73,13 +85,17 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
     )
     if not token:
         raise credentials_error
+
     payload = decode_access_token(token)
     if payload is None or "sub" not in payload:
         raise credentials_error
+
     user = db.query(User).filter(User.id == int(payload["sub"])).first()
     if user is None:
         raise credentials_error
+
     return user
+
 @router.get("/me", response_model=UserOut)
 def read_current_user(current_user: User = Depends(get_current_user)):
     return current_user

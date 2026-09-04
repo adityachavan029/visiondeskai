@@ -20,6 +20,7 @@ from typing import Dict, List, Optional
 
 STORE_PATH = Path("investigations.json")
 _lock = threading.Lock()
+
 def _load() -> Dict[str, dict]:
     if not STORE_PATH.exists():
         return {}
@@ -28,15 +29,17 @@ def _load() -> Dict[str, dict]:
             return json.load(f)
     except (json.JSONDecodeError, OSError):
         return {}
+
 def _save(data: Dict[str, dict]) -> None:
     with STORE_PATH.open("w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, default=str)
+
 def create_investigation(state: dict) -> dict:
     """Store a freshly-generated investigation as status='draft'."""
     investigation_id = uuid.uuid4().hex
     record = {
         "id": investigation_id,
-        "status": "draft", 
+        "status": "draft",  # draft -> approved | rejected | edited
         "created_at": datetime.now(timezone.utc).isoformat(),
         "reviewed_at": None,
         "reviewer_notes": None,
@@ -47,10 +50,12 @@ def create_investigation(state: dict) -> dict:
         data[investigation_id] = record
         _save(data)
     return record
+
 def get_investigation(investigation_id: str) -> Optional[dict]:
     with _lock:
         data = _load()
     return data.get(investigation_id)
+
 def list_investigations(status: Optional[str] = None) -> List[dict]:
     with _lock:
         data = _load()
@@ -59,6 +64,7 @@ def list_investigations(status: Optional[str] = None) -> List[dict]:
         records = [r for r in records if r.get("status") == status]
     records.sort(key=lambda r: r.get("created_at", ""), reverse=True)
     return records
+
 def update_investigation(investigation_id: str, updates: dict) -> Optional[dict]:
     with _lock:
         data = _load()

@@ -1,0 +1,69 @@
+CONSTRUCTION SITE SAFETY MANUAL
+Vision Desk AI - Personal Protective Equipment (PPE) Compliance Guide
+Version 1.0
+
+SECTION 1: HARDHAT REQUIREMENTS
+All workers must wear an approved hardhat at all times when on an active construction site.
+Hardhats protect against falling objects, bumps, and electrical hazards.
+Workers found without a hardhat will be immediately removed from the site and issued a formal warning.
+Repeated violations of the hardhat policy will result in suspension or termination.
+Hardhats must meet ANSI/ISEA Z89.1 standards and be inspected daily for cracks or damage.
+
+SECTION 2: SAFETY VEST REQUIREMENTS
+High-visibility safety vests must be worn by all personnel in active work zones.
+Safety vests must be Class 2 or Class 3 depending on the risk level of the work area.
+Workers operating near moving vehicles or machinery must always wear a safety vest.
+Failure to wear a safety vest in designated areas is a serious safety violation.
+Safety vests must be kept clean and reflective strips must be clearly visible at all times.
+
+SECTION 3: GLOVES REQUIREMENTS
+Protective gloves must be worn when handling sharp materials, chemicals, or heavy equipment.
+The correct type of glove must be selected based on the specific hazard present.
+Torn or damaged gloves must be replaced immediately and must not be used.
+Workers handling electrical equipment must use insulated gloves rated for the voltage level.
+
+SECTION 4: GOGGLES AND EYE PROTECTION
+Safety goggles or face shields must be worn when working with chemicals, power tools, or flying debris.
+Standard prescription glasses do not qualify as safety eyewear.
+Eye protection must meet ANSI Z87.1 standards.
+Workers who experience eye irritation must report immediately to the site safety officer.
+
+SECTION 5: FACE MASK REQUIREMENTS
+Dust masks or respirators must be worn in areas with airborne particles, dust, or chemical fumes.
+The correct mask type must be selected based on the specific hazard level.
+N95 masks are required in areas with fine dust or biological hazards.
+Masks must be properly fitted and inspected before each use.
+
+SECTION 6: FALL DETECTION AND PREVENTION
+Falls are the leading cause of serious injury on construction sites.
+All workers must be secured with a harness when working at heights above 1.8 meters.
+If a fall is detected or witnessed, immediately call emergency services at the site emergency number.
+The area around the fall must be secured and no equipment moved until safety officers arrive.
+All fall incidents must be reported within one hour using the incident report form.
+Workers involved in a fall must receive medical evaluation before returning to work.
+
+SECTION 7: LADDER SAFETY
+Ladders must be inspected before every use for damage, loose rungs, or defects.
+Only one person is permitted on a ladder at a time unless the ladder is specifically designed for multiple users.
+Ladders must be positioned at the correct angle: one unit out for every four units of height.
+Workers must maintain three points of contact with the ladder at all times.
+Ladders must be secured at the top and bottom before climbing.
+
+SECTION 8: SAFETY CONE AND HAZARD MARKING
+Safety cones and hazard markers must be placed around all active work zones.
+Cones must be positioned at least 2 meters from the edge of any hazard.
+Workers must not remove or relocate safety cones without authorization from a site supervisor.
+Inadequate hazard marking is a major safety violation subject to disciplinary action.
+
+SECTION 9: ENFORCEMENT AND PENALTIES
+First violation: Verbal warning and mandatory re-training session.
+Second violation: Written warning placed in personnel file.
+Third violation: Suspension from site for a minimum of 3 working days.
+Fourth violation: Termination of contract and removal from site.
+Serious violations including falls from height or injury to others may result in immediate termination.
+
+SECTION 10: EMERGENCY PROCEDURES
+Site emergency number: Call site supervisor immediately.
+In case of serious injury, call national emergency services (911 or local equivalent).
+First aid kits are located at the site office, main entrance, and each work zone.
+All workers must complete emergency evacuation training during site induction.

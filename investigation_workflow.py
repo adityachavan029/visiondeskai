@@ -17,7 +17,7 @@ Six agents, wired as a LangGraph StateGraph:
    evidence_validation       (fan-in: reuses llm.generate_answer for
                                citation-checked, grounded evidence)
           |
-      reasoning               (severity + recommended action)
+       reasoning               (severity + recommended action)
           |
   report_generation           (assembles final markdown report)
 
@@ -92,28 +92,33 @@ def _chat(system_prompt: str, user_prompt: str, max_tokens: int = 400) -> str:
 class InvestigationState(TypedDict, total=False):
     query: str
     file_path: str
-    kind: str                      
+    kind: str                      # "image" | "video"
 
-    search_query: str              
-    investigation_focus: str      
+    search_query: str              # produced by query_analysis
+    investigation_focus: str       # produced by query_analysis
 
-    detection_result: dict        
+    detection_result: dict         # produced by visual_analysis
     detected_classes: List[str]
     visual_summary: str
 
-    retrieved_chunks: List[dict] 
+    retrieved_chunks: List[dict]   # produced by document_retrieval
 
-    evidence: List[dict]          
+    evidence: List[dict]           # produced by evidence_validation
     validated_answer: str
     grounded: bool
     confidence: str
 
-    reasoning: str                 
+    reasoning: str                 # produced by reasoning
     severity: str
     recommended_action: str
 
-    report: str                 
+    report: str                    # produced by report_generation
     errors: List[str]
+
+
+# ---------------------------------------------------------------------------
+# Agent 1: Query Analysis
+# ---------------------------------------------------------------------------
 
 QUERY_ANALYSIS_PROMPT = (
     "You are the Query Analysis agent in a PPE compliance investigation "
@@ -200,7 +205,6 @@ def evidence_validation_node(state: InvestigationState) -> dict:
     chunks = state.get("retrieved_chunks", [])
     summary = state.get("visual_summary")
 
- 
     result = generate_answer(query, chunks, analysis_summary=summary)
 
     return {
@@ -209,7 +213,6 @@ def evidence_validation_node(state: InvestigationState) -> dict:
         "grounded": result["grounded"],
         "confidence": result["confidence"],
     }
-
 
 
 REASONING_PROMPT = (
@@ -228,7 +231,6 @@ REASONING_PROMPT = (
 
 def reasoning_node(state: InvestigationState) -> dict:
     if not state.get("grounded", False):
-       
         return {
             "severity": "unknown",
             "recommended_action": "Insufficient grounded evidence to determine an action. Manual review required.",
@@ -259,7 +261,6 @@ def reasoning_node(state: InvestigationState) -> dict:
             "reasoning": "Reasoning step failed.",
             "errors": state.get("errors", []) + [f"reasoning: {e}"],
         }
-
 
 
 def report_generation_node(state: InvestigationState) -> dict:

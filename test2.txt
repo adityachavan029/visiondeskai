@@ -1,0 +1,14 @@
+Artificial Intelligence (AI) is transforming industries across the world. 
+It enables machines to learn from data, identify patterns, and make decisions 
+with minimal human intervention.
+
+Machine Learning is a subset of AI that focuses on training models using data.
+Deep Learning is a specialized area that uses neural networks.
+
+Applications of AI include:
+- Healthcare (disease prediction)
+- Finance (fraud detection)
+- Transportation (self-driving cars)
+- E-commerce (recommendation systems)
+
+AI systems rely heavily on data quality. Poor data leads to poor predictions.
