@@ -10,11 +10,12 @@ import InvestigationEngine from './components/InvestigationEngine';
 import SafetyDashboard from './components/SafetyDashboard';
 import Footer from './components/Footer';
 import { Eye, BookOpen, Bot, ShieldCheck } from 'lucide-react';
+import { getTranslation } from './lib/translations';
 import axios from 'axios';
 
 export default function App() {
   const [viewMode, setViewMode] = useState('landing'); // 'landing' or 'workstation'
-  const [activeTab, setActiveTab] = useState('vision'); // 'vision', 'knowledge', 'agent'
+  const [activeTab, setActiveTab] = useState('vision'); // 'vision', 'knowledge', 'agent', 'dashboard'
   
   const [user, setUser] = useState(null);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
@@ -23,6 +24,17 @@ export default function App() {
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'dark';
   });
+
+  const [language, setLanguage] = useState(() => {
+    return localStorage.getItem('language') || 'en';
+  });
+
+  // Sync language with localStorage
+  useEffect(() => {
+    localStorage.setItem('language', language);
+  }, [language]);
+
+  const t = (key) => getTranslation(language, key);
 
   // Lenis Smooth Kinetic Scroll
   useEffect(() => {
@@ -108,6 +120,8 @@ export default function App() {
         serverStatus={serverStatus}
         theme={theme}
         toggleTheme={toggleTheme}
+        language={language}
+        setLanguage={setLanguage}
       />
 
       {/* Main Content Area */}
@@ -116,78 +130,79 @@ export default function App() {
         {viewMode === 'landing' ? (
           <LandingPage
             theme={theme}
+            language={language}
             onLaunchWorkstation={() => setViewMode('workstation')}
           />
         ) : (
           <div className="py-8 space-y-6">
             
-            {/* Workstation Module Tabs Bar */}
+            {/* Workstation Module Tabs Bar (Responsive Grid / Horizontal Scroll) */}
             <div className="flex items-center justify-between p-1.5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 font-mono">
-              <div className="flex items-center space-x-1">
+              <div className="flex items-center space-x-1 overflow-x-auto max-w-full no-scrollbar py-0.5">
                 <button
                   data-cursor="VISION"
                   onClick={() => setActiveTab('vision')}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-medium transition-all ${
+                  className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-xl text-xs font-medium whitespace-nowrap transition-all ${
                     activeTab === 'vision'
                       ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 font-bold shadow-sm'
                       : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
                   }`}
                 >
-                  <Eye className="w-4 h-4" />
-                  <span>Vision Inspector</span>
+                  <Eye className="w-4 h-4 text-emerald-500" />
+                  <span>{t('visionInspector')}</span>
                 </button>
 
                 <button
                   data-cursor="KNOWLEDGE"
                   onClick={() => setActiveTab('knowledge')}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-medium transition-all ${
+                  className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-xl text-xs font-medium whitespace-nowrap transition-all ${
                     activeTab === 'knowledge'
                       ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 font-bold shadow-sm'
                       : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
                   }`}
                 >
-                  <BookOpen className="w-4 h-4" />
-                  <span>Knowledge Hub</span>
+                  <BookOpen className="w-4 h-4 text-blue-500" />
+                  <span>{t('knowledgeHub')}</span>
                 </button>
 
                 <button
                   data-cursor="AGENTS"
                   onClick={() => setActiveTab('agent')}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-medium transition-all ${
+                  className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-xl text-xs font-medium whitespace-nowrap transition-all ${
                     activeTab === 'agent'
                       ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 font-bold shadow-sm'
                       : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
                   }`}
                 >
-                  <Bot className="w-4 h-4" />
-                  <span>AI Investigation</span>
+                  <Bot className="w-4 h-4 text-violet-500" />
+                  <span>{t('aiInvestigation')}</span>
                 </button>
 
                 <button
                   data-cursor="DASHBOARD"
                   onClick={() => setActiveTab('dashboard')}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-medium transition-all ${
+                  className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-xl text-xs font-medium whitespace-nowrap transition-all ${
                     activeTab === 'dashboard'
                       ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 font-bold shadow-sm'
                       : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
                   }`}
                 >
                   <ShieldCheck className="w-4 h-4 text-emerald-500" />
-                  <span>Safety Dashboard</span>
+                  <span>{t('safetyDashboard')}</span>
                 </button>
               </div>
 
-              <div className="text-[10px] text-zinc-500 hidden sm:block">
-                STUDIO WORKSTATION ACTIVE
+              <div className="text-[10px] text-zinc-500 hidden lg:block font-bold">
+                {t('studioActive')}
               </div>
             </div>
 
             {/* Active Studio Component */}
             <div>
-              {activeTab === 'vision' && <VisionInspector theme={theme} />}
-              {activeTab === 'knowledge' && <KnowledgeHub theme={theme} />}
-              {activeTab === 'agent' && <InvestigationEngine theme={theme} />}
-              {activeTab === 'dashboard' && <SafetyDashboard theme={theme} />}
+              {activeTab === 'vision' && <VisionInspector theme={theme} language={language} />}
+              {activeTab === 'knowledge' && <KnowledgeHub theme={theme} language={language} />}
+              {activeTab === 'agent' && <InvestigationEngine theme={theme} language={language} />}
+              {activeTab === 'dashboard' && <SafetyDashboard theme={theme} language={language} />}
             </div>
 
           </div>
@@ -196,7 +211,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer theme={theme} />
+      <Footer theme={theme} language={language} />
 
       {/* Auth Modal */}
       <AuthModal
@@ -204,6 +219,7 @@ export default function App() {
         onClose={() => setIsAuthOpen(false)}
         onAuthSuccess={(userData) => setUser(userData)}
         theme={theme}
+        language={language}
       />
 
     </div>
