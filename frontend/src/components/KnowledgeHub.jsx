@@ -4,8 +4,9 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/card';
 import axios from 'axios';
+import { getTranslation } from '../lib/translations';
 
-export default function KnowledgeHub({ theme }) {
+export default function KnowledgeHub({ theme, language = 'en' }) {
   const [docFile, setDocFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploadMessage, setUploadMessage] = useState(null);
@@ -15,6 +16,8 @@ export default function KnowledgeHub({ theme }) {
   const [searchResult, setSearchResult] = useState(null);
   const [searchError, setSearchError] = useState(null);
   const [showSources, setShowSources] = useState(false);
+
+  const t = (key) => getTranslation(language, key);
 
   const handleDocUpload = async (e) => {
     const file = e.target.files[0];
@@ -69,21 +72,15 @@ export default function KnowledgeHub({ theme }) {
   return (
     <div className="space-y-6">
       {/* Header Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-[#0c0d12]/90">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#0c0d12]/90 shadow-sm dark:shadow-none">
         <div>
-          <Badge variant="outline" className="mb-2">MODULE 02 / VECTOR RAG ENGINE</Badge>
           <h1 className="text-xl sm:text-3xl font-bold font-heading text-zinc-900 dark:text-zinc-100">
-            Compliance Document Repository
+            {t('knowledgeTitle')}
           </h1>
           <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 font-sans">
-            ChromaDB vector database for instant regulation retrieval and evidence lookup.
+            {t('knowledgeDesc')}
           </p>
         </div>
-
-        <Badge variant="monochrome" className="self-start sm:self-center font-mono">
-          <Database className="w-3.5 h-3.5 mr-1.5" />
-          ChromaDB Vector Active
-        </Badge>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -93,7 +90,7 @@ export default function KnowledgeHub({ theme }) {
           <Card>
             <CardHeader>
               <CardTitle className="text-xs sm:text-sm font-mono flex items-center justify-between">
-                <span>Ingest Compliance File</span>
+                <span>{t('ingestFile')}</span>
                 <span className="text-[10px] text-zinc-500 font-normal">PDF, DOCX, TXT</span>
               </CardTitle>
             </CardHeader>
@@ -101,7 +98,7 @@ export default function KnowledgeHub({ theme }) {
               
               <div
                 data-cursor="UPLOAD"
-                className="relative border-2 border-dashed border-zinc-300 dark:border-zinc-800 hover:border-zinc-500 dark:hover:border-zinc-600 bg-zinc-50 dark:bg-zinc-950/40 rounded-3xl p-6 text-center cursor-pointer transition-all group"
+                className="relative border-2 border-dashed border-zinc-300 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 bg-zinc-50 dark:bg-zinc-950/40 rounded-3xl p-6 text-center cursor-pointer transition-all group"
               >
                 <input
                   type="file"
@@ -109,16 +106,16 @@ export default function KnowledgeHub({ theme }) {
                   onChange={handleDocUpload}
                   className="absolute inset-0 opacity-0 cursor-pointer"
                 />
-                <div className="w-10 h-10 rounded-2xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform">
-                  <Upload className="w-5 h-5" />
+                <div className="w-10 h-10 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform shadow-xs">
+                  <Upload className="w-5 h-5 text-emerald-500" />
                 </div>
-                <p className="text-xs font-semibold font-mono text-zinc-900 dark:text-zinc-100">Upload Regulation Document</p>
-                <p className="text-[10px] font-mono text-zinc-500 mt-1">Automatically chunked & embedded</p>
+                <p className="text-xs font-semibold font-mono text-zinc-900 dark:text-zinc-100">{t('uploadDoc')}</p>
+                <p className="text-[10px] font-mono text-zinc-500 mt-1">{t('autoChunked')}</p>
               </div>
 
               {uploading && (
-                <div className="p-3 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 text-xs font-mono flex items-center space-x-2 text-zinc-800 dark:text-zinc-200">
-                  <div className="w-3.5 h-3.5 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                <div className="p-3 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-xs font-mono flex items-center space-x-2 text-zinc-800 dark:text-zinc-200">
+                  <div className="w-3.5 h-3.5 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
                   <span>Indexing Vectors into ChromaDB...</span>
                 </div>
               )}
@@ -139,7 +136,7 @@ export default function KnowledgeHub({ theme }) {
               )}
 
               {docFile && (
-                <div className="p-3 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-xs font-mono flex items-center space-x-2 text-zinc-800 dark:text-zinc-200">
+                <div className="p-3 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-xs font-mono flex items-center space-x-2 text-zinc-800 dark:text-zinc-200">
                   <FileText className="w-4 h-4 text-zinc-500 flex-shrink-0" />
                   <span className="truncate">{docFile.name}</span>
                 </div>
@@ -153,7 +150,7 @@ export default function KnowledgeHub({ theme }) {
         <div className="lg:col-span-8 space-y-4">
           <Card className="min-h-[440px] space-y-6">
             <CardHeader>
-              <CardTitle className="text-xs sm:text-sm font-mono text-zinc-900 dark:text-zinc-100">Semantic RAG Regulation Search</CardTitle>
+              <CardTitle className="text-xs sm:text-sm font-mono text-zinc-900 dark:text-zinc-100">{t('semanticSearch')}</CardTitle>
             </CardHeader>
 
             <CardContent className="space-y-6">
@@ -165,8 +162,8 @@ export default function KnowledgeHub({ theme }) {
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Ask any question regarding safety manuals, OSHA rules, PPE requirements..."
-                    className="w-full pl-11 pr-4 sm:pr-24 py-3.5 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 text-xs text-zinc-900 dark:text-zinc-100 placeholder-zinc-500 dark:placeholder-zinc-400 focus:outline-none focus:border-zinc-500 dark:focus:border-zinc-600 transition-all font-sans"
+                    placeholder={t('searchPlaceholder')}
+                    className="w-full pl-11 pr-4 sm:pr-24 py-3.5 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 text-xs text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-emerald-500 transition-all font-sans"
                   />
                 </div>
                 <Button
@@ -175,13 +172,13 @@ export default function KnowledgeHub({ theme }) {
                   disabled={searching || !searchQuery.trim()}
                   className="sm:absolute sm:right-2 font-mono text-xs py-3 sm:py-2"
                 >
-                  {searching ? 'Querying...' : 'Ask AI'}
+                  {searching ? t('querying') : t('askAi')}
                 </Button>
               </form>
 
               {searching && (
                 <div className="py-16 text-center space-y-3 font-mono">
-                  <div className="w-7 h-7 border-2 border-zinc-500 border-t-transparent rounded-full animate-spin mx-auto" />
+                  <div className="w-7 h-7 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto" />
                   <p className="text-xs text-zinc-600 dark:text-zinc-400">Retrieving top-5 semantic vectors & synthesizing response...</p>
                 </div>
               )}
@@ -195,10 +192,10 @@ export default function KnowledgeHub({ theme }) {
 
               {!searching && !searchResult && !searchError && (
                 <div className="py-16 sm:py-20 text-center space-y-3">
-                  <div className="w-12 h-12 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 text-zinc-500 flex items-center justify-center mx-auto">
-                    <BookOpen className="w-6 h-6" />
+                  <div className="w-12 h-12 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-zinc-500 flex items-center justify-center mx-auto">
+                    <BookOpen className="w-6 h-6 text-emerald-500" />
                   </div>
-                  <p className="text-xs font-mono text-zinc-700 dark:text-zinc-300 font-semibold">Query indexed safety standards</p>
+                  <p className="text-xs font-mono text-zinc-800 dark:text-zinc-200 font-semibold">{t('queryIndexed')}</p>
                   <p className="text-[11px] text-zinc-500 dark:text-zinc-400 font-sans">e.g., "What are mandatory helmet requirements on construction sites?"</p>
                 </div>
               )}
@@ -207,10 +204,10 @@ export default function KnowledgeHub({ theme }) {
                 <div className="space-y-6">
                   
                   {searchResult.answer ? (
-                    <div className="p-4 sm:p-5 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 space-y-3 text-xs">
+                    <div className="p-4 sm:p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 space-y-3 text-xs">
                       <div className="flex items-center justify-between font-mono font-bold text-zinc-900 dark:text-zinc-100">
                         <span className="flex items-center space-x-2">
-                          <Sparkles className="w-4 h-4 text-zinc-500" />
+                          <Sparkles className="w-4 h-4 text-emerald-500" />
                           <span>SYNTHESIZED RAG RESPONSE</span>
                         </span>
 
@@ -241,7 +238,7 @@ export default function KnowledgeHub({ theme }) {
                       {showSources && (
                         <div className="space-y-2.5 animate-fadeIn">
                           {searchResult.evidence.map((ev, i) => (
-                            <div key={i} className="p-4 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-xs space-y-2 font-mono">
+                            <div key={i} className="p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-xs space-y-2 font-mono">
                               <div className="flex items-center justify-between text-zinc-900 dark:text-zinc-100">
                                 <span className="font-semibold">{ev.source}</span>
                                 <span className="text-zinc-500 text-[10px]">Relevance: {ev.relevance}</span>
@@ -249,7 +246,7 @@ export default function KnowledgeHub({ theme }) {
                               {ev.section && ev.section !== 'N/A' && (
                                 <p className="text-[11px] text-zinc-600 dark:text-zinc-400">{ev.section}</p>
                               )}
-                              <p className="text-[11px] leading-relaxed font-sans text-zinc-800 dark:text-zinc-200 p-3 rounded-xl border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-950">
+                              <p className="text-[11px] leading-relaxed font-sans text-zinc-800 dark:text-zinc-200 p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
                                 "{ev.excerpt}"
                               </p>
                             </div>

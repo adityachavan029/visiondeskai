@@ -18,7 +18,7 @@ export const translations = {
     lightMode: "Light Mode",
     darkMode: "Dark Mode",
     
-    // Workstation Modules
+    // Workstation Modules Nav Tabs
     visionInspector: "Vision Inspector",
     knowledgeHub: "Knowledge Hub",
     aiInvestigation: "AI Investigation",
@@ -47,7 +47,7 @@ export const translations = {
     card4Desc: "Real-time site telemetry, severity distribution breakdown, and department compliance tracking.",
 
     // Landing Page - Showcase Modules
-    showcaseBadge: "MODULE SHOWCASE",
+    showcaseBadge: "SAFETY MODULES",
     showcaseHeading1: "Enterprise-Grade Safety",
     showcaseHeading2: "Modules",
     showcaseDesc: "Experience the four integrated suites built into the VisionDesk AI ecosystem.",
@@ -72,6 +72,52 @@ export const translations = {
     ctaDesc: "Step into the VisionDesk AI Studio Workstation and transform site security with automated intelligence.",
     ctaButton: "Open Studio Workstation",
 
+    // Vision Inspector Module (Minimalist Clean Text)
+    visionTitle: "PPE Inspector",
+    visionDesc: "Upload an image or video to inspect safety gear compliance.",
+    imagePpe: "Image",
+    videoStream: "Video",
+    targetImage: "Upload Image",
+    targetVideo: "Upload Video",
+    clickToUpload: "Click or drop file to upload",
+    yoloAutoScan: "Automatic safety inspection",
+    noMediaLoaded: "No media loaded",
+    uploadHint: "Upload a photo or video to inspect.",
+    detectionTelemetry: "Inspection Results",
+    objectsDetected: "Gear Detected",
+    framesProcessed: "Frames Analyzed",
+    detectionBreakdown: "Detected Items",
+
+    // Knowledge Hub Module
+    knowledgeTitle: "Safety Documents",
+    knowledgeDesc: "Upload safety guidelines or search compliance rules.",
+    ingestFile: "Upload Guideline",
+    uploadDoc: "Upload PDF or Document",
+    autoChunked: "Indexed for search",
+    semanticSearch: "Search Safety Guidelines",
+    searchPlaceholder: "Type your question (e.g. helmet rules)...",
+    askAi: "Search",
+    querying: "Searching...",
+    queryIndexed: "Search safety guidelines",
+
+    // AI Investigation Module
+    agentTitle: "Incident Inspector",
+    agentDesc: "Run an automated multi-step investigation report.",
+    incidentQuery: "Incident Details",
+    askAgentPlaceholder: "Describe incident or query...",
+    runInvestigation: "Run Investigation",
+    executingPipeline: "Analyzing incident...",
+
+    // Safety Dashboard Module
+    dashboardTitle: "Safety Dashboard",
+    dashboardDesc: "Overview of site violations and compliance rates.",
+    refresh: "Refresh Data",
+    exportCsv: "Export CSV",
+    complianceRate: "Compliance Rate",
+    totalIncidents: "Total Flagged Incidents",
+    openViolations: "Open Violations",
+    resolvedCases: "Resolved Cases",
+
     // General Controls
     close: "Close",
     selectLanguage: "Select Language / भाषा चुनें",
@@ -95,7 +141,7 @@ export const translations = {
     lightMode: "लाइट मोड",
     darkMode: "डार्क मोड",
     
-    // Workstation Modules
+    // Workstation Modules Nav Tabs
     visionInspector: "विज़न निरीक्षक",
     knowledgeHub: "ज्ञान केंद्र",
     aiInvestigation: "एआई जांच",
@@ -124,7 +170,7 @@ export const translations = {
     card4Desc: "वास्तविक समय साइट टेलीमेट्री, गंभीरता वितरण और विभाग अनुपालन ट्रैकिंग।",
 
     // Landing Page - Showcase Modules
-    showcaseBadge: "मॉड्यूल प्रदर्शन",
+    showcaseBadge: "सुरक्षा मॉड्यूल",
     showcaseHeading1: "एंटरप्राइज-ग्रेड सुरक्षा",
     showcaseHeading2: "मॉड्यूल",
     showcaseDesc: "विजनडेस्क एआई पारिस्थितिकी तंत्र में निर्मित चार एकीकृत सुइट्स का अनुभव करें।",
@@ -148,6 +194,52 @@ export const translations = {
     ctaHeading2: "कार्यस्थल सुरक्षा बढ़ाने के लिए तैयार हैं?",
     ctaDesc: "विजनडेस्क एआई स्टूडियो वर्कस्टेशन में कदम रखें और स्वचालित बुद्धिमत्ता से साइट सुरक्षा को बदलें।",
     ctaButton: "स्टुडियो वर्कस्टेशन खोलें",
+
+    // Vision Inspector Module (Clean Hindi)
+    visionTitle: "पीपीई निरीक्षक",
+    visionDesc: "सुरक्षा उपकरणों के अनुपालन की जांच के लिए छवि या वीडियो अपलोड करें।",
+    imagePpe: "छवि",
+    videoStream: "वीडियो",
+    targetImage: "छवि अपलोड करें",
+    targetVideo: "वीडियो अपलोड करें",
+    clickToUpload: "फाइल अपलोड करने के लिए क्लिक करें या ड्रैग करें",
+    yoloAutoScan: "स्वचालित सुरक्षा जांच",
+    noMediaLoaded: "कोई मीडिया लोड नहीं हुआ",
+    uploadHint: "निरीक्षण के लिए फ़ोटो या वीडियो अपलोड करें।",
+    detectionTelemetry: "निरीक्षण परिणाम",
+    objectsDetected: "सुरक्षा गियर मिले",
+    framesProcessed: "फ्रेम का विश्लेषण हुआ",
+    detectionBreakdown: "पहचाने गए आइटम",
+
+    // Knowledge Hub Module
+    knowledgeTitle: "सुरक्षा दस्तावेज़",
+    knowledgeDesc: "सुरक्षा दिशा-निर्देश अपलोड करें या नियम खोजें।",
+    ingestFile: "दिशा-निर्देश अपलोड करें",
+    uploadDoc: "पीडीएफ या दस्तावेज़ अपलोड करें",
+    autoChunked: "खोज के लिए सहेजा गया",
+    semanticSearch: "सुरक्षा दिशा-निर्देश खोजें",
+    searchPlaceholder: "अपना प्रश्न लिखें (जैसे हेलमेट नियम)...",
+    askAi: "खोजें",
+    querying: "खोज जारी है...",
+    queryIndexed: "सुरक्षा दिशा-निर्देश खोजें",
+
+    // AI Investigation Module
+    agentTitle: "घटना निरीक्षक",
+    agentDesc: "स्वचालित बहु-चरण जांच रिपोर्ट चलाएं।",
+    incidentQuery: "घटना विवरण",
+    askAgentPlaceholder: "घटना का वर्णन करें...",
+    runInvestigation: "जांच शुरू करें",
+    executingPipeline: "घटना का विश्लेषण हो रहा है...",
+
+    // Safety Dashboard Module
+    dashboardTitle: "सुरक्षा डैशबोर्ड",
+    dashboardDesc: "साइट उल्लंघनों और अनुपालन दर का अवलोकन।",
+    refresh: "डेटा रिफ्रेश करें",
+    exportCsv: "सीएसवी निर्यात करें",
+    complianceRate: "अनुपालन दर",
+    totalIncidents: "कुल घटनाएं",
+    openViolations: "खुले उल्लंघन",
+    resolvedCases: "हल किए गए मामले",
 
     // General Controls
     close: "बंद करें",

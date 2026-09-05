@@ -40,6 +40,8 @@ import {
   Legend
 } from 'recharts';
 
+import { getTranslation } from '../lib/translations';
+
 const DEPARTMENTS = [
   "Assembly Line Alpha",
   "Warehouse Bay 3",
@@ -72,8 +74,9 @@ const STATUS_COLORS = {
   Resolved: '#10b981'
 };
 
-export default function SafetyDashboard({ theme = 'dark' }) {
+export default function SafetyDashboard({ theme = 'dark', language = 'en' }) {
   const isDark = theme === 'dark';
+  const t = (key) => getTranslation(language, key);
 
   // Filters State
   const [datePreset, setDatePreset] = useState('30'); // '7', '30', '90', 'all'
@@ -272,10 +275,10 @@ export default function SafetyDashboard({ theme = 'dark' }) {
               </div>
               <div>
                 <h1 className="text-xl sm:text-2xl font-bold tracking-tight font-heading">
-                  Workplace Monitoring & Safety Analytics
+                  {t('dashboardTitle')}
                 </h1>
                 <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
-                  Real-time violation tracking, compliance scoring, and safety telemetry
+                  {t('dashboardDesc')}
                 </p>
               </div>
             </div>

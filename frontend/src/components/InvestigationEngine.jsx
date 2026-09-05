@@ -5,6 +5,7 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/card';
 import axios from 'axios';
+import { getTranslation } from '../lib/translations';
 
 const PIPELINE_STEPS = [
   { id: 'query_analysis', label: 'Query Analysis' },
@@ -15,7 +16,7 @@ const PIPELINE_STEPS = [
   { id: 'report_generation', label: 'Report Generation' },
 ];
 
-export default function InvestigationEngine({ theme }) {
+export default function InvestigationEngine({ theme, language = 'en' }) {
   const [file, setFile] = useState(null);
   const [query, setQuery] = useState('Check PPE compliance for the workers shown');
   const [running, setRunning] = useState(false);
@@ -28,6 +29,8 @@ export default function InvestigationEngine({ theme }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedReportText, setEditedReportText] = useState('');
   const [reviewLoading, setReviewLoading] = useState(false);
+
+  const t = (key) => getTranslation(language, key);
 
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -119,7 +122,7 @@ export default function InvestigationEngine({ theme }) {
         return <h1 key={idx} className="text-lg sm:text-xl font-bold font-heading text-zinc-900 dark:text-zinc-100 mt-4 mb-2">{trimmed.slice(2)}</h1>;
       }
       if (trimmed.startsWith('## ')) {
-        return <h2 key={idx} className="text-xs sm:text-sm font-bold font-mono text-zinc-900 dark:text-zinc-200 mt-5 mb-2 border-b border-zinc-300 dark:border-zinc-800 pb-1">{trimmed.slice(3)}</h2>;
+        return <h2 key={idx} className="text-xs sm:text-sm font-bold font-mono text-zinc-900 dark:text-zinc-200 mt-5 mb-2 border-b border-zinc-200 dark:border-zinc-800 pb-1">{trimmed.slice(3)}</h2>;
       }
       if (trimmed.startsWith('- ')) {
         return <li key={idx} className="ml-4 list-disc text-xs text-zinc-800 dark:text-zinc-200 my-1">{trimmed.slice(2)}</li>;
@@ -141,36 +144,30 @@ export default function InvestigationEngine({ theme }) {
   return (
     <div className="space-y-6">
       {/* Header Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-[#0c0d12]/90">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#0c0d12]/90 shadow-sm dark:shadow-none">
         <div>
-          <Badge variant="outline" className="mb-2">MODULE 04 / AGENTIC WORKFLOW</Badge>
           <h1 className="text-xl sm:text-3xl font-bold font-heading text-zinc-900 dark:text-zinc-100">
-            Autonomous AI Safety Investigation Engine
+            {t('agentTitle')}
           </h1>
           <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 font-sans">
-            Autonomous multi-agent LangGraph workflow for visual analysis, regulation retrieval, evidence validation, and executive drafting.
+            {t('agentDesc')}
           </p>
         </div>
-
-        <Badge variant="monochrome" className="self-start sm:self-center font-mono">
-          <Bot className="w-3.5 h-3.5 mr-1.5" />
-          6 Autonomous Agents Active
-        </Badge>
       </div>
 
       {/* Case Input Controls */}
       <Card>
         <CardHeader>
           <CardTitle className="text-xs sm:text-sm font-mono flex items-center space-x-2 text-zinc-900 dark:text-zinc-100">
-            <Sparkles className="w-4 h-4 text-zinc-500" />
-            <span>Configure Investigation Parameters</span>
+            <Sparkles className="w-4 h-4 text-emerald-500" />
+            <span>{t('incidentQuery')}</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
             
             <div className="md:col-span-5 space-y-1">
-              <label className="text-xs font-mono text-zinc-700 dark:text-zinc-300 font-semibold">TARGET MEDIA FILE</label>
+              <label className="text-xs font-mono text-zinc-700 dark:text-zinc-300 font-semibold">MEDIA FILE</label>
               <div className="relative flex items-center border border-zinc-300 dark:border-zinc-800 rounded-2xl px-3 py-2 text-xs font-mono bg-white dark:bg-zinc-900">
                 <input
                   type="file"
@@ -182,13 +179,13 @@ export default function InvestigationEngine({ theme }) {
             </div>
 
             <div className="md:col-span-5 space-y-1">
-              <label className="text-xs font-mono text-zinc-700 dark:text-zinc-300 font-semibold">INVESTIGATION REQUEST</label>
+              <label className="text-xs font-mono text-zinc-700 dark:text-zinc-300 font-semibold">QUERY DETAILS</label>
               <input
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="e.g. Check PPE compliance for workers shown"
-                className="w-full px-4 py-2.5 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-xs text-zinc-900 dark:text-zinc-100 placeholder-zinc-500 dark:placeholder-zinc-400 focus:outline-none focus:border-zinc-500 dark:focus:border-zinc-600 transition-all font-sans"
+                placeholder={t('askAgentPlaceholder')}
+                className="w-full px-4 py-2.5 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-xs text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-emerald-500 transition-all font-sans"
               />
             </div>
 
@@ -204,7 +201,7 @@ export default function InvestigationEngine({ theme }) {
                 ) : (
                   <>
                     <Play className="w-3.5 h-3.5 mr-1.5 fill-current" />
-                    <span>Run Workflow</span>
+                    <span>{t('runInvestigation')}</span>
                   </>
                 )}
               </Button>
@@ -218,7 +215,7 @@ export default function InvestigationEngine({ theme }) {
       <Card>
         <CardHeader>
           <CardTitle className="text-xs font-mono text-zinc-600 dark:text-zinc-400 uppercase flex items-center space-x-2 font-semibold">
-            <Terminal className="w-4 h-4 text-zinc-500" />
+            <Terminal className="w-4 h-4 text-emerald-500" />
             <span>Agent Pipeline Progression Engine</span>
           </CardTitle>
         </CardHeader>
@@ -233,7 +230,7 @@ export default function InvestigationEngine({ theme }) {
                   key={step.id}
                   className={`p-3.5 rounded-2xl border transition-all duration-300 flex flex-col justify-between space-y-2 font-mono text-xs ${
                     isCompleted
-                      ? 'bg-emerald-100 border-emerald-300 text-emerald-900 dark:bg-emerald-950/60 dark:border-emerald-800/80 dark:text-emerald-300 font-semibold'
+                      ? 'bg-emerald-50 border-emerald-300 text-emerald-900 dark:bg-emerald-950/60 dark:border-emerald-800/80 dark:text-emerald-300 font-semibold'
                       : isActive
                       ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 font-bold border-zinc-700'
                       : 'bg-zinc-50 dark:bg-zinc-900/40 border-zinc-200 dark:border-zinc-800 text-zinc-500'
@@ -298,7 +295,7 @@ export default function InvestigationEngine({ theme }) {
           <CardContent className="space-y-6">
             
             {!isEditing ? (
-              <div className="p-4 sm:p-6 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-950 font-sans text-zinc-900 dark:text-zinc-100">
+              <div className="p-4 sm:p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 font-sans text-zinc-900 dark:text-zinc-100">
                 {renderMarkdown(investigation.report)}
               </div>
             ) : (
@@ -308,7 +305,7 @@ export default function InvestigationEngine({ theme }) {
                   rows={12}
                   value={editedReportText}
                   onChange={(e) => setEditedReportText(e.target.value)}
-                  className="w-full p-4 rounded-2xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 text-xs text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-zinc-500 font-mono"
+                  className="w-full p-4 rounded-2xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 text-xs text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-emerald-500 font-mono"
                 />
                 <div className="flex space-x-2">
                   <Button

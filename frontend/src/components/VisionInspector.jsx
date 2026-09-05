@@ -4,8 +4,9 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/card';
 import axios from 'axios';
+import { getTranslation } from '../lib/translations';
 
-export default function VisionInspector({ theme }) {
+export default function VisionInspector({ theme, language = 'en' }) {
   const [activeTab, setActiveTab] = useState('image');
   const [file, setFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
@@ -15,6 +16,8 @@ export default function VisionInspector({ theme }) {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [showSources, setShowSources] = useState(false);
+
+  const t = (key) => getTranslation(language, key);
 
   const handleFileChange = (e) => {
     const selected = e.target.files[0];
@@ -67,19 +70,18 @@ export default function VisionInspector({ theme }) {
   return (
     <div className="space-y-6">
       {/* Banner Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-[#0c0d12]/90">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#0c0d12]/90 shadow-sm dark:shadow-none">
         <div>
-          <Badge variant="outline" className="mb-2">MODULE 01 & 03 / VISION ENGINE</Badge>
           <h1 className="text-xl sm:text-3xl font-bold font-heading text-zinc-900 dark:text-zinc-100">
-            Visual PPE Compliance Studio
+            {t('visionTitle')}
           </h1>
           <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 font-sans">
-            Real-time YOLOv8 object detection & frame analytics integrated with RAG safety retrieval.
+            {t('visionDesc')}
           </p>
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex p-1 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900/80 self-start sm:self-center font-mono">
+        <div className="flex p-1 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900/80 self-start sm:self-center font-mono">
           <button
             data-cursor="IMAGE"
             onClick={() => { setActiveTab('image'); setFile(null); setResult(null); setError(null); }}
@@ -90,7 +92,7 @@ export default function VisionInspector({ theme }) {
             }`}
           >
             <ImageIcon className="w-4 h-4" />
-            <span>Image PPE</span>
+            <span>{t('imagePpe')}</span>
           </button>
           <button
             data-cursor="VIDEO"
@@ -102,7 +104,7 @@ export default function VisionInspector({ theme }) {
             }`}
           >
             <Video className="w-4 h-4" />
-            <span>Video Stream</span>
+            <span>{t('videoStream')}</span>
           </button>
         </div>
       </div>
@@ -115,7 +117,7 @@ export default function VisionInspector({ theme }) {
           <Card>
             <CardHeader>
               <CardTitle className="text-xs sm:text-sm font-mono flex items-center justify-between">
-                <span>{activeTab === 'image' ? 'Target Inspection Image' : 'Target Inspection Video'}</span>
+                <span>{activeTab === 'image' ? t('targetImage') : t('targetVideo')}</span>
                 <span className="text-[10px] text-zinc-500 font-normal">
                   {activeTab === 'image' ? 'JPG, PNG, WEBP' : 'MP4, MOV, AVI'}
                 </span>
@@ -127,7 +129,7 @@ export default function VisionInspector({ theme }) {
                 data-cursor="UPLOAD"
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={handleDrop}
-                className="relative border-2 border-dashed border-zinc-300 dark:border-zinc-800 hover:border-zinc-500 dark:hover:border-zinc-600 bg-zinc-50 dark:bg-zinc-950/40 rounded-3xl p-6 sm:p-8 text-center cursor-pointer transition-all group"
+                className="relative border-2 border-dashed border-zinc-300 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 bg-zinc-50 dark:bg-zinc-950/40 rounded-3xl p-6 sm:p-8 text-center cursor-pointer transition-all group"
               >
                 <input
                   type="file"
@@ -136,19 +138,19 @@ export default function VisionInspector({ theme }) {
                   className="absolute inset-0 opacity-0 cursor-pointer"
                 />
 
-                <div className="w-12 h-12 rounded-2xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
-                  <Upload className="w-6 h-6" />
+                <div className="w-12 h-12 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform shadow-xs">
+                  <Upload className="w-6 h-6 text-emerald-500" />
                 </div>
                 <p className="text-xs font-semibold font-mono text-zinc-900 dark:text-zinc-100">
-                  Click to upload or drag & drop file
+                  {t('clickToUpload')}
                 </p>
                 <p className="text-[10px] font-mono text-zinc-500 mt-1">
-                  YOLO neural scan triggers automatically
+                  {t('yoloAutoScan')}
                 </p>
               </div>
 
               {isUploading && (
-                <div className="space-y-2 p-3 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900/80 font-mono text-xs">
+                <div className="space-y-2 p-3 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 font-mono text-xs">
                   <div className="flex justify-between text-zinc-900 dark:text-zinc-100">
                     <span className="flex items-center space-x-2">
                       <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
@@ -156,9 +158,9 @@ export default function VisionInspector({ theme }) {
                     </span>
                     <span className="font-bold">{uploadProgress}%</span>
                   </div>
-                  <div className="w-full h-1.5 bg-zinc-300 dark:bg-zinc-800 rounded-full overflow-hidden">
+                  <div className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-zinc-900 dark:bg-zinc-100 transition-all duration-200"
+                      className="h-full bg-emerald-500 transition-all duration-200"
                       style={{ width: `${uploadProgress}%` }}
                     />
                   </div>
@@ -166,7 +168,7 @@ export default function VisionInspector({ theme }) {
               )}
 
               {file && (
-                <div className="p-3 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-xs font-mono flex items-center justify-between text-zinc-800 dark:text-zinc-200">
+                <div className="p-3 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-xs font-mono flex items-center justify-between text-zinc-800 dark:text-zinc-200">
                   <div className="flex items-center space-x-2 truncate">
                     <FileText className="w-4 h-4 text-zinc-500 flex-shrink-0" />
                     <span className="truncate">{file.name}</span>
@@ -176,7 +178,7 @@ export default function VisionInspector({ theme }) {
               )}
 
               {previewUrl && (
-                <div className="rounded-2xl overflow-hidden border border-zinc-300 dark:border-zinc-800 bg-black relative">
+                <div className="rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-black relative">
                   {activeTab === 'image' ? (
                     <img
                       src={result?.annotated_image_url ? result.annotated_image_url : previewUrl}
@@ -187,7 +189,7 @@ export default function VisionInspector({ theme }) {
                     <video src={previewUrl} controls className="w-full max-h-64 rounded-2xl" />
                   )}
                   {result?.annotated_image_url && (
-                    <div className="absolute top-2 right-2 px-2.5 py-1 rounded-full bg-emerald-600 text-white dark:bg-emerald-500/20 dark:border dark:border-emerald-500/40 dark:text-emerald-300 text-[10px] font-mono font-bold flex items-center space-x-1 backdrop-blur-md">
+                    <div className="absolute top-2 right-2 px-2.5 py-1 rounded-full bg-emerald-600 text-white text-[10px] font-mono font-bold flex items-center space-x-1 backdrop-blur-md">
                       <CheckCircle className="w-3 h-3" />
                       <span>YOLO Bounding Overlay</span>
                     </div>
@@ -205,8 +207,8 @@ export default function VisionInspector({ theme }) {
             <CardHeader>
               <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-4">
                 <CardTitle className="text-xs sm:text-sm font-mono flex items-center space-x-2 text-zinc-900 dark:text-zinc-100">
-                  <Sparkles className="w-4 h-4 text-zinc-500" />
-                  <span>Detection & Compliance Telemetry</span>
+                  <Sparkles className="w-4 h-4 text-emerald-500" />
+                  <span>{t('detectionTelemetry')}</span>
                 </CardTitle>
                 {loading && (
                   <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400 flex items-center space-x-2">
@@ -221,11 +223,11 @@ export default function VisionInspector({ theme }) {
               
               {!loading && !result && !error && (
                 <div className="py-16 sm:py-20 text-center space-y-3">
-                  <div className="w-12 h-12 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 text-zinc-500 flex items-center justify-center mx-auto">
-                    <Eye className="w-6 h-6" />
+                  <div className="w-12 h-12 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-zinc-500 flex items-center justify-center mx-auto">
+                    <Eye className="w-6 h-6 text-emerald-500" />
                   </div>
-                  <p className="text-xs font-mono text-zinc-700 dark:text-zinc-300 font-semibold">No media loaded</p>
-                  <p className="text-[11px] text-zinc-500 dark:text-zinc-400">Upload an image or video to view real-time compliance results.</p>
+                  <p className="text-xs font-mono text-zinc-800 dark:text-zinc-200 font-semibold">{t('noMediaLoaded')}</p>
+                  <p className="text-[11px] text-zinc-500 dark:text-zinc-400">{t('uploadHint')}</p>
                 </div>
               )}
 
@@ -243,14 +245,14 @@ export default function VisionInspector({ theme }) {
                 <div className="space-y-6">
                   
                   {/* Summary Bar */}
-                  <div className="p-4 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900/60 flex flex-wrap items-center justify-between gap-3 font-mono">
+                  <div className="p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 flex flex-wrap items-center justify-between gap-3 font-mono">
                     <div className="flex items-center space-x-3">
                       <span className="text-3xl font-extrabold text-zinc-900 dark:text-zinc-100">
                         {activeTab === 'image' ? result.count : result.video_analysis?.frames_analyzed || 0}
                       </span>
                       <div>
                         <p className="text-xs font-bold text-zinc-900 dark:text-zinc-100">
-                          {activeTab === 'image' ? 'PPE Objects Detected' : 'Frames Processed'}
+                          {activeTab === 'image' ? t('objectsDetected') : t('framesProcessed')}
                         </p>
                         <p className="text-[10px] text-zinc-600 dark:text-zinc-400">
                           {activeTab === 'image'
@@ -269,7 +271,7 @@ export default function VisionInspector({ theme }) {
 
                   {/* Detected Tags */}
                   <div>
-                    <h4 className="text-xs font-mono text-zinc-600 dark:text-zinc-400 mb-3 font-semibold">DETECTION BREAKDOWN</h4>
+                    <h4 className="text-xs font-mono text-zinc-600 dark:text-zinc-400 mb-3 font-semibold">{t('detectionBreakdown')}</h4>
                     <div className="flex flex-wrap gap-2">
                       {activeTab === 'image' ? (
                         result.detections?.length > 0 ? (
@@ -303,10 +305,10 @@ export default function VisionInspector({ theme }) {
 
                   {/* AI Synthesized Answer */}
                   {result.answer && (
-                    <div className="p-4 sm:p-5 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 space-y-2 text-xs">
+                    <div className="p-4 sm:p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 space-y-2 text-xs">
                       <div className="flex items-center justify-between font-mono font-bold text-zinc-900 dark:text-zinc-100">
                         <span className="flex items-center space-x-2">
-                          <Sparkles className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+                          <Sparkles className="w-4 h-4 text-emerald-500" />
                           <span>SYNTHESIZED SAFETY RAG EVALUATION</span>
                         </span>
                       </div>
@@ -329,7 +331,7 @@ export default function VisionInspector({ theme }) {
                       {showSources && (
                         <div className="mt-3 space-y-2 animate-fadeIn">
                           {result.evidence.map((item, idx) => (
-                            <div key={idx} className="p-4 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-xs space-y-1.5 font-mono">
+                            <div key={idx} className="p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-xs space-y-1.5 font-mono">
                               <div className="flex items-center justify-between text-zinc-900 dark:text-zinc-100">
                                 <span className="font-semibold">{item.source}</span>
                                 <span className="text-zinc-500 text-[10px]">Relevance: {item.relevance}</span>
