@@ -131,7 +131,12 @@ export default function App() {
           <LandingPage
             theme={theme}
             language={language}
-            onLaunchWorkstation={() => setViewMode('workstation')}
+            onLaunchWorkstation={(targetTab = 'vision') => {
+              if (targetTab && typeof targetTab === 'string') {
+                setActiveTab(targetTab);
+              }
+              setViewMode('workstation');
+            }}
           />
         ) : (
           <div className="py-8 space-y-6">

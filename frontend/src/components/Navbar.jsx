@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
-  Eye, User, LogOut, Activity, Lock, Sun, Moon,
-  Globe, Menu, X, ShieldCheck, BookOpen, Bot, Check
+  ScanFace, User, LogOut, Activity, Lock, Sun, Moon,
+  Globe, Menu, X, ShieldCheck, BookOpen, Bot, Check, Eye
 } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
@@ -53,14 +53,13 @@ export default function Navbar({
           <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center border transition-colors ${
             isDark ? 'bg-zinc-900 border-zinc-800 text-zinc-100 group-hover:border-zinc-700' : 'bg-zinc-100 border-zinc-300 text-zinc-900 group-hover:border-zinc-400'
           }`}>
-            <Eye className="w-4 h-4 text-emerald-500" />
+            <ScanFace className="w-5 h-5 text-emerald-500" />
           </div>
           <div>
             <div className="flex items-center space-x-1.5 sm:space-x-2">
               <span className="font-bold text-sm sm:text-base font-heading tracking-tight">
                 {language === 'hi' ? 'विज़नडेस्क' : 'VISIONDESK'}<span className="text-zinc-500 font-light">.AI</span>
               </span>
-              <Badge variant="monochrome" className="text-[9px] px-1.5 py-0">v2.0</Badge>
             </div>
           </div>
         </div>
