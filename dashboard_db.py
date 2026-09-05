@@ -200,19 +200,19 @@ def load_data(start_date=None, end_date=None, departments=None, severities=None,
         query += " AND date <= ?"
         params.append(str(end_date))
 
-    if departments:
+    if isinstance(departments, (list, tuple)) and len(departments) > 0:
         query += f" AND department IN ({','.join(['?']*len(departments))})"
         params.extend(departments)
 
-    if severities:
+    if isinstance(severities, (list, tuple)) and len(severities) > 0:
         query += f" AND severity IN ({','.join(['?']*len(severities))})"
         params.extend(severities)
 
-    if statuses:
+    if isinstance(statuses, (list, tuple)) and len(statuses) > 0:
         query += f" AND status IN ({','.join(['?']*len(statuses))})"
         params.extend(statuses)
 
-    if violation_types:
+    if isinstance(violation_types, (list, tuple)) and len(violation_types) > 0:
         query += f" AND violation_type IN ({','.join(['?']*len(violation_types))})"
         params.extend(violation_types)
 
@@ -233,7 +233,7 @@ def get_compliance_metrics(start_date=None, end_date=None, departments=None):
     if end_date:
         query += " AND date <= ?"
         params.append(str(end_date))
-    if departments:
+    if isinstance(departments, (list, tuple)) and len(departments) > 0:
         query += f" AND department IN ({','.join(['?']*len(departments))})"
         params.extend(departments)
 

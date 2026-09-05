@@ -184,7 +184,9 @@ export default function SafetyDashboard({ theme = 'dark' }) {
       selectedTypes.forEach((t) => params.append('violation_types', t));
 
       const response = await axios.get(`/api/dashboard/analytics?${params.toString()}`);
-      setAnalyticsData(response.data);
+      if (response.data && response.data.kpis && response.data.charts) {
+        setAnalyticsData(response.data);
+      }
     } catch (err) {
       console.error('Failed to fetch safety analytics:', err);
     } finally {
@@ -198,9 +200,10 @@ export default function SafetyDashboard({ theme = 'dark' }) {
 
   // Client-side search filtering on violation log table
   const filteredViolations = useMemo(() => {
-    if (!searchTerm.trim()) return analyticsData.violations;
+    const violations = analyticsData?.violations || [];
+    if (!searchTerm.trim()) return violations;
     const term = searchTerm.toLowerCase();
-    return analyticsData.violations.filter(
+    return violations.filter(
       (v) =>
         v.id.toLowerCase().includes(term) ||
         v.department.toLowerCase().includes(term) ||
@@ -208,7 +211,7 @@ export default function SafetyDashboard({ theme = 'dark' }) {
         v.location.toLowerCase().includes(term) ||
         (v.notes && v.notes.toLowerCase().includes(term))
     );
-  }, [analyticsData.violations, searchTerm]);
+  }, [analyticsData, searchTerm]);
 
   // Reset all filters
   const resetFilters = () => {
@@ -531,13 +534,13 @@ export default function SafetyDashboard({ theme = 'dark' }) {
               <p className="text-xs text-zinc-500">Breakdown of non-compliance categories</p>
             </div>
             <span className="text-xs font-mono text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded">
-              Total Types: {analyticsData.charts.violation_types.length}
+              Total Types: {(analyticsData?.charts?.violation_types || []).length}
             </span>
           </div>
 
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={analyticsData.charts.violation_types} margin={{ top: 10, right: 10, left: -20, bottom: 25 }}>
+              <BarChart data={analyticsData?.charts?.violation_types || []} margin={{ top: 10, right: 10, left: -20, bottom: 25 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke={isDark ? '#27272a' : '#e4e4e7'} />
                 <XAxis dataKey="violation_type" stroke={isDark ? '#a1a1aa' : '#71717a'} tick={{ fontSize: 10 }} angle={-25} textAnchor="end" />
                 <YAxis stroke={isDark ? '#a1a1aa' : '#71717a'} tick={{ fontSize: 11 }} />
@@ -571,7 +574,7 @@ export default function SafetyDashboard({ theme = 'dark' }) {
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
-                  data={analyticsData.charts.severities}
+                  data={analyticsData?.charts?.severities || []}
                   dataKey="count"
                   nameKey="severity"
                   cx="50%"
@@ -580,7 +583,7 @@ export default function SafetyDashboard({ theme = 'dark' }) {
                   outerRadius={75}
                   paddingAngle={4}
                 >
-                  {analyticsData.charts.severities.map((entry) => (
+                  {(analyticsData?.charts?.severities || []).map((entry) => (
                     <Cell key={entry.severity} fill={SEVERITY_COLORS[entry.severity] || '#8884d8'} />
                   ))}
                 </Pie>
@@ -625,7 +628,7 @@ export default function SafetyDashboard({ theme = 'dark' }) {
 
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={analyticsData.charts.trend} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+              <AreaChart data={analyticsData?.charts?.trend || []} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorViolations" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#f43f5e" stopOpacity={0.4} />
@@ -668,7 +671,7 @@ export default function SafetyDashboard({ theme = 'dark' }) {
           </div>
 
           <div className="space-y-3 max-h-64 overflow-y-auto pr-1">
-            {analyticsData.charts.dept_leaderboard.map((item, idx) => (
+            {(analyticsData?.charts?.dept_leaderboard || []).map((item, idx) => (
               <div
                 key={item.department}
                 className="p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800/80 bg-zinc-100 dark:bg-zinc-950 flex items-center justify-between"
@@ -743,7 +746,7 @@ export default function SafetyDashboard({ theme = 'dark' }) {
               </tr>
             </thead>
             <tbody>
-              {analyticsData.charts.heatmap.map((row) => (
+              {(analyticsData?.charts?.heatmap || []).map((row) => (
                 <tr key={row.department} className="border-b border-zinc-200 dark:border-zinc-800/40">
                   <td className="py-2 pr-4 font-bold text-zinc-900 dark:text-zinc-200 truncate max-w-[160px]">{row.department}</td>
                   {[7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map((h) => {
