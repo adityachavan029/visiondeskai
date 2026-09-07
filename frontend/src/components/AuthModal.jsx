@@ -19,18 +19,21 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess, theme }) {
     setLoading(true);
     setError(null);
 
-    const endpoint = mode === 'login' ? '/api/auth/login' : '/api/auth/register';
+    const endpoint = mode === 'login' ? '/api/login' : '/api/signup';
     const payload = mode === 'login' ? { email, password } : { email, password, name };
+
 
     try {
       const res = await axios.post(endpoint, payload);
-      if (res.data.token) {
-        localStorage.setItem('token', res.data.token);
+      const token = res.data.access_token || res.data.token;
+      if (token) {
+        localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(res.data.user || { email, name }));
         onAuthSuccess(res.data.user || { email, name });
         onClose();
       }
     } catch (err) {
+
       setError(err.response?.data?.detail || 'Authentication failed.');
     } finally {
       setLoading(false);
