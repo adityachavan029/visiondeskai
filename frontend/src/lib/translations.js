@@ -107,6 +107,14 @@ export const translations = {
     askAgentPlaceholder: "Describe incident or query...",
     runInvestigation: "Run Investigation",
     executingPipeline: "Analyzing incident...",
+    reportHistory: "Investigation Report History",
+    reportHistoryDesc: "All automated multi-step investigation reports and past audits.",
+    noHistory: "No investigation history records found.",
+    refreshHistory: "Refresh History",
+    viewReport: "View Report",
+    deleteReport: "Delete Report",
+    filterStatus: "Filter Status",
+    allStatuses: "All Statuses",
 
     // Safety Dashboard Module
     dashboardTitle: "Safety Dashboard",
@@ -230,6 +238,14 @@ export const translations = {
     askAgentPlaceholder: "घटना का वर्णन करें...",
     runInvestigation: "जांच शुरू करें",
     executingPipeline: "घटना का विश्लेषण हो रहा है...",
+    reportHistory: "जांच रिपोर्ट इतिहास",
+    reportHistoryDesc: "सभी स्वचालित बहु-चरण जांच रिपोर्ट और पिछले ऑडिट।",
+    noHistory: "कोई जांच इतिहास रिकॉर्ड नहीं मिला।",
+    refreshHistory: "इतिहास रिफ्रेश करें",
+    viewReport: "रिपोर्ट देखें",
+    deleteReport: "रिपोर्ट हटाएं",
+    filterStatus: "स्थिति फ़िल्टर",
+    allStatuses: "सभी स्थितियां",
 
     // Safety Dashboard Module
     dashboardTitle: "सुरक्षा डैशबोर्ड",

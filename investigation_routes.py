@@ -31,7 +31,9 @@ from investigation_store import (
     get_investigation,
     list_investigations,
     update_investigation,
+    delete_investigation,
 )
+
 
 router = APIRouter(prefix="/api", tags=["investigation"])
 
@@ -132,3 +134,11 @@ async def review_investigation(investigation_id: str, payload: ReviewRequest):
 
     updated = update_investigation(investigation_id, updates)
     return updated
+
+
+@router.delete("/investigation/{investigation_id}")
+async def delete_single_investigation(investigation_id: str):
+    success = delete_investigation(investigation_id)
+    if not success:
+        raise HTTPException(status_code=404, detail="Investigation not found.")
+    return {"message": "Investigation deleted successfully"}

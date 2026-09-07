@@ -73,3 +73,12 @@ def update_investigation(investigation_id: str, updates: dict) -> Optional[dict]
         data[investigation_id].update(updates)
         _save(data)
         return data[investigation_id]
+
+def delete_investigation(investigation_id: str) -> bool:
+    with _lock:
+        data = _load()
+        if investigation_id not in data:
+            return False
+        del data[investigation_id]
+        _save(data)
+        return True
